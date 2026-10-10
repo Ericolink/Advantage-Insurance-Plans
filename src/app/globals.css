@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-heading), ui-serif, Georgia, serif;
+
+  /* Palette: coral and warm cream from Silvia's marketing, navy from the AIP logo.
+     Text/background pairs are tuned to pass WCAG AA; pure coral is decorative only. */
+  --color-coral: #e75b3e; /* decorative waves, never behind text */
+  --color-accent: #c8442a; /* coral buttons: 4.9:1 with white */
+  --color-accent-strong: #a8361f; /* hover, coral text on light backgrounds */
+  --color-brand: #223c86; /* logo navy: icons, links, secondary buttons */
+  --color-brand-deep: #14244f; /* headings, top bar, footer */
+  --color-brand-soft: #fbefea; /* blush section backgrounds */
+
+  --color-ink: #372c2a; /* warm dark brown body text */
+  --color-ink-soft: #6b5a55;
+  --color-canvas: #fdf8f4; /* cream */
+  --color-surface: #ffffff;
+  --color-muted: #f6ebe6;
+  --color-line: #ecdcd5;
+}
+
+@layer base {
+  html {
+    /* 18px base: every rem-based size scales up for easier reading. */
+    font-size: 112.5%;
+    scroll-behavior: smooth;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-brand-deep);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    @apply bg-canvas font-sans text-ink antialiased;
+  }
+}
