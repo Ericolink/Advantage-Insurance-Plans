@@ -7,6 +7,7 @@ import { site } from "@/config/site";
 import { fill, getDictionary, hasLocale, localeTags, locales } from "@/lib/i18n";
 import { alternatesFor, samePath } from "@/lib/seo";
 import { siteVars } from "@/lib/site-vars";
+import { CallBar } from "@/components/layout/CallBar";
 import { DraftBanner } from "@/components/layout/DraftBanner";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
@@ -23,7 +24,8 @@ export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
 
-export const viewport: Viewport = { themeColor: "#223c86" };
+// viewportFit "cover" lets the bottom call bar respect the phone's safe area (env(safe-area-inset-bottom)).
+export const viewport: Viewport = { themeColor: "#223c86", viewportFit: "cover" };
 
 export async function generateMetadata({ params }: Omit<LayoutProps, "children">): Promise<Metadata> {
   const { lang } = await params;
@@ -69,6 +71,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
           {children}
         </main>
         <Footer locale={lang} dict={dict} />
+        {site.contact.phone && <CallBar phone={site.contact.phone} label={dict.nav.callShort} />}
       </body>
     </html>
   );

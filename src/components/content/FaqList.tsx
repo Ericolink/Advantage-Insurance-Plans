@@ -6,18 +6,21 @@ import { Icon } from "@/components/ui/Icon";
 /**
  * Questions as native <details>/<summary>: keyboard and screen-reader friendly with no JavaScript,
  * and the answers stay in the page for search engines and in-page search.
+ * Separated by thin lines instead of boxes, so a long list stays calm to scan.
  */
 export function FaqList({ items, headingLevel = 3 }: { items: FaqItem[]; headingLevel?: 2 | 3 }) {
   const Heading = `h${headingLevel}` as const;
   return (
-    <div className="space-y-4">
+    <div className="divide-y divide-line border-y border-line">
       {items.map((item) => (
-        <details key={item.id} id={item.id} className="group scroll-mt-32 rounded-2xl bg-surface ring-1 ring-line open:ring-2 open:ring-brand">
-          <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-2xl px-5 py-4 text-xl font-semibold text-brand-deep hover:bg-brand-soft [&::-webkit-details-marker]:hidden">
-            <Heading className="text-xl font-semibold">{item.question}</Heading>
-            <Icon name="chevronDown" className="size-6 shrink-0 transition-transform group-open:rotate-180 motion-reduce:transition-none" />
+        <details key={item.id} id={item.id} className="group scroll-mt-24">
+          <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-4 py-4 text-brand-deep hover:text-brand [&::-webkit-details-marker]:hidden">
+            <Heading className="text-lg font-semibold leading-snug sm:text-xl">{item.question}</Heading>
+            <span className="grid size-10 shrink-0 place-items-center rounded-full bg-brand-soft text-brand-deep group-open:bg-brand group-open:text-white">
+              <Icon name="chevronDown" className="size-5 transition-transform group-open:rotate-180 motion-reduce:transition-none" />
+            </span>
           </summary>
-          <div className="space-y-3 px-5 pb-5 text-lg leading-relaxed text-ink">
+          <div className="max-w-2xl space-y-3 pb-6 text-base leading-relaxed text-ink sm:text-lg">
             {item.answer.map((paragraph) => (
               <p key={paragraph}>{fill(paragraph, siteVars)}</p>
             ))}

@@ -22,11 +22,13 @@ export const es: typeof en = {
     phonePending: "Teléfono de la oficina: pendiente",
     home: "Inicio",
     breadcrumb: "Ruta de navegación",
+    menu: "Menú",
+    close: "Cerrar",
   },
   hero: {
     title: "Ayuda clara con Medicare, Medicaid y su cobertura médica en El Paso",
     subtitle:
-      "{brand} es una oficina local que ayuda a personas de 65 años o más, a personas con discapacidades y a sus familias a entender sus opciones de cobertura médica. Hable con {agentFirst} por teléfono o en persona.",
+      "Una oficina local que ayuda a personas de 65 años o más, a personas con discapacidades y a sus familias a entender su cobertura médica. Hable con {agentFirst} por teléfono o en persona.",
     ctaHelp: "Vea cómo le podemos ayudar",
     ctaCall: "Llame a la oficina",
     open: "Abierto {hours}",

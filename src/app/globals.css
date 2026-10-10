@@ -40,3 +40,8 @@
     @apply bg-canvas font-sans text-ink antialiased;
   }
 }
+
+/* Hide the phone call bar while someone is typing, so it never sits on top of the keyboard. */
+body:has(:is(input, textarea, select):focus) [data-call-bar] {
+  display: none;
+}

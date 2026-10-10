@@ -4,14 +4,15 @@ import { fill, localeNames, t, type Dictionary } from "@/lib/i18n";
 import { siteVars } from "@/lib/site-vars";
 import { CallButton } from "@/components/ui/CallButton";
 import { Icon } from "@/components/ui/Icon";
+import { container, h2Class, sectionSpace } from "@/components/ui/styles";
 
 export function About({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const portrait = site.portrait ?? site.photo;
   const showCarriers = site.carriers.confirmed && site.carriers.names.length > 0;
 
   return (
-    <section id="about" aria-labelledby="about-title" className="scroll-mt-32 bg-brand-soft">
-      <div className="mx-auto grid max-w-6xl items-start gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1fr_2fr] md:py-20">
+    <section id="about" aria-labelledby="about-title" className={`scroll-mt-24 bg-brand-soft ${sectionSpace}`}>
+      <div className={`${container} grid items-start gap-8 md:grid-cols-[1fr_2fr] md:gap-12`}>
         {portrait && (
           // eslint-disable-next-line @next/next/no-img-element -- plain img keeps the static export option open
           <img
@@ -20,23 +21,23 @@ export function About({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             height={portrait.height}
             alt={fill(dict.about.photoAlt, siteVars)}
             loading="lazy"
-            className="mx-auto aspect-square w-full max-w-xs rounded-full object-cover object-top shadow-lg ring-8 ring-surface"
+            className="aspect-square w-36 rounded-full object-cover object-top shadow-md ring-6 ring-surface sm:w-48 md:mx-auto md:w-full md:max-w-xs md:ring-8"
           />
         )}
 
         <div>
-          <h2 id="about-title" className="font-display text-3xl font-bold text-brand-deep sm:text-4xl">
+          <h2 id="about-title" className={h2Class}>
             {fill(dict.about.title, siteVars)}
           </h2>
-          <p className="mt-2 text-xl font-semibold text-accent-strong">{fill(dict.about.role, siteVars)}</p>
-          <div className="mt-5 space-y-4 text-xl leading-relaxed text-ink">
+          <p className="mt-2 text-lg font-semibold text-accent-strong sm:text-xl">{fill(dict.about.role, siteVars)}</p>
+          <div className="mt-6 max-w-2xl space-y-5 text-base leading-relaxed text-ink sm:text-lg">
             {/* Placeholder marker for the team, never shown in production. */}
             {!site.about.intro && process.env.NODE_ENV === "development" && (
               <p className="rounded-xl border-2 border-dashed border-amber-500 bg-amber-50 px-4 py-2 text-base font-semibold text-amber-950" lang="en">
                 {dict.about.introPending}
               </p>
             )}
-            <p>{site.about.intro ? t(site.about.intro, locale) : fill(dict.about.fallback, { ...siteVars, business: site.brandName })}</p>
+            <p>{site.about.intro ? t(site.about.intro, locale) : fill(dict.about.fallback, siteVars)}</p>
             {site.about.story && <p>{t(site.about.story, locale)}</p>}
             <p>{dict.about.howWeHelp}</p>
             {site.languages && (
@@ -62,7 +63,8 @@ export function About({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             </div>
           )}
 
-          <div className="mt-8">
+          {/* Phones already have the call bar at the bottom. */}
+          <div className="mt-8 hidden sm:block">
             <CallButton dict={dict} variant="brand" />
           </div>
         </div>

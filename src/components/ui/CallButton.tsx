@@ -10,13 +10,15 @@ interface CallButtonProps {
   showNumber?: boolean;
   variant?: "primary" | "secondary" | "brand";
   className?: string;
+  /** The page's main call button: while it is on screen, the phone call bar stays hidden. */
+  primary?: boolean;
 }
 
 /**
  * "Call our office" button. While the phone number is not configured it renders a
  * clearly marked placeholder instead of a fake number (launch is blocked until then).
  */
-export function CallButton({ dict, label = dict.nav.call, showNumber = true, variant = "secondary", className = "" }: CallButtonProps) {
+export function CallButton({ dict, label = dict.nav.call, showNumber = true, variant = "secondary", className = "", primary = false }: CallButtonProps) {
   const phone = site.contact.phone;
   if (!phone) {
     return (
@@ -30,11 +32,15 @@ export function CallButton({ dict, label = dict.nav.call, showNumber = true, var
     );
   }
   return (
-    <a href={`tel:${phone.e164}`} className={buttonClass(variant, className)}>
+    <a href={`tel:${phone.e164}`} className={buttonClass(variant, className)} {...(primary && { "data-primary-call": "" })}>
       <Icon name="phone" className="size-5" />
-      <span>
-        {label}
-        {showNumber && <span className="whitespace-nowrap">: {phone.display}</span>}
+      {/* On very narrow screens the number drops to a second line instead of widening the page. */}
+      <span className="flex flex-wrap justify-center gap-x-1.5 sm:flex-nowrap">
+        <span>
+          {label}
+          {showNumber && ":"}
+        </span>
+        {showNumber && <span className="whitespace-nowrap">{phone.display}</span>}
       </span>
     </a>
   );

@@ -3,6 +3,7 @@ import type { LegalDocument } from "@/content/legal";
 import { site } from "@/config/site";
 import { fill, type Dictionary } from "@/lib/i18n";
 import { formatDate } from "@/lib/format";
+import { h1Class } from "@/components/ui/styles";
 
 interface LegalPageProps {
   locale: Locale;
@@ -16,8 +17,8 @@ export function LegalPage({ locale, dict, title, document, ready }: LegalPagePro
   const content = ready && document ? document[locale] : null;
 
   return (
-    <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
-      <h1 className="font-display text-4xl font-bold text-brand-deep">{title}</h1>
+    <article className="mx-auto max-w-3xl px-5 py-14 sm:px-8 sm:py-20">
+      <h1 className={h1Class}>{title}</h1>
       {content ? (
         <>
           <p className="mt-2 text-sm text-ink-soft">

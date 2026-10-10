@@ -6,6 +6,8 @@ import { getPage } from "@/content/pages";
 import { fill, t, type Dictionary } from "@/lib/i18n";
 import { formatDays, formatHours } from "@/lib/format";
 import { siteVars } from "@/lib/site-vars";
+import { container } from "@/components/ui/styles";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 const programPages: PageId[] = ["medicare", "medicaid", "dual", "aca"];
 const helpPages: PageId[] = ["firstVisit", "faq", "resources"];
@@ -23,8 +25,9 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const linkClass = "inline-flex min-h-11 items-center hover:text-white hover:underline";
 
   return (
-    <footer className="border-t border-line bg-brand-deep text-white/90">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 text-base sm:px-6 md:grid-cols-2 lg:grid-cols-4">
+    // On phones the bottom padding reserves the call bar's height, so the end of the page is never hidden behind it.
+    <footer className={`border-t border-line bg-brand-deep text-white/90 ${contact.phone ? "pb-[calc(5rem+env(safe-area-inset-bottom))] sm:pb-0" : ""}`}>
+      <div className={`${container} grid gap-10 py-14 text-base sm:gap-12 md:grid-cols-2 lg:grid-cols-4`}>
         <div className="space-y-3">
           {site.logo && (
             // The logo has a white background, so it sits on a white card over the dark footer.
@@ -51,7 +54,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <ul className="mt-3 space-y-2">
             {contact.phone && (
               <li>
-                <a href={`tel:${contact.phone.e164}`} className="text-xl font-bold text-white underline-offset-4 hover:underline">
+                <a href={`tel:${contact.phone.e164}`} className="inline-flex min-h-11 items-center text-xl font-bold text-white underline-offset-4 hover:underline">
                   {contact.phone.display}
                 </a>
                 {contact.tty && <span className="block">{dict.footer.tty}</span>}
@@ -131,7 +134,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       </div>
 
       <div className="border-t border-white/15">
-        <div className="mx-auto max-w-6xl space-y-3 px-4 py-8 text-base leading-relaxed text-white/90 sm:px-6">
+        <div className={`${container} max-w-6xl space-y-4 py-10 text-base leading-relaxed text-white/90`}>
           {medicare && organizations !== null && products !== null && (
             <p className="font-semibold text-white">{fill(dict.footer.medicareDisclaimer, { organizations, products })}</p>
           )}
@@ -143,9 +146,12 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       </div>
 
       <div className="border-t border-white/15">
-        <p className="mx-auto max-w-6xl px-4 py-4 text-base text-white/80 sm:px-6">
-          © {new Date().getFullYear()} {site.brandName}. {dict.footer.rights}
-        </p>
+        <div className={`${container} flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between`}>
+          <p className="text-base text-white/80">
+            © {new Date().getFullYear()} {site.brandName}. {dict.footer.rights}
+          </p>
+          <LanguageSwitcher locale={locale} label={dict.nav.language} />
+        </div>
       </div>
     </footer>
   );

@@ -22,11 +22,13 @@ export const en = {
     phonePending: "Office phone: pending",
     home: "Home",
     breadcrumb: "Breadcrumb",
+    menu: "Menu",
+    close: "Close",
   },
   hero: {
     title: "Clear help with Medicare, Medicaid and health coverage in El Paso",
     subtitle:
-      "{brand} is a local office that helps people 65 and older, people with disabilities and their families understand their coverage options. Talk with {agentFirst} by phone or in person.",
+      "A local office that helps people 65 and older, people with disabilities and their families understand their health coverage. Talk with {agentFirst} by phone or in person.",
     ctaHelp: "See how we can help",
     ctaCall: "Call Our Office",
     open: "Open {hours}",

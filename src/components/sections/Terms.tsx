@@ -1,30 +1,29 @@
 import type { Dictionary } from "@/lib/i18n";
+import { container, h2Class, leadClass, sectionSpace } from "@/components/ui/styles";
 
 /** Short glossary of the terms visitors hear most, in plain words. */
 export function Terms({ dict }: { dict: Dictionary }) {
   return (
-    <section aria-labelledby="terms-title" className="bg-canvas">
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 md:py-20">
-        <div className="max-w-3xl">
-          <h2 id="terms-title" className="font-display text-3xl font-bold text-brand-deep sm:text-4xl">
-            {dict.terms.title}
-          </h2>
-          <p className="mt-3 text-xl text-ink">{dict.terms.intro}</p>
-        </div>
-        <Glossary dict={dict} className="mt-8 md:grid-cols-2" />
+    <section aria-labelledby="terms-title" className={`bg-canvas ${sectionSpace}`}>
+      <div className={container}>
+        <h2 id="terms-title" className={h2Class}>
+          {dict.terms.title}
+        </h2>
+        <p className={`mt-4 ${leadClass}`}>{dict.terms.intro}</p>
+        <Glossary dict={dict} className="mt-8 md:grid-cols-2 md:gap-x-12" />
       </div>
     </section>
   );
 }
 
-/** The glossary terms alone, also used on the resources page. */
+/** The glossary terms alone, also used on the resources page. A plain list with dividers, not a wall of cards. */
 export function Glossary({ dict, className = "" }: { dict: Dictionary; className?: string }) {
   return (
-    <dl className={`grid gap-4 ${className}`}>
+    <dl className={`grid ${className}`}>
       {dict.terms.items.map((item) => (
-        <div key={item.term} className="rounded-2xl bg-surface p-6 ring-1 ring-line">
-          <dt className="text-xl font-bold text-brand-deep">{item.term}</dt>
-          <dd className="mt-2 text-lg leading-relaxed text-ink">{item.meaning}</dd>
+        <div key={item.term} className="border-t border-line py-5">
+          <dt className="text-lg font-bold text-brand-deep sm:text-xl">{item.term}</dt>
+          <dd className="mt-1 max-w-2xl text-base leading-relaxed text-ink sm:text-lg">{item.meaning}</dd>
         </div>
       ))}
     </dl>

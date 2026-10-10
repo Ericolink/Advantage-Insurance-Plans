@@ -4,10 +4,10 @@ import type { Dictionary } from "@/lib/i18n";
 /** Home › Current page. Helps visitors who arrive from a search know where they are. */
 export function Breadcrumbs({ home, current, dict }: { home: string; current: string; dict: Dictionary }) {
   return (
-    <nav aria-label={dict.nav.breadcrumb} className="text-lg">
+    <nav aria-label={dict.nav.breadcrumb} className="text-base sm:text-lg">
       <ol className="flex flex-wrap items-center gap-2 text-ink-soft">
         <li>
-          <Link href={home} className="font-semibold text-brand underline underline-offset-4 hover:text-brand-deep">
+          <Link href={home} className="inline-flex min-h-11 items-center font-semibold text-brand underline underline-offset-4 hover:text-brand-deep">
             {dict.nav.home}
           </Link>
         </li>
