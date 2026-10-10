@@ -3,28 +3,33 @@ import type { en } from "./en";
 // UI copy in Spanish. Must mirror the structure of en.ts.
 export const es: typeof en = {
   meta: {
-    title: "{business} | Ayuda con Medicare, Medicaid y el Mercado de Seguros",
+    title: "Ayuda con Medicare, Medicaid y el Mercado de Seguros en El Paso, TX",
     description:
-      "{agent} de {business} ayuda a personas de 65 años o más y personas con discapacidades a entender sus opciones de Medicare, Medicaid y el Mercado de Seguros Médicos. Hable con una persona real.",
+      "{agent}, de {brand}, ayuda a personas de 65 años o más, personas con discapacidades y sus familias en El Paso a entender sus opciones de Medicare, Medicaid y el Mercado de Seguros. Hable con una persona real.",
   },
   nav: {
     skip: "Saltar al contenido principal",
+    main: "Menú principal",
     services: "Servicios",
-    howWeHelp: "Cómo le ayudamos",
-    about: "Quiénes somos",
+    firstVisit: "Primera cita",
+    faq: "Preguntas",
+    about: "Conozca a Silvia",
     contact: "Contacto",
     call: "Llame a la oficina",
     callShort: "Llamar",
     getHelp: "Pedir ayuda",
     language: "Idioma",
     phonePending: "Teléfono de la oficina: pendiente",
+    home: "Inicio",
+    breadcrumb: "Ruta de navegación",
   },
   hero: {
-    title: "Medicare y su cobertura médica, explicados de forma sencilla",
+    title: "Ayuda clara con Medicare, Medicaid y su cobertura médica en El Paso",
     subtitle:
-      "Ayudamos a adultos mayores y a personas con discapacidades que califican a entender sus opciones de cobertura médica y a encontrar planes que se ajusten a sus necesidades.",
-    ctaHelp: "Quiero ayuda con mi cobertura",
+      "{brand} es una oficina local que ayuda a personas de 65 años o más, a personas con discapacidades y a sus familias a entender sus opciones de cobertura médica. Hable con {agentFirst} por teléfono o en persona.",
+    ctaHelp: "Vea cómo le podemos ayudar",
     ctaCall: "Llame a la oficina",
+    open: "Abierto {hours}",
     realPerson: "Hable con una persona real",
     otherLanguage: "We speak English",
     office: "Oficina en {city}, {state}",
@@ -32,7 +37,7 @@ export const es: typeof en = {
   },
   services: {
     title: "¿En qué le podemos ayudar?",
-    intro: "Elija el tema sobre el que tiene preguntas. Se lo explicamos con palabras sencillas.",
+    intro: "Elija el tema sobre el que tiene preguntas. Cada página lo explica con palabras sencillas y con enlaces a fuentes oficiales.",
     different:
       "Medicare, Medicaid y el Mercado de Seguros son programas diferentes. ¿No sabe cuál es para usted? Le ayudamos a averiguarlo.",
     disclaimer:
@@ -41,21 +46,27 @@ export const es: typeof en = {
     items: {
       medicare: {
         title: "Medicare",
-        body: "Medicare es la cobertura médica para personas de 65 años o más y para algunas personas más jóvenes con discapacidades. Le ayudamos a entender sus opciones de Medicare y a revisar los planes que podemos ofrecerle donde usted vive, según sus necesidades.",
+        body: "Cobertura médica para personas de 65 años o más y algunas personas más jóvenes con discapacidades. Conozca las Partes A, B, C y D, y la diferencia entre Medicare Original y Medicare Advantage.",
         forWhom: "Personas de 65 años o más y algunas personas con discapacidades",
-        cta: "Ayuda con Medicare",
+        cta: "Conozca Medicare",
       },
       medicaid: {
         title: "Medicaid",
-        body: "Medicaid puede ayudar a personas con ingresos y recursos limitados. Cada estado tiene sus propias reglas. Le explicamos las opciones de cobertura y lo que normalmente se necesita para solicitarlo. Su estado decide quién califica.",
+        body: "Un programa para personas con ingresos y recursos limitados. En Texas, el estado decide quién califica. Conozca cómo funciona y dónde solicitarlo.",
         forWhom: "Personas con ingresos y recursos limitados",
-        cta: "Información sobre Medicaid",
+        cta: "Conozca Medicaid",
+      },
+      dual: {
+        title: "Medicare y Medicaid",
+        body: "Algunas personas califican para los dos programas. Conozca cómo funcionan juntos y los programas que pueden ayudar con los costos de Medicare.",
+        forWhom: "Personas que tienen los dos, o que podrían calificar",
+        cta: "Conozca cómo funcionan juntos",
       },
       aca: {
-        title: "Obamacare / Mercado de Seguros (ACA)",
-        body: "El Mercado de Seguros Médicos (CuidadoDeSalud.gov) es donde las personas pueden comprar un seguro médico. Es principalmente para personas que no tienen Medicare. Le ayudamos a entender las opciones y a ver para qué planes podría calificar.",
+        title: "Mercado de Seguros (Obamacare)",
+        body: "Donde las personas sin Medicare ni seguro del trabajo pueden comprar un seguro médico. Conozca la ayuda con el costo y qué cambia al cumplir 65 años.",
         forWhom: "Personas sin Medicare que necesitan seguro médico",
-        cta: "Ver opciones de cobertura",
+        cta: "Conozca el Mercado de Seguros",
       },
     },
   },
@@ -83,18 +94,38 @@ export const es: typeof en = {
         term: "Mercado de Seguros (Obamacare)",
         meaning: "El lugar oficial para comprar seguro médico, en CuidadoDeSalud.gov. La ayuda con el costo depende de sus ingresos.",
       },
+      {
+        term: "Prima",
+        meaning: "Lo que usted paga por su cobertura, normalmente cada mes, aunque no use ningún servicio.",
+      },
+      {
+        term: "Deducible",
+        meaning: "Lo que usted paga por la atención cubierta antes de que su plan empiece a pagar.",
+      },
+      {
+        term: "Copago",
+        meaning: "Una cantidad fija que usted paga por un servicio, como una consulta médica o una receta.",
+      },
+      {
+        term: "Red de proveedores",
+        meaning: "Los médicos, hospitales y farmacias que trabajan con un plan. Atenderse fuera de la red puede costar más o no estar cubierto.",
+      },
+      {
+        term: "Periodo de inscripción",
+        meaning: "Las fechas en las que puede inscribirse o hacer cambios en su cobertura. Fuera de esas fechas, los cambios suelen estar limitados.",
+      },
     ],
   },
   steps: {
     title: "Cómo le ayudamos",
     intro: "Pedir ayuda es sencillo. Esto es lo que puede esperar.",
     items: [
-      { title: "Cuéntenos qué necesita", body: "Llámenos o visite nuestra oficina. Cuéntenos su situación y qué tipo de ayuda busca." },
-      { title: "Entienda sus opciones", body: "Le ayudamos a entender las opciones de cobertura médica que podrían estar disponibles para usted." },
-      { title: "Reciba orientación personal", body: "Revisamos las alternativas con usted, para que pueda compararlas y tomar una decisión informada." },
+      { title: "Llámenos o visítenos", body: "Cuéntenos su situación y sobre qué tiene preguntas." },
+      { title: "Revisamos su situación", body: "Vemos qué tipo de orientación le puede ayudar y le explicamos las opciones de cobertura que podrían aplicar." },
+      { title: "Le explicamos los siguientes pasos", body: "Sabrá qué puede hacer después y dónde encontrar información oficial. Usted decide, sin presiones." },
     ],
     note: "Sin presiones. Usted decide lo que es mejor para usted.",
-    cta: "Comuníquese con la oficina",
+    cta: "Qué esperar en su primera cita",
   },
   about: {
     title: "Conozca a {agent}",
@@ -102,7 +133,9 @@ export const es: typeof en = {
     fallback:
       "{agent} es su contacto en {business}. Nuestra oficina ayuda a las personas a entender sus opciones de Medicare, Medicaid y el Mercado de Seguros.",
     howWeHelp:
-      "Nos tomamos el tiempo para escucharle y responder sus preguntas con palabras sencillas. Puede hablar con nosotros por teléfono o visitar nuestra oficina.",
+      "Nos tomamos el tiempo para escucharle y responder sus preguntas con palabras sencillas. Puede hablar con nosotros por teléfono o visitar nuestra oficina en El Paso.",
+    languages: "Idiomas: {languages}",
+    introPending: "Pendiente: la presentación de Silvia en sus propias palabras (solo visible en desarrollo).",
     carriersTitle: "Algunas de las compañías con las que trabajamos",
     carriersNote: "Los planes y compañías disponibles dependen de dónde vive.",
     cta: "Comuníquese con la oficina",
@@ -110,6 +143,11 @@ export const es: typeof en = {
   },
   testimonials: {
     title: "Lo que dicen nuestros clientes",
+  },
+  faqTeaser: {
+    title: "Preguntas frecuentes",
+    intro: "Respuestas rápidas a lo que más nos preguntan.",
+    cta: "Ver todas las preguntas",
   },
   contact: {
     title: "Comuníquese con la oficina",
@@ -130,6 +168,8 @@ export const es: typeof en = {
     mainOffice: "Oficina principal",
     office: "Oficina {number}",
     officePending: "Dirección pendiente",
+    languages: "Idiomas",
+    prepare: "¿Viene a vernos? Vea qué puede ser útil traer",
   },
   form: {
     title: "Solicitar ayuda",
@@ -143,6 +183,7 @@ export const es: typeof en = {
     helpOptions: {
       medicare: "Medicare",
       medicaid: "Medicaid",
+      dual: "Medicare y Medicaid",
       aca: "Mercado de Seguros (Obamacare)",
       other: "Otra cosa / No estoy seguro",
     },
@@ -152,9 +193,9 @@ export const es: typeof en = {
     methodEmail: "Correo electrónico",
     language: "Idioma preferido",
     sensitiveHint: "Por favor no envíe su número de Medicare, su número de Seguro Social ni información médica en este formulario.",
-    consent: "Acepto que {business} me contacte por teléfono o correo electrónico sobre mi solicitud.",
+    consent: "Acepto que {brand} me contacte por teléfono o correo electrónico sobre mi solicitud.",
     smsConsent:
-      "Acepto recibir mensajes de texto de {business} sobre mi solicitud. Pueden aplicarse tarifas de mensajes y datos. Responda STOP para cancelar. El consentimiento no es condición de compra.",
+      "Acepto recibir mensajes de texto de {brand} sobre mi solicitud. Pueden aplicarse tarifas de mensajes y datos. Responda STOP para cancelar. El consentimiento no es condición de compra.",
     privacyLink: "Política de privacidad",
     submit: "Solicitar ayuda",
     sending: "Enviando…",
@@ -176,14 +217,20 @@ export const es: typeof en = {
     rights: "Todos los derechos reservados.",
     licensed: "Con licencia en {state}",
     license: "Licencia n.º {number}",
+    npn: "NPN {number}",
     privacy: "Política de privacidad",
     terms: "Términos de uso",
+    contactTitle: "Contacto",
+    programsTitle: "Más información",
+    infoTitle: "Información",
+    tty: "TTY: 711",
     medicareDisclaimer:
       "No ofrecemos todos los planes disponibles en su área. Actualmente representamos a {organizations} organizaciones que ofrecen {products} productos en su área. Comuníquese con Medicare.gov, 1-800-MEDICARE o con el Programa Estatal de Asistencia sobre Seguros de Salud (SHIP) de su localidad para obtener información sobre todas sus opciones.",
     governmentDisclaimer:
-      "{business} no está vinculado ni respaldado por el gobierno de EE. UU. ni por el programa federal de Medicare.",
+      "{brand} no está vinculado ni respaldado por el gobierno de EE. UU. ni por el programa federal de Medicare.",
     marketplaceDisclaimer:
-      "{business} no es el Mercado de Seguros Médicos® (CuidadoDeSalud.gov). También puede solicitar cobertura directamente en CuidadoDeSalud.gov.",
+      "{brand} no es el Mercado de Seguros Médicos® (CuidadoDeSalud.gov). También puede solicitar cobertura directamente en CuidadoDeSalud.gov.",
+    educational: "La información de este sitio es general y educativa. No es una decisión sobre su elegibilidad ni una recomendación para su situación.",
     medicaidDisclaimer: "La agencia de Medicaid de su estado decide quién califica para Medicaid.",
   },
   legal: {
@@ -192,6 +239,26 @@ export const es: typeof en = {
     pendingTitle: "Esta página está en preparación",
     pendingBody: "Estamos terminando este documento. Si tiene preguntas mientras tanto, comuníquese con la oficina.",
     lastUpdated: "Última actualización: {date}",
+  },
+  pages: {
+    onThisPage: "En esta página",
+    related: "Páginas relacionadas",
+    newTab: "(abre un sitio oficial en una pestaña nueva)",
+    officialNote: "Los sitios oficiales se abren en una pestaña nueva.",
+    scopeTitle: "Lo que ofrece nuestra oficina",
+    scopePending:
+      "Llámenos para preguntar si nuestra oficina puede ayudarle con su caso. Si no podemos, le diremos dónde encontrar ayuda oficial.",
+    scope: {
+      medicareAdvantage: "Ayuda para comparar e inscribirse en planes Medicare Advantage de las compañías que representamos.",
+      partD: "Ayuda con planes de medicamentos de Medicare (Parte D).",
+      medigap: "Seguros suplementarios de Medicare (Medigap).",
+      dsnp: "Planes para personas con Medicare y Medicaid (D-SNP).",
+      medicaidApplications: "Ayuda para preparar una solicitud de Medicaid de Texas.",
+      acaEnrollment: "Inscripción en planes del Mercado de Seguros Médicos.",
+    },
+    ctaTitle: "¿Tiene preguntas? Hable con {agentFirst}",
+    ctaBody: "Llame a nuestra oficina en El Paso. Le explicamos sus opciones con palabras sencillas, sin presiones.",
+    hours: "Horario de la oficina: {hours}",
   },
   notFound: {
     title: "Página no encontrada",

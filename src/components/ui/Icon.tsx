@@ -13,7 +13,9 @@ type UiIconName =
   | "message"
   | "list"
   | "handshake"
-  | "info";
+  | "info"
+  | "chevronDown"
+  | "externalLink";
 
 // Outline icons on a 24px grid (Lucide-style, ISC licensed shapes).
 const paths: Record<IconName | UiIconName, string[]> = {
@@ -75,6 +77,8 @@ const paths: Record<IconName | UiIconName, string[]> = {
     "M3 4h8",
   ],
   info: ["M2 12a10 10 0 1 0 20 0a10 10 0 1 0-20 0", "M12 16v-4M12 8h.01"],
+  chevronDown: ["m6 9 6 6 6-6"],
+  externalLink: ["M15 3h6v6", "M10 14 21 3", "M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"],
 };
 
 export function Icon({ name, className = "size-5" }: { name: IconName | UiIconName; className?: string }) {

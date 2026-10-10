@@ -1,12 +1,17 @@
+import Link from "next/link";
+import { pagePath, type PageId } from "@/config/pages";
 import { site } from "@/config/site";
-import type { ServiceId } from "@/config/types";
+import type { Locale, ServiceId } from "@/config/types";
 import type { Dictionary } from "@/lib/i18n";
-import { HelpButton } from "@/components/ui/HelpButton";
+import { buttonClass } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 
-const icons = { medicare: "heartPulse", medicaid: "users", aca: "document" } as const satisfies Record<ServiceId, string>;
+const icons = { medicare: "heartPulse", medicaid: "users", dual: "handshake", aca: "document" } as const satisfies Record<ServiceId, string>;
 
-export function Services({ dict }: { dict: Dictionary }) {
+// Each program card leads to its own page with the full explanation.
+const pages: Record<ServiceId, PageId> = { medicare: "medicare", medicaid: "medicaid", dual: "dual", aca: "aca" };
+
+export function Services({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   if (site.services.length === 0) return null;
 
   return (
@@ -19,7 +24,7 @@ export function Services({ dict }: { dict: Dictionary }) {
           <p className="mt-3 text-xl text-ink">{dict.services.intro}</p>
         </div>
 
-        <ul className="mt-10 grid gap-6 lg:grid-cols-3">
+        <ul className="mt-10 grid gap-6 md:grid-cols-2">
           {site.services.map((id) => {
             const item = dict.services.items[id];
             return (
@@ -32,9 +37,10 @@ export function Services({ dict }: { dict: Dictionary }) {
                 <p className="mt-4 rounded-xl bg-brand-soft px-4 py-3 text-base text-ink">
                   <span className="font-semibold">{dict.services.forWhom}</span> {item.forWhom}
                 </p>
-                <HelpButton help={id} className="mt-6 w-full">
+                <Link href={pagePath(pages[id], locale)} className={buttonClass("brand", "mt-6 w-full")}>
                   {item.cta}
-                </HelpButton>
+                  <Icon name="arrowRight" className="size-5" />
+                </Link>
               </li>
             );
           })}

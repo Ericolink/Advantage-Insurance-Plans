@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { pagePath } from "@/config/pages";
 import { site } from "@/config/site";
 import type { Locale } from "@/config/types";
 import type { Dictionary } from "@/lib/i18n";
@@ -10,7 +11,8 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const phone = site.contact.phone;
   const links = [
     { href: `${home}#services`, label: dict.nav.services },
-    { href: `${home}#how-we-help`, label: dict.nav.howWeHelp },
+    { href: pagePath("firstVisit", locale), label: dict.nav.firstVisit },
+    { href: pagePath("faq", locale), label: dict.nav.faq },
     { href: `${home}#about`, label: dict.nav.about },
     { href: `${home}#contact`, label: dict.nav.contact },
   ];
@@ -31,7 +33,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <Icon name="phone" className="size-5 shrink-0" />
             <span>{dict.hero.realPerson}:</span>
             {phone ? (
-              <a href={`tel:${phone.e164}`} className="font-bold underline-offset-4 hover:underline">
+              <a href={`tel:${phone.e164}`} className="whitespace-nowrap font-bold underline-offset-4 hover:underline">
                 {phone.display}
               </a>
             ) : (
@@ -46,26 +48,28 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
           <Link href={home} className="flex items-center gap-3 rounded-lg focus-visible:outline-3 focus-visible:outline-brand-deep">
             {site.logo ? (
+              // On narrow phones the name needs the room more than the logo does.
               // eslint-disable-next-line @next/next/no-img-element -- small static asset, no optimization needed
-              <img src={site.logo.src} width={site.logo.width} height={site.logo.height} alt="" className="h-8 w-auto sm:h-10" />
+              <img src={site.logo.src} width={site.logo.width} height={site.logo.height} alt="" className="h-8 w-auto max-[460px]:hidden sm:h-10" />
             ) : (
               <span className="grid size-10 place-items-center rounded-xl bg-brand text-white">
                 <Icon name="shield" className="size-6" />
               </span>
             )}
+            {/* The full name ("… by Silvia Alcazar") sets the office apart from agencies with similar names. */}
             <span className="leading-tight">
-              <span className="block font-display text-base font-bold text-brand-deep sm:text-lg">{site.businessName}</span>
-              <span className="block text-sm font-medium text-ink-soft max-[380px]:hidden">{site.agentName}</span>
+              <span className="block font-display text-base font-bold text-brand-deep sm:text-lg lg:whitespace-nowrap">{site.businessName}</span>
+              <span className="block text-base font-semibold text-accent-strong">{site.brandName.replace(site.businessName, "").trim()}</span>
             </span>
           </Link>
 
-          <nav aria-label="Main" className="hidden lg:block">
-            <ul className="flex items-center gap-1">
+          <nav aria-label={dict.nav.main} className="hidden xl:block">
+            <ul className="flex items-center">
               {links.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="rounded-lg px-3 py-2 text-base font-semibold text-ink hover:bg-brand-soft hover:text-brand-deep"
+                    className="whitespace-nowrap rounded-lg px-2.5 py-2 text-base font-semibold text-ink hover:bg-brand-soft hover:text-brand-deep"
                   >
                     {link.label}
                   </a>
@@ -80,8 +84,9 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               className="inline-flex min-h-12 shrink-0 items-center gap-2 whitespace-nowrap rounded-xl bg-accent px-4 py-2 text-base font-semibold text-white hover:bg-accent-strong focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-brand-deep"
             >
               <Icon name="phone" className="size-5" />
-              <span className="sm:hidden">{dict.nav.callShort}</span>
-              <span className="hidden sm:inline">{dict.nav.call}</span>
+              {/* Short label on phones and while the desktop menu shares the row; the number is always in the top bar. */}
+              <span className="sm:hidden xl:inline 2xl:hidden">{dict.nav.callShort}</span>
+              <span className="hidden sm:inline xl:hidden 2xl:inline">{dict.nav.call}</span>
             </a>
           ) : (
             <a
@@ -96,7 +101,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       </header>
 
       {/* Small screens: the section links stay visible, wrapping instead of scrolling sideways. */}
-      <nav aria-label="Sections" className="border-b border-line bg-surface lg:hidden">
+      <nav aria-label={dict.nav.main} className="border-b border-line bg-surface xl:hidden">
         <ul className="mx-auto flex max-w-6xl flex-wrap gap-x-1 px-2 py-1 sm:px-4">
           {links.map((link) => (
             <li key={link.href}>

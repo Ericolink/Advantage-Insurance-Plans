@@ -39,6 +39,10 @@ export function getPendingItems(site: SiteConfig): PendingItem[] {
   if (site.licenses.length === 0) {
     add("licenses", "site.licenses: at least one state license number is required to market insurance.");
   }
+  if (!site.npn) add("npn", "site.npn: National Producer Number not set (shown in the footer once confirmed).", false);
+  if (!site.contact.tty) {
+    add("tty", "site.contact.tty: confirm the office accepts relay calls (TTY 711) before showing it.", false);
+  }
   if (!site.hours) add("hours", "site.hours: business hours are not set.", false);
   if (!site.photo) add("photo", "site.photo: no real photo of Silvia yet.", false);
   if (site.officePhoto?.credit?.includes("Google")) {
@@ -46,6 +50,16 @@ export function getPendingItems(site: SiteConfig): PendingItem[] {
   }
   if (!site.about.intro) add("intro", "site.about.intro: Silvia's introduction is missing.", false);
   if (site.services.length === 0) add("services", "site.services: no services listed.");
+  const unconfirmedScope = Object.entries(site.scope)
+    .filter(([, value]) => value === null)
+    .map(([key]) => key);
+  if (unconfirmedScope.length > 0) {
+    add(
+      "scope",
+      `site.scope: not confirmed yet (${unconfirmedScope.join(", ")}). Pages stay educational and ask visitors to call until each is true/false.`,
+      false,
+    );
+  }
   if (!site.languages) {
     add("languages", "site.languages: confirm the languages Silvia serves clients in (e.g. [\"en\", \"es\"]).", false);
   }
@@ -87,8 +101,12 @@ export function getPendingItems(site: SiteConfig): PendingItem[] {
   if (!site.legal.termsReady) {
     add("terms", "Terms of use: write the real text in src/content/legal and set legal.termsReady.", false);
   }
+  if (!site.socials.google) add("google", "site.socials.google: link the official Google Business Profile once it is confirmed.", false);
   if (!site.copyApproved) {
-    add("copy", "site.copyApproved: Silvia has not approved the page copy in EN and ES (and, for Medicare, compliance review).");
+    add(
+      "copy",
+      "site.copyApproved: Silvia has not approved the copy in EN and ES, including the inner pages in src/content/pages (and, for Medicare, compliance review).",
+    );
   }
 
   return items;

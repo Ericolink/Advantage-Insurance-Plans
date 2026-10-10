@@ -1,24 +1,32 @@
 import type { MetadataRoute } from "next";
+import { pageIds, pagePath } from "@/config/pages";
 import { isLaunchReady } from "@/config/readiness";
 import { site } from "@/config/site";
+import type { Locale } from "@/config/types";
 import { localeTags, locales } from "@/lib/i18n";
+import { samePath } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   if (!site.url || !isLaunchReady(site)) return [];
   const base = site.url;
 
-  const paths = [
-    { path: "", priority: 1 },
-    ...(site.legal.privacyPolicyReady ? [{ path: "/privacy", priority: 0.2 }] : []),
-    ...(site.legal.termsReady ? [{ path: "/terms", priority: 0.2 }] : []),
+  // Each entry lists its URL in every language (inner pages have translated slugs).
+  const entries: { paths: Record<Locale, string>; priority: number }[] = [
+    { paths: samePath(""), priority: 1 },
+    ...pageIds.map((id) => ({
+      paths: Object.fromEntries(locales.map((code) => [code, pagePath(id, code)])) as Record<Locale, string>,
+      priority: 0.8,
+    })),
+    ...(site.legal.privacyPolicyReady ? [{ paths: samePath("/privacy"), priority: 0.2 }] : []),
+    ...(site.legal.termsReady ? [{ paths: samePath("/terms"), priority: 0.2 }] : []),
   ];
 
-  return paths.flatMap(({ path, priority }) =>
+  return entries.flatMap(({ paths, priority }) =>
     locales.map((locale) => ({
-      url: `${base}/${locale}${path}`,
+      url: `${base}${paths[locale]}`,
       priority,
       alternates: {
-        languages: Object.fromEntries(locales.map((code) => [localeTags[code], `${base}/${code}${path}`])),
+        languages: Object.fromEntries(locales.map((code) => [localeTags[code], `${base}${paths[code]}`])),
       },
     })),
   );

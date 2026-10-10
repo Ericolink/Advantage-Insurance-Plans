@@ -1,9 +1,9 @@
 import { site } from "@/config/site";
 import type { Locale } from "@/config/types";
-import { fill, t, type Dictionary } from "@/lib/i18n";
+import { fill, localeNames, t, type Dictionary } from "@/lib/i18n";
 import { siteVars } from "@/lib/site-vars";
 import { CallButton } from "@/components/ui/CallButton";
-import { HelpButton } from "@/components/ui/HelpButton";
+import { Icon } from "@/components/ui/Icon";
 
 export function About({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const portrait = site.portrait ?? site.photo;
@@ -30,9 +30,21 @@ export function About({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           </h2>
           <p className="mt-2 text-xl font-semibold text-accent-strong">{fill(dict.about.role, siteVars)}</p>
           <div className="mt-5 space-y-4 text-xl leading-relaxed text-ink">
-            <p>{site.about.intro ? t(site.about.intro, locale) : fill(dict.about.fallback, siteVars)}</p>
+            {/* Placeholder marker for the team, never shown in production. */}
+            {!site.about.intro && process.env.NODE_ENV === "development" && (
+              <p className="rounded-xl border-2 border-dashed border-amber-500 bg-amber-50 px-4 py-2 text-base font-semibold text-amber-950" lang="en">
+                {dict.about.introPending}
+              </p>
+            )}
+            <p>{site.about.intro ? t(site.about.intro, locale) : fill(dict.about.fallback, { ...siteVars, business: site.brandName })}</p>
             {site.about.story && <p>{t(site.about.story, locale)}</p>}
             <p>{dict.about.howWeHelp}</p>
+            {site.languages && (
+              <p className="flex items-center gap-2 font-semibold text-brand-deep">
+                <Icon name="globe" className="size-6 shrink-0" />
+                {fill(dict.about.languages, { languages: site.languages.map((code) => localeNames[code]).join(" · ") })}
+              </p>
+            )}
           </div>
 
           {showCarriers && (
@@ -50,9 +62,8 @@ export function About({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             </div>
           )}
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <HelpButton>{dict.about.cta}</HelpButton>
-            <CallButton dict={dict} />
+          <div className="mt-8">
+            <CallButton dict={dict} variant="brand" />
           </div>
         </div>
       </div>

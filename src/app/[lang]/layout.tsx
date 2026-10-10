@@ -5,6 +5,7 @@ import { Fraunces, Inter } from "next/font/google";
 import { isLaunchReady } from "@/config/readiness";
 import { site } from "@/config/site";
 import { fill, getDictionary, hasLocale, localeTags, locales } from "@/lib/i18n";
+import { alternatesFor, samePath } from "@/lib/seo";
 import { siteVars } from "@/lib/site-vars";
 import { DraftBanner } from "@/components/layout/DraftBanner";
 import { Footer } from "@/components/layout/Footer";
@@ -34,15 +35,14 @@ export async function generateMetadata({ params }: Omit<LayoutProps, "children">
 
   return {
     ...(site.url && { metadataBase: new URL(site.url) }),
-    title: { default: title, template: `%s | ${site.businessName}` },
+    // The full name in every title keeps the office apart from agencies with similar names.
+    title: { default: `${title} | ${site.brandName}`, template: `%s | ${site.brandName}` },
     description,
-    alternates: {
-      canonical: `/${lang}`,
-      languages: { ...Object.fromEntries(locales.map((code) => [localeTags[code], `/${code}`])), "x-default": "/en" },
-    },
+    // Home page values; inner pages set their own.
+    alternates: alternatesFor(samePath(""), lang),
     openGraph: {
       type: "website",
-      siteName: site.businessName,
+      siteName: site.brandName,
       title,
       description,
       locale: localeTags[lang].replace("-", "_"),

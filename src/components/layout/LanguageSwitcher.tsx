@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { translatePath } from "@/config/pages";
 import type { Locale } from "@/config/types";
 
 const names: Record<Locale, string> = { en: "English", es: "Español" };
 
-/** "English | Español" with the current language marked, keeping the current page. */
+/** "English | Español" with the current language marked, keeping the current page (slugs are translated). */
 export function LanguageSwitcher({ locale, label }: { locale: Locale; label: string }) {
   const pathname = usePathname();
 
@@ -26,7 +27,7 @@ export function LanguageSwitcher({ locale, label }: { locale: Locale; label: str
               </span>
             ) : (
               <Link
-                href={pathname.replace(/^\/(en|es)(?=\/|$)/, `/${code}`) || `/${code}`}
+                href={translatePath(pathname, code)}
                 hrefLang={code}
                 lang={code}
                 className="rounded-md px-2 py-1 font-semibold text-white/90 hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-white"

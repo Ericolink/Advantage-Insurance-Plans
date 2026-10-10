@@ -9,12 +9,16 @@ import type { SiteConfig } from "./types.ts";
  */
 export const site: SiteConfig = {
   businessName: "Advantage Insurance Plans",
+  // Always shown in full: another El Paso agency has a very similar name.
+  brandName: "Advantage Insurance Plans by Silvia Alcazar",
   agentName: "Silvia Alcazar",
   url: null,
 
   contact: {
     phone: { e164: "+19152569708", display: "(915) 256-9708" },
     acceptsTexts: false,
+    // Pending: confirm the office accepts relay (TTY 711) calls.
+    tty: false,
     email: null,
   },
 
@@ -44,13 +48,14 @@ export const site: SiteConfig = {
   // When confirmed set ["en", "es"]: it shows "Se habla español" and a language choice in the form.
   languages: null,
   licenses: [],
+  npn: null,
   responseTime: null,
 
   logo: { src: "/images/logo.webp", width: 528, height: 228 },
-  photo: { src: "/images/SilviaFoto.jpg", width: 854, height: 1280 },
+  photo: { src: "/images/SilviaFoto.jpg", width: 854, height: 1280, webp: "/images/silvia-photo-768.webp" },
   portrait: { src: "/images/silvia-portrait.jpg", width: 400, height: 400 },
   // Google Street View capture: Google requires visible attribution. Replace with an own photo when possible.
-  officePhoto: { src: "/images/NegocioLocal.png", width: 534, height: 353, credit: "Imagery © Google" },
+  officePhoto: { src: "/images/office.webp", width: 534, height: 353, credit: "Imagery © Google" },
 
   about: {
     // Silvia's own introduction (EN and ES). Do not write a biography she hasn't approved.
@@ -58,7 +63,18 @@ export const site: SiteConfig = {
     story: null,
   },
 
-  services: ["medicare", "medicaid", "aca"],
+  services: ["medicare", "medicaid", "dual", "aca"],
+
+  // Pending confirmation with Silvia. Until each is true, the pages only explain the program
+  // and invite visitors to call; they never say the office sells or handles it.
+  scope: {
+    medicareAdvantage: null,
+    partD: null,
+    medigap: null,
+    dsnp: null,
+    medicaidApplications: null,
+    acaEnrollment: null,
+  },
 
   carriers: {
     // Illustrative list from the office; confirm current appointments before setting `confirmed: true`.

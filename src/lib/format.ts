@@ -39,3 +39,8 @@ export function formatHours(row: HoursRow, locale: Locale): string {
 export function formatDate(iso: string, locale: Locale): string {
   return new Intl.DateTimeFormat(localeTags[locale], { dateStyle: "long", timeZone: "UTC" }).format(new Date(iso));
 }
+
+/** All hours in one line, e.g. "Mon – Fri, 9:00 AM – 4:00 PM". */
+export function formatHoursSummary(rows: HoursRow[], locale: Locale): string {
+  return rows.map((row) => `${formatDays(row.days, locale)}, ${formatHours(row, locale)}`).join(" · ");
+}

@@ -1,0 +1,11 @@
+# Netlify detects Next.js and adds its runtime (OpenNext) automatically:
+# static pages, the language redirect in src/proxy.ts and server actions all work.
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # package.json requires Node >= 22.18.
+  NODE_VERSION = "22"
+  # Test deploys only. For the real launch set REQUIRE_LAUNCH_READY = "1" so the build
+  # refuses to publish while blocking items (license, CMS disclaimer, approval…) remain.

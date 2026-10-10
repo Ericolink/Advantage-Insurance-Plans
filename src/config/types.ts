@@ -25,8 +25,14 @@ export interface HoursRow {
   closes: string;
 }
 
-/** Coverage programs the office helps with. The copy for each lives in the dictionaries. */
-export type ServiceId = "medicare" | "medicaid" | "aca";
+/** Coverage programs the site explains. The copy for each lives in the dictionaries. */
+export type ServiceId = "medicare" | "medicaid" | "dual" | "aca";
+
+/**
+ * Concrete things the office itself may do. Each one stays `null` until Silvia confirms it:
+ * pages only describe a service as offered by the office when it is `true`.
+ */
+export type ScopeId = "medicareAdvantage" | "partD" | "medigap" | "dsnp" | "medicaidApplications" | "acaEnrollment";
 
 export interface Testimonial {
   quote: Localized;
@@ -41,6 +47,8 @@ export interface Image {
   src: string;
   width: number;
   height: number;
+  /** Optional lighter WebP copy for the page itself (src stays as the fallback and for social previews). */
+  webp?: string;
 }
 
 export interface License {
@@ -63,6 +71,8 @@ export interface Office {
 
 export interface SiteConfig {
   businessName: string;
+  /** Full commercial name used wherever the office must be identified (avoids confusion with similar names). */
+  brandName: string;
   /** Full name, e.g. "Silvia Alcazar". */
   agentName: string;
   /** Production URL without trailing slash, e.g. "https://www.example.com". */
@@ -73,6 +83,8 @@ export interface SiteConfig {
     phone: { e164: string; display: string } | null;
     /** Set true only if the number can receive text messages AND SMS consent was reviewed. */
     acceptsTexts: boolean;
+    /** Show "TTY 711" next to the phone. Only once the office confirms it takes relay calls. */
+    tty: boolean;
     email: string | null;
   };
 
@@ -100,6 +112,8 @@ export interface SiteConfig {
   /** Languages Silvia serves clients in. */
   languages: Locale[] | null;
   licenses: License[];
+  /** National Producer Number, shown in the footer when set. */
+  npn: string | null;
   /** Only if Silvia can reliably meet it, e.g. { en: "one business day", es: "un día hábil" }. */
   responseTime: Localized | null;
 
@@ -119,7 +133,11 @@ export interface SiteConfig {
     story: Localized | null;
   };
 
+  /** Programs explained on the site (home cards, pages and form options). Educational, not a sales claim. */
   services: ServiceId[];
+
+  /** What the office itself offers. null = not confirmed yet (the site then stays educational). */
+  scope: Record<ScopeId, boolean | null>;
 
   /** Insurance companies the office works with. Names only (no logos without written permission). */
   carriers: {

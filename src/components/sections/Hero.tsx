@@ -1,9 +1,10 @@
 import { site } from "@/config/site";
 import type { Locale } from "@/config/types";
 import { fill, t, type Dictionary } from "@/lib/i18n";
+import { formatHoursSummary } from "@/lib/format";
 import { siteVars } from "@/lib/site-vars";
+import { buttonClass } from "@/components/ui/Button";
 import { CallButton } from "@/components/ui/CallButton";
-import { HelpButton } from "@/components/ui/HelpButton";
 import { Icon } from "@/components/ui/Icon";
 
 export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
@@ -17,14 +18,21 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <h1 id="hero-title" className="font-display text-4xl font-bold leading-tight text-brand-deep text-balance sm:text-5xl">
             {dict.hero.title}
           </h1>
-          <p className="max-w-2xl text-xl leading-relaxed text-ink text-pretty">{dict.hero.subtitle}</p>
+          <p className="max-w-2xl text-xl leading-relaxed text-ink text-pretty">{fill(dict.hero.subtitle, siteVars)}</p>
+          {/* One main action (call) and one that goes somewhere different (the services). */}
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <HelpButton variant="primary">
+            <CallButton dict={dict} label={dict.hero.ctaCall} variant="primary" />
+            <a href="#services" className={buttonClass("secondary")}>
               {dict.hero.ctaHelp}
               <Icon name="arrowRight" className="size-5" />
-            </HelpButton>
-            <CallButton dict={dict} label={dict.hero.ctaCall} />
+            </a>
           </div>
+          {site.hours && site.hours.length > 0 && (
+            <p className="flex items-center gap-2 text-lg text-ink">
+              <Icon name="clock" className="size-5 shrink-0 text-brand" />
+              {fill(dict.hero.open, { hours: formatHoursSummary(site.hours, locale) })}
+            </p>
+          )}
           <ul className="flex flex-wrap gap-x-6 gap-y-2 text-base font-semibold text-brand-deep">
             <li className="inline-flex items-center gap-2">
               <Icon name="message" className="size-5" />
@@ -52,15 +60,17 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         </div>
 
         {site.photo && (
-          // eslint-disable-next-line @next/next/no-img-element -- plain img keeps the static export option open
-          <img
-            src={site.photo.src}
-            width={site.photo.width}
-            height={site.photo.height}
-            alt={fill(dict.hero.photoAlt, siteVars)}
-            className="mx-auto aspect-[4/5] w-full max-w-sm rounded-3xl object-cover object-[50%_30%] shadow-xl"
-            fetchPriority="high"
-          />
+          <picture className="mx-auto w-full max-w-sm">
+            {site.photo.webp && <source srcSet={site.photo.webp} type="image/webp" />}
+            <img
+              src={site.photo.src}
+              width={site.photo.width}
+              height={site.photo.height}
+              alt={fill(dict.hero.photoAlt, siteVars)}
+              className="aspect-[4/5] w-full rounded-3xl object-cover object-[50%_30%] shadow-xl"
+              fetchPriority="high"
+            />
+          </picture>
         )}
       </div>
       {/* Coral swoosh echoing Silvia's flyers and the logo's red wave. */}

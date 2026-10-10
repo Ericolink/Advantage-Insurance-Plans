@@ -1,12 +1,16 @@
+import Link from "next/link";
+import { pagePath } from "@/config/pages";
+import type { Locale } from "@/config/types";
 import type { Dictionary } from "@/lib/i18n";
-import { HelpButton } from "@/components/ui/HelpButton";
+import { buttonClass } from "@/components/ui/Button";
+import { CallButton } from "@/components/ui/CallButton";
 import { Icon } from "@/components/ui/Icon";
 
 const stepIcons = ["message", "list", "handshake"] as const;
 
-export function HowWeHelp({ dict }: { dict: Dictionary }) {
+export function HowWeHelp({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   return (
-    <section id="how-we-help" aria-labelledby="how-title" className="scroll-mt-32 bg-surface">
+    <section id="how-we-help" aria-labelledby="how-title" className="scroll-mt-32 bg-canvas">
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 md:py-20">
         <div className="max-w-3xl">
           <h2 id="how-title" className="font-display text-3xl font-bold text-brand-deep sm:text-4xl">
@@ -33,9 +37,13 @@ export function HowWeHelp({ dict }: { dict: Dictionary }) {
           ))}
         </ol>
 
-        <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xl font-semibold text-brand-deep">{dict.steps.note}</p>
-          <HelpButton>{dict.steps.cta}</HelpButton>
+        <p className="mt-8 text-xl font-semibold text-brand-deep">{dict.steps.note}</p>
+        <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <CallButton dict={dict} variant="brand" />
+          <Link href={pagePath("firstVisit", locale)} className={buttonClass("secondary")}>
+            {dict.steps.cta}
+            <Icon name="arrowRight" className="size-5" />
+          </Link>
         </div>
       </div>
     </section>

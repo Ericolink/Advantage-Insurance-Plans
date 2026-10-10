@@ -1,4 +1,6 @@
+import Link from "next/link";
 import type { ReactNode } from "react";
+import { pagePath } from "@/config/pages";
 import { site } from "@/config/site";
 import type { Locale, Office } from "@/config/types";
 import { fill, localeNames, t, type Dictionary } from "@/lib/i18n";
@@ -34,7 +36,7 @@ export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) 
         src={site.officePhoto.src}
         width={site.officePhoto.width}
         height={site.officePhoto.height}
-        alt={fill(dict.contact.officeAlt, siteVars)}
+        alt={fill(dict.contact.officeAlt, { ...siteVars, business: site.brandName })}
         loading="lazy"
         className="aspect-[3/2] w-full rounded-2xl object-cover shadow-sm ring-1 ring-line"
       />
@@ -62,6 +64,7 @@ export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) 
                   {contact.phone.display}
                 </a>
               )}
+              {contact.tty && <p className="mt-1 text-lg font-semibold text-ink">{dict.footer.tty}</p>}
               <CallButton dict={dict} showNumber={false} variant="brand" className="mt-5 w-full" />
             </div>
 
@@ -89,12 +92,25 @@ export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) 
                   </ul>
                 </InfoRow>
               )}
+              {site.languages && (
+                <InfoRow icon="globe" label={dict.contact.languages}>
+                  {site.languages.map((code) => localeNames[code]).join(" · ")}
+                </InfoRow>
+              )}
               {!showAddress && location.serviceArea && (
                 <InfoRow icon="mapPin" label={dict.contact.area}>
                   {t(location.serviceArea, locale)}
                 </InfoRow>
               )}
             </dl>
+
+            <Link
+              href={pagePath("firstVisit", locale)}
+              className="inline-flex min-h-11 items-center gap-2 text-lg font-semibold text-brand underline underline-offset-4 hover:text-brand-deep"
+            >
+              {dict.contact.prepare}
+              <Icon name="arrowRight" className="size-5 shrink-0" />
+            </Link>
 
             {site.leadForm && officePhoto}
 
@@ -149,7 +165,7 @@ export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) 
         {mapUrl && (
           <iframe
             src={mapUrl}
-            title={fill(dict.contact.mapTitle, siteVars)}
+            title={fill(dict.contact.mapTitle, { ...siteVars, business: site.brandName })}
             loading="lazy"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
@@ -209,7 +225,7 @@ function OfficeCard({ office, title, dict }: { office: Office; title: string; di
   );
 }
 
-function InfoRow({ icon, label, children }: { icon: "mail" | "clock" | "mapPin"; label: string; children: ReactNode }) {
+function InfoRow({ icon, label, children }: { icon: "mail" | "clock" | "mapPin" | "globe"; label: string; children: ReactNode }) {
   return (
     <div className="flex gap-4">
       <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-surface text-brand ring-1 ring-line">

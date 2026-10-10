@@ -10,7 +10,9 @@ export function JsonLd({ locale }: { locale: Locale }) {
   const data: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "InsuranceAgency",
-    name: site.businessName,
+    // Full commercial name, so search engines don't mix the office up with similarly named agencies.
+    name: site.brandName,
+    alternateName: site.businessName,
     ...(site.url && { url: `${site.url}/${locale}`, "@id": `${site.url}/#agency` }),
     ...(contact.phone && { telephone: contact.phone.e164 }),
     ...(contact.email && { email: contact.email }),
@@ -31,6 +33,7 @@ export function JsonLd({ locale }: { locale: Locale }) {
     };
   }
   if (location.serviceArea) data.areaServed = t(location.serviceArea, locale);
+  else if (location.city && location.state) data.areaServed = { "@type": "City", name: `${location.city}, ${location.state}` };
   else if (location.state) data.areaServed = { "@type": "State", name: location.state };
 
   if (site.hours) {
@@ -45,6 +48,21 @@ export function JsonLd({ locale }: { locale: Locale }) {
   const sameAs = Object.values(site.socials).filter(Boolean);
   if (sameAs.length > 0) data.sameAs = sameAs;
 
+  return <JsonLdScript data={data} />;
+}
+
+/** BreadcrumbList for inner pages. Needs absolute URLs, so it is only output once site.url is set. */
+export function BreadcrumbJsonLd({ items }: { items: { name: string; path: string }[] }) {
+  if (!site.url) return null;
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({ "@type": "ListItem", position: index + 1, name: item.name, item: `${site.url}${item.path}` })),
+  };
+  return <JsonLdScript data={data} />;
+}
+
+function JsonLdScript({ data }: { data: object }) {
   return (
     <script
       type="application/ld+json"

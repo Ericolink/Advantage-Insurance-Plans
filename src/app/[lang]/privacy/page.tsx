@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { site } from "@/config/site";
 import { privacyPolicy } from "@/content/legal";
 import { getDictionary, hasLocale } from "@/lib/i18n";
+import { alternatesFor, samePath } from "@/lib/seo";
 import { LegalPage } from "@/components/sections/LegalPage";
 
 type Props = { params: Promise<{ lang: string }> };
@@ -14,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!hasLocale(lang)) return {};
   return {
     title: getDictionary(lang).legal.privacyTitle,
-    alternates: { canonical: `/${lang}/privacy` },
+    alternates: alternatesFor(samePath("/privacy"), lang),
     ...(!ready && { robots: { index: false, follow: false } }),
   };
 }

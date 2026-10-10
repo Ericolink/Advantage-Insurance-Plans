@@ -3,28 +3,33 @@
 // Writing rules: short sentences, plain words, no promises of eligibility, savings or approval.
 export const en = {
   meta: {
-    title: "{business} | Medicare, Medicaid & Marketplace Help",
+    title: "Medicare, Medicaid & Marketplace Help in El Paso, TX",
     description:
-      "{agent} at {business} helps people 65 and older and people with disabilities understand Medicare, Medicaid and Health Insurance Marketplace options. Talk to a real person.",
+      "{agent} at {brand} helps people 65 and older, people with disabilities and their families in El Paso understand Medicare, Medicaid and Marketplace options. Talk to a real person.",
   },
   nav: {
     skip: "Skip to main content",
+    main: "Main menu",
     services: "Services",
-    howWeHelp: "How We Help",
-    about: "About Us",
+    firstVisit: "First Visit",
+    faq: "Questions",
+    about: "About Silvia",
     contact: "Contact",
     call: "Call Our Office",
     callShort: "Call",
     getHelp: "Get Help",
     language: "Language",
     phonePending: "Office phone: pending",
+    home: "Home",
+    breadcrumb: "Breadcrumb",
   },
   hero: {
-    title: "Medicare and Health Coverage Made Simple",
+    title: "Clear help with Medicare, Medicaid and health coverage in El Paso",
     subtitle:
-      "Helping seniors and eligible individuals with disabilities understand their health coverage options and find plans that fit their needs.",
-    ctaHelp: "Get Help With My Coverage",
+      "{brand} is a local office that helps people 65 and older, people with disabilities and their families understand their coverage options. Talk with {agentFirst} by phone or in person.",
+    ctaHelp: "See how we can help",
     ctaCall: "Call Our Office",
+    open: "Open {hours}",
     realPerson: "Talk to a real person",
     otherLanguage: "Se habla español",
     office: "Office in {city}, {state}",
@@ -32,7 +37,7 @@ export const en = {
   },
   services: {
     title: "How can we help you?",
-    intro: "Choose the topic you have questions about. We'll explain it in plain words.",
+    intro: "Choose the topic you have questions about. Each page explains it in plain words, with links to official sources.",
     different: "Medicare, Medicaid and the Marketplace are different programs. Not sure which one is for you? We can help you find out.",
     disclaimer:
       "Each program has its own eligibility rules. Plans and benefits vary by location, and not every plan is available in every area.",
@@ -40,21 +45,27 @@ export const en = {
     items: {
       medicare: {
         title: "Medicare",
-        body: "Medicare is health coverage for people 65 and older, and for some younger people with disabilities. We help you understand your Medicare choices and review the plans we can offer where you live, based on your needs.",
+        body: "Health coverage for people 65 and older and some younger people with disabilities. Learn about Parts A, B, C and D, and the difference between Original Medicare and Medicare Advantage.",
         forWhom: "People 65+ and some people with disabilities",
-        cta: "Get Medicare Help",
+        cta: "Learn about Medicare",
       },
       medicaid: {
         title: "Medicaid",
-        body: "Medicaid can help people with limited income and resources. Each state has its own rules. We explain the coverage options and what is usually needed to apply. Your state decides who qualifies.",
+        body: "A program for people with limited income and resources. In Texas, the state decides who qualifies. Learn how it works and where to apply.",
         forWhom: "People with limited income and resources",
-        cta: "Get Medicaid Information",
+        cta: "Learn about Medicaid",
+      },
+      dual: {
+        title: "Medicare and Medicaid",
+        body: "Some people qualify for both programs. Learn how they work together and about programs that can help with Medicare costs.",
+        forWhom: "People who have, or may qualify for, both",
+        cta: "Learn about having both",
       },
       aca: {
-        title: "Obamacare / ACA Marketplace",
-        body: "The Health Insurance Marketplace (HealthCare.gov) is where people can shop for health insurance. It is mainly for people who don't have Medicare. We help you understand the options and see which plans you may qualify for.",
+        title: "ACA Marketplace (Obamacare)",
+        body: "Where people without Medicare or job-based coverage can shop for health insurance. Learn about help with costs and what changes at 65.",
         forWhom: "People without Medicare who need health insurance",
-        cta: "Explore Health Coverage Options",
+        cta: "Learn about the Marketplace",
       },
     },
   },
@@ -82,18 +93,38 @@ export const en = {
         term: "ACA Marketplace (Obamacare)",
         meaning: "The official place to buy health insurance, at HealthCare.gov. Help with the cost depends on your income.",
       },
+      {
+        term: "Premium",
+        meaning: "The amount you pay for your coverage, usually every month, even if you don't use any care.",
+      },
+      {
+        term: "Deductible",
+        meaning: "The amount you pay for covered care before your plan starts to pay.",
+      },
+      {
+        term: "Copayment",
+        meaning: "A set amount you pay for a service, like a doctor visit or a prescription.",
+      },
+      {
+        term: "Network",
+        meaning: "The doctors, hospitals and pharmacies that work with a plan. Going outside the network can cost more or may not be covered.",
+      },
+      {
+        term: "Enrollment period",
+        meaning: "The dates when you can sign up for coverage or make changes. Outside those dates, changes are usually limited.",
+      },
     ],
   },
   steps: {
     title: "How We Help You",
     intro: "Getting help is simple. Here is what to expect.",
     items: [
-      { title: "Tell Us What You Need", body: "Call us or visit our office. Tell us about your situation and what kind of help you are looking for." },
-      { title: "Understand Your Options", body: "We help you understand the health coverage options that may be available to you." },
-      { title: "Get Personalized Guidance", body: "We go over the choices with you, so you can compare them and make an informed decision." },
+      { title: "Call or visit us", body: "Tell us about your situation and what you have questions about." },
+      { title: "We review your situation", body: "We look at what kind of guidance can help you and explain the coverage options that may apply." },
+      { title: "We explain the next steps", body: "You'll know what you can do next and where to find official information. You decide, with no pressure." },
     ],
     note: "There is no pressure. You decide what is right for you.",
-    cta: "Contact Our Office",
+    cta: "What to expect at your first visit",
   },
   about: {
     title: "Meet {agent}",
@@ -101,7 +132,9 @@ export const en = {
     fallback:
       "{agent} is your contact at {business}. Our office helps people understand their Medicare, Medicaid and Marketplace options.",
     howWeHelp:
-      "We take the time to listen and answer your questions in plain words. You can talk with us by phone or visit our office.",
+      "We take the time to listen and answer your questions in plain words. You can talk with us by phone or visit our office in El Paso.",
+    languages: "Languages: {languages}",
+    introPending: "Pending: Silvia's own introduction (only shown in development).",
     carriersTitle: "Some of the companies we work with",
     carriersNote: "Plans and companies available depend on where you live.",
     cta: "Contact Our Office",
@@ -109,6 +142,11 @@ export const en = {
   },
   testimonials: {
     title: "What our clients say",
+  },
+  faqTeaser: {
+    title: "Common questions",
+    intro: "Quick answers to what people ask us most.",
+    cta: "See all questions",
   },
   contact: {
     title: "Contact Our Office",
@@ -129,6 +167,8 @@ export const en = {
     mainOffice: "Main office",
     office: "Office {number}",
     officePending: "Address pending",
+    languages: "Languages",
+    prepare: "Coming to see us? See what may be useful to bring",
   },
   form: {
     title: "Request Assistance",
@@ -142,6 +182,7 @@ export const en = {
     helpOptions: {
       medicare: "Medicare",
       medicaid: "Medicaid",
+      dual: "Medicare and Medicaid",
       aca: "ACA Marketplace (Obamacare)",
       other: "Something else / I'm not sure",
     },
@@ -151,9 +192,9 @@ export const en = {
     methodEmail: "Email",
     language: "Preferred language",
     sensitiveHint: "Please do not send your Medicare number, Social Security number or medical information in this form.",
-    consent: "I agree that {business} may contact me by phone or email about my request.",
+    consent: "I agree that {brand} may contact me by phone or email about my request.",
     smsConsent:
-      "I agree to receive text messages from {business} about my request. Message and data rates may apply. Reply STOP to opt out. Consent is not a condition of purchase.",
+      "I agree to receive text messages from {brand} about my request. Message and data rates may apply. Reply STOP to opt out. Consent is not a condition of purchase.",
     privacyLink: "Privacy policy",
     submit: "Request Assistance",
     sending: "Sending…",
@@ -175,14 +216,20 @@ export const en = {
     rights: "All rights reserved.",
     licensed: "Licensed in {state}",
     license: "License #{number}",
+    npn: "NPN {number}",
     privacy: "Privacy policy",
     terms: "Terms of use",
+    contactTitle: "Contact",
+    programsTitle: "Learn more",
+    infoTitle: "Information",
+    tty: "TTY: 711",
     medicareDisclaimer:
       "We do not offer every plan available in your area. Currently we represent {organizations} organizations which offer {products} products in your area. Please contact Medicare.gov, 1-800-MEDICARE, or your local State Health Insurance Program (SHIP) to get information on all of your options.",
     governmentDisclaimer:
-      "{business} is not connected with or endorsed by the U.S. government or the federal Medicare program.",
+      "{brand} is not connected with or endorsed by the U.S. government or the federal Medicare program.",
     marketplaceDisclaimer:
-      "{business} is not the Health Insurance Marketplace® (HealthCare.gov). You can also apply for coverage directly at HealthCare.gov.",
+      "{brand} is not the Health Insurance Marketplace® (HealthCare.gov). You can also apply for coverage directly at HealthCare.gov.",
+    educational: "The information on this website is general and educational. It is not a decision about your eligibility or a recommendation for your situation.",
     medicaidDisclaimer: "Medicaid eligibility is decided by your state's Medicaid agency.",
   },
   legal: {
@@ -191,6 +238,26 @@ export const en = {
     pendingTitle: "This page is being prepared",
     pendingBody: "We're finishing this document. If you have questions in the meantime, please contact our office.",
     lastUpdated: "Last updated: {date}",
+  },
+  pages: {
+    onThisPage: "On this page",
+    related: "Related pages",
+    newTab: "(opens an official website in a new tab)",
+    officialNote: "Official websites open in a new tab.",
+    scopeTitle: "What our office offers",
+    scopePending:
+      "Call us to ask whether our office can help with your specific case. If we can't, we'll tell you where to find official help.",
+    scope: {
+      medicareAdvantage: "Help comparing and enrolling in Medicare Advantage plans from the companies we represent.",
+      partD: "Help with Medicare drug plans (Part D).",
+      medigap: "Medicare Supplement (Medigap) insurance.",
+      dsnp: "Plans for people with both Medicare and Medicaid (D-SNP).",
+      medicaidApplications: "Help getting ready for a Texas Medicaid application.",
+      acaEnrollment: "Enrollment in Health Insurance Marketplace plans.",
+    },
+    ctaTitle: "Questions? Talk with {agentFirst}",
+    ctaBody: "Call our office in El Paso. We'll explain your options in plain words, with no pressure.",
+    hours: "Office hours: {hours}",
   },
   notFound: {
     title: "Page not found",

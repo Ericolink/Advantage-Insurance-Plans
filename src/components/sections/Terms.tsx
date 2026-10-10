@@ -11,15 +11,22 @@ export function Terms({ dict }: { dict: Dictionary }) {
           </h2>
           <p className="mt-3 text-xl text-ink">{dict.terms.intro}</p>
         </div>
-        <dl className="mt-8 grid gap-4 md:grid-cols-2">
-          {dict.terms.items.map((item) => (
-            <div key={item.term} className="rounded-2xl bg-surface p-6 ring-1 ring-line">
-              <dt className="text-xl font-bold text-brand-deep">{item.term}</dt>
-              <dd className="mt-2 text-lg leading-relaxed text-ink">{item.meaning}</dd>
-            </div>
-          ))}
-        </dl>
+        <Glossary dict={dict} className="mt-8 md:grid-cols-2" />
       </div>
     </section>
+  );
+}
+
+/** The glossary terms alone, also used on the resources page. */
+export function Glossary({ dict, className = "" }: { dict: Dictionary; className?: string }) {
+  return (
+    <dl className={`grid gap-4 ${className}`}>
+      {dict.terms.items.map((item) => (
+        <div key={item.term} className="rounded-2xl bg-surface p-6 ring-1 ring-line">
+          <dt className="text-xl font-bold text-brand-deep">{item.term}</dt>
+          <dd className="mt-2 text-lg leading-relaxed text-ink">{item.meaning}</dd>
+        </div>
+      ))}
+    </dl>
   );
 }
