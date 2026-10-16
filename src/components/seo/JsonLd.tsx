@@ -45,7 +45,9 @@ export function JsonLd({ locale }: { locale: Locale }) {
     }));
   }
 
-  const sameAs = Object.values(site.socials).filter(Boolean);
+  // Only profiles that represent the agency itself. The Instagram account is Humberto Alcazar's own profile
+  // (@humberto.alcazar.aip), so it is linked on the page but not declared as the same entity as the agency.
+  const sameAs = [site.socials.facebook, site.socials.linkedin, site.socials.google].filter(Boolean);
   if (sameAs.length > 0) data.sameAs = sameAs;
 
   return <JsonLdScript data={data} />;

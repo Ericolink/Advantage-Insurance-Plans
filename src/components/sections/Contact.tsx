@@ -10,6 +10,7 @@ import { LeadForm } from "@/components/forms/LeadForm";
 import { ButtonLink } from "@/components/ui/Button";
 import { CallButton } from "@/components/ui/CallButton";
 import { Icon } from "@/components/ui/Icon";
+import { SocialLinks, hasSocialLinks } from "@/components/ui/SocialLinks";
 import { cardHoverClass, container, h2Class, leadClass, sectionSpace, textLinkClass } from "@/components/ui/styles";
 
 export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) {
@@ -116,6 +117,15 @@ export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) 
         {dict.contact.prepare}
         <Icon name="arrowRight" className="size-5 shrink-0" />
       </Link>
+
+      {hasSocialLinks && (
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-white/40 pt-6">
+          <p id="contact-social" className="text-lg font-semibold text-white">
+            {dict.social.title}
+          </p>
+          <SocialLinks dict={dict} tone="light" labelledBy="contact-social" />
+        </div>
+      )}
     </>
   );
   const booking = site.bookingUrl && (

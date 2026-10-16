@@ -266,8 +266,9 @@ export const site: SiteConfig = {
   testimonials: [],
 
   socials: {
-    facebook: null,
-    instagram: null,
+    // Official profiles provided by the office. Shown as icons in the footer and the contact section.
+    facebook: "https://www.facebook.com/AdvantageInsurancePlans",
+    instagram: "https://www.instagram.com/humberto.alcazar.aip?exln=aHE4aXNod3Y1c2h4",
     linkedin: null,
     // Pending: the official profile link, from Silvia's Google Business Profile ("Share" button).
     // Never a Google search URL.

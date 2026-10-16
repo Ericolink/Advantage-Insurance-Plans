@@ -6,6 +6,7 @@ import { getPage } from "@/content/pages";
 import { fill, t, type Dictionary } from "@/lib/i18n";
 import { formatDays, formatHours } from "@/lib/format";
 import { siteVars } from "@/lib/site-vars";
+import { SocialLinks, hasSocialLinks } from "@/components/ui/SocialLinks";
 import { container } from "@/components/ui/styles";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
@@ -16,9 +17,8 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   // The CMS disclaimer is shown only once both numbers are confirmed (launch is blocked until then).
   const { medicare, aca, medicareOrganizations: organizations, medicareProducts: products } = site.regulated;
   const { contact, location } = site;
+  // Facebook and Instagram get their own icon row (SocialLinks); any other profile stays a text link.
   const socials = [
-    { href: site.socials.facebook, label: "Facebook" },
-    { href: site.socials.instagram, label: "Instagram" },
     { href: site.socials.linkedin, label: "LinkedIn" },
     { href: site.socials.google, label: "Google" },
   ].filter((social): social is { href: string; label: string } => Boolean(social.href));
@@ -57,6 +57,14 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             </ul>
           )}
           {site.npn && <p>{fill(dict.footer.npn, { number: site.npn })}</p>}
+          {hasSocialLinks && (
+            <div className="space-y-3 pt-3">
+              <h2 id="footer-social" className="text-lg font-bold text-sun">
+                {dict.social.title}
+              </h2>
+              <SocialLinks dict={dict} tone="dark" labelledBy="footer-social" />
+            </div>
+          )}
         </div>
 
         <div>

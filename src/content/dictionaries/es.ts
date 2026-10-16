@@ -272,6 +272,11 @@ export const es: typeof en = {
     educational: "La información de este sitio es general y educativa. No es una decisión sobre su elegibilidad ni una recomendación para su situación.",
     medicaidDisclaimer: "La agencia de Medicaid de su estado decide quién califica para Medicaid.",
   },
+  social: {
+    title: "Síganos en redes sociales",
+    facebook: "Síguenos en Facebook",
+    instagram: "Síguenos en Instagram",
+  },
   legal: {
     privacyTitle: "Política de privacidad",
     termsTitle: "Términos de uso",

@@ -270,6 +270,11 @@ export const en = {
     educational: "The information on this website is general and educational. It is not a decision about your eligibility or a recommendation for your situation.",
     medicaidDisclaimer: "Medicaid eligibility is decided by your state's Medicaid agency.",
   },
+  social: {
+    title: "Follow Us on Social Media",
+    facebook: "Follow us on Facebook",
+    instagram: "Follow us on Instagram",
+  },
   legal: {
     privacyTitle: "Privacy policy",
     termsTitle: "Terms of use",
