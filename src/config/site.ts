@@ -56,7 +56,7 @@ export const site: SiteConfig = {
       mapEmbedUrl:
         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3390.8741276488613!2d-106.58461942384375!3d31.801180233213678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86ddf9d52b3b0873%3A0xb71b0618098caa5f!2s2603%20McNutt%20Rd%2C%20Sunland%20Park%2C%20NM%2088063!5e0!3m2!1ses-419!2sus!4v1792010440213!5m2!1ses-419!2sus",
     },
-    // Shown on the closing card of the award interview (video2.mp4). Phone and map not confirmed yet.
+    // Shown on the closing card of the award interview (video2.mp4). Phone not confirmed yet.
     {
       label: null,
       streetAddress: "609 Myrtle Ave, Ste B",
@@ -64,7 +64,8 @@ export const site: SiteConfig = {
       stateCode: "TX",
       postalCode: "79901",
       phone: null,
-      mapEmbedUrl: null,
+      mapEmbedUrl:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3392.3505272466386!2d-106.4827002!3d31.7609242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86e75903edd04857%3A0x580ea9ef5c897179!2s609%20Myrtle%20Ave%20Ste%20B%2C%20El%20Paso%2C%20TX%2079901%2C%20EE.%20UU.!5e0!3m2!1ses-419!2smx!4v1792120410565!5m2!1ses-419!2smx",
     },
   ],
 

@@ -19,7 +19,6 @@ type UiIconName =
   | "chevronRight"
   | "play"
   | "expand"
-  | "captions"
   | "externalLink"
   | "menu"
   | "close";
@@ -88,7 +87,6 @@ const paths: Record<IconName | UiIconName, string[]> = {
   chevronLeft: ["m15 18-6-6 6-6"],
   chevronRight: ["m9 18 6-6-6-6"],
   play: ["M7 4.5v15a1 1 0 0 0 1.52.85l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5z"],
-  captions: ["M5 5h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z", "M7 11h3M13 11h4M7 15h6M16 15h1"],
   expand: ["M15 3h6v6", "M9 21H3v-6", "M21 3l-7 7", "M3 21l7-7"],
   menu: ["M4 6h16M4 12h16M4 18h16"],
   close: ["M18 6 6 18M6 6l12 12"],
