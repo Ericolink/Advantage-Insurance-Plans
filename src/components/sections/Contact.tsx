@@ -72,10 +72,10 @@ export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) 
   );
   const details = (
     <>
-      <dl className="divide-y divide-line">
+      <dl className="divide-y divide-white/40">
         {contact.email && (
           <InfoRow icon="mail" label={dict.contact.email}>
-            <a href={`mailto:${contact.email}`} className="break-all font-semibold text-brand hover:underline">
+            <a href={`mailto:${contact.email}`} className="break-all font-semibold text-white underline-offset-4 hover:underline">
               {contact.email}
             </a>
           </InfoRow>
@@ -108,7 +108,11 @@ export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) 
         )}
       </dl>
 
-      <Link href={pagePath("firstVisit", locale)} className={textLinkClass}>
+      {/* White on the orange background, like the hero's links. */}
+      <Link
+        href={pagePath("firstVisit", locale)}
+        className={textLinkClass.replace("text-accent-strong", "text-white").replace("hover:text-brand-deep hover:decoration-accent", "hover:decoration-4")}
+      >
         {dict.contact.prepare}
         <Icon name="arrowRight" className="size-5 shrink-0" />
       </Link>
@@ -121,15 +125,17 @@ export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) 
     </ButtonLink>
   );
 
+  // Same orange and white text as the hero, so the page opens and closes on the brand color. The phone, the
+  // addresses and the maps sit on white cards.
   return (
-    <section id="contact" aria-labelledby="contact-title" className={`scroll-mt-24 bg-accent-soft ${sectionSpace}`}>
+    <section id="contact" aria-labelledby="contact-title" className={`scroll-mt-24 bg-orange ${sectionSpace}`}>
       <div className={container}>
         {/* Only the heading moves: the phone, hours and addresses below are there to be read at once. */}
         <div data-reveal>
-          <h2 id="contact-title" className={h2Class}>
+          <h2 id="contact-title" className={h2Class.replace("text-brand-deep", "text-white")}>
             {dict.contact.title}
           </h2>
-          <p className={`mt-4 ${leadClass}`}>{subtitle}</p>
+          <p className={`mt-4 ${leadClass.replace("text-ink", "text-white")}`}>{subtitle}</p>
         </div>
 
         {/* Form on: contact details beside it. Form off: the call card and the details side by side.
@@ -170,12 +176,12 @@ export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) 
         </div>
 
         {offices.length > 0 && (
-          <div className="mt-14 border-t border-line pt-12 sm:mt-16 sm:pt-14">
-            <h3 className="flex items-center gap-3 font-display text-2xl font-bold text-brand-deep sm:text-3xl">
-              <span aria-hidden="true" className="h-0.5 w-10 bg-accent" />
+          <div className="mt-14 border-t border-white/40 pt-12 sm:mt-16 sm:pt-14">
+            <h3 className="flex items-center gap-3 font-display text-2xl font-bold text-white sm:text-3xl">
+              <span aria-hidden="true" className="h-0.5 w-10 bg-white" />
               {dict.contact.officesTitle}
             </h3>
-            <p className="mt-3 max-w-2xl text-lg leading-relaxed text-ink">{dict.contact.officesIntro}</p>
+            <p className="mt-3 max-w-2xl text-lg leading-relaxed text-white">{dict.contact.officesIntro}</p>
 
             {featured.length > 0 && (
               <ul className="mt-8 space-y-6 lg:space-y-8">
@@ -363,10 +369,10 @@ function OfficeMap({ url, title, locale, dict, className }: { url: string; title
 function InfoRow({ icon, label, children }: { icon: "mail" | "clock" | "mapPin" | "globe"; label: string; children: ReactNode }) {
   return (
     <div className="flex gap-4 py-4 first:pt-0">
-      <Icon name={icon} className="mt-1 size-6 shrink-0 text-brand" />
+      <Icon name={icon} className="mt-1 size-6 shrink-0 text-white" />
       <div className="text-base sm:text-lg">
-        <dt className="font-semibold text-brand-deep">{label}</dt>
-        <dd className="mt-0.5 text-ink">{children}</dd>
+        <dt className="font-semibold text-white">{label}</dt>
+        <dd className="mt-0.5 text-white">{children}</dd>
       </div>
     </div>
   );
