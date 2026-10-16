@@ -97,6 +97,8 @@ export interface Office {
   phone: { e164: string; display: string } | null;
   /** Google Maps "Share > Embed a map" src URL (only the URL, not the whole iframe). */
   mapEmbedUrl: string | null;
+  /** Photo of this office taken by or for the agency, shown next to its map. */
+  photo?: GalleryPhoto;
 }
 
 export interface SiteConfig {

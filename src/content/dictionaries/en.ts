@@ -145,10 +145,10 @@ export const en = {
   },
   family: {
     eyebrow: "Family",
-    title: "{agentFirst}, Alex and Humberto",
-    body: "{agent} with her sons, Alex and Humberto, in the photo session for Thrive After 60 magazine.",
+    title: "{agentFirst}, Alejandro and Humberto",
+    body: "{agent} with her sons, Alejandro and Humberto, in the photo session for Thrive After 60 magazine.",
     hint: "Select a photo to see it larger.",
-    dialog: "Photos with Alex and Humberto",
+    dialog: "Photos with Alejandro and Humberto",
   },
   media: {
     eyebrow: "Videos and events",

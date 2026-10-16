@@ -48,6 +48,17 @@ export const site: SiteConfig = {
       stateCode: "TX",
       postalCode: "79936",
       phone: null,
+      // Storefront of suite 104, provided by the office (2026-10-16).
+      photo: {
+        src: "/images/office2.jpeg",
+        webp: "/images/office-george-dieter-600.webp",
+        width: 1147,
+        height: 1530,
+        alt: {
+          en: "Front of the office in suite 104, with a Medicare and Medicaid banner above the entrance and Advantage Insurance Plans posters on the windows",
+          es: "Fachada de la oficina en el local 104, con un letrero de Medicare y Medicaid sobre la entrada y carteles de Advantage Insurance Plans en las ventanas",
+        },
+      },
       mapEmbedUrl:
         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3393.453848843605!2d-106.3049698765835!3d31.73081079090984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86e743769ab416db%3A0xfbec8ce5c62b7228!2s1387%20George%20Dieter%20Dr%2C%20El%20Paso%2C%20TX%2079936!5e0!3m2!1ses-419!2sus!4v1792001782292!5m2!1ses-419!2sus",
     },
@@ -92,7 +103,7 @@ export const site: SiteConfig = {
   // Photo of the main office taken by the web team (confirmed 2026-10-15), so it is published as the office's own.
   officePhoto: { src: "/images/office.webp", width: 534, height: 353, credit: null, source: "own" },
 
-  // Thrive After 60 magazine photo session: Silvia with her sons Alex and Humberto (provided by the office,
+  // Thrive After 60 magazine photo session: Silvia with her sons Alejandro and Humberto (provided by the office,
   // 2026-10-16). Which son is which is not marked on the photos, so the alt texts don't name them one by one.
   familyPhotos: [
     {

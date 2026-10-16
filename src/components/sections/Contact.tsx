@@ -239,17 +239,39 @@ function OfficeCard({ office, title, locale, dict }: { office: Office; title: st
         {dict.contact.directions}
         <Icon name="arrowRight" className="size-4" />
       </a>
-      {office.mapEmbedUrl && (
-        <iframe
-          src={localizedMapUrl(office.mapEmbedUrl, locale)}
-          title={fill(dict.contact.mapTitle, { business: title })}
-          loading="lazy"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-          className="mt-4 h-56 w-full rounded-xl border-0 ring-1 ring-line"
-        />
+      {office.photo ? (
+        // Photo and map side by side on wide cards (the map takes the photo's height, close to the other cards' maps);
+        // stacked on phones and in the narrow two-column cards of tablets. The whole photo is shown, never cropped.
+        <div className="mt-4 grid gap-3 sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:grid-cols-1 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+          {/* eslint-disable-next-line @next/next/no-img-element -- plain img keeps the static export option open */}
+          <img
+            src={office.photo.webp ?? office.photo.src}
+            width={office.photo.width}
+            height={office.photo.height}
+            alt={t(office.photo.alt, locale)}
+            loading="lazy"
+            decoding="async"
+            className="block h-auto w-full rounded-xl ring-1 ring-line"
+          />
+          {office.mapEmbedUrl && <OfficeMap url={office.mapEmbedUrl} title={title} locale={locale} dict={dict} className="h-56 sm:h-full md:h-56 lg:h-full" />}
+        </div>
+      ) : (
+        office.mapEmbedUrl && <OfficeMap url={office.mapEmbedUrl} title={title} locale={locale} dict={dict} className="mt-4 h-56" />
       )}
     </li>
+  );
+}
+
+function OfficeMap({ url, title, locale, dict, className }: { url: string; title: string; locale: Locale; dict: Dictionary; className: string }) {
+  return (
+    <iframe
+      src={localizedMapUrl(url, locale)}
+      title={fill(dict.contact.mapTitle, { business: title })}
+      loading="lazy"
+      referrerPolicy="strict-origin-when-cross-origin"
+      allowFullScreen
+      className={`w-full rounded-xl border-0 ring-1 ring-line ${className}`}
+    />
   );
 }
 

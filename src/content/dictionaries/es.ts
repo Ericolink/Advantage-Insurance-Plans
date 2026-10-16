@@ -143,10 +143,10 @@ export const es: typeof en = {
   },
   family: {
     eyebrow: "En familia",
-    title: "{agentFirst}, Alex y Humberto",
-    body: "{agent} con sus hijos, Alex y Humberto, en la sesión fotográfica para la revista Thrive After 60.",
+    title: "{agentFirst}, Alejandro y Humberto",
+    body: "{agent} con sus hijos, Alejandro y Humberto, en la sesión fotográfica para la revista Thrive After 60.",
     hint: "Seleccione una foto para verla más grande.",
-    dialog: "Fotos con Alex y Humberto",
+    dialog: "Fotos con Alejandro y Humberto",
   },
   media: {
     eyebrow: "Videos y eventos",
