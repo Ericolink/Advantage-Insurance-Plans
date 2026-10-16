@@ -226,6 +226,11 @@ export const es: typeof en = {
     programsTitle: "Más información",
     infoTitle: "Información",
     tty: "TTY: 711",
+    medicareRepresentation:
+      "Advantage Insurance Plans representa a organizaciones de planes Medicare Advantage HMO, PPO, PFFS y de planes de medicamentos recetados que tienen un contrato con Medicare y/o son patrocinadores de la Parte D aprobados por Medicare. La inscripción depende de la renovación del contrato del plan. La inscripción en un plan puede estar limitada a ciertas épocas del año, a menos que califique para un Período de Inscripción Especial o esté en su Período de Inscripción Inicial de Medicare. No todos los planes ofrecen todos estos beneficios. Los beneficios pueden variar según la aseguradora y la ubicación. Pueden aplicarse limitaciones y exclusiones. Cada año, Medicare evalúa los planes según un sistema de calificación de 5 estrellas.",
+    brandOperator:
+      "AIP es una marca operada por Advantage Insurance Plans y es utilizada por sus agentes y agencias de seguros independientes afiliados con licencia, que están certificados para vender productos de Medicare. AIP es un sitio web no gubernamental y no está respaldado por los Centros de Servicios de Medicare y Medicaid (CMS), el Departamento de Salud y Servicios Humanos (DHHS) ni ninguna otra agencia gubernamental.",
+    countsNote: "La cantidad exacta de aseguradoras y planes depende de su código postal y condado.",
     medicareDisclaimer:
       "No ofrecemos todos los planes disponibles en su área. Actualmente representamos a {organizations} organizaciones que ofrecen {products} productos en su área. Comuníquese con Medicare.gov, 1-800-MEDICARE o con el Programa Estatal de Asistencia sobre Seguros de Salud (SHIP) de su localidad para obtener información sobre todas sus opciones.",
     governmentDisclaimer:

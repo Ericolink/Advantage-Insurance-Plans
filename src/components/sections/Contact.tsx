@@ -24,11 +24,6 @@ export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) 
   const otherOffices = site.otherOffices
     .map((office, index) => ({ office, number: index + 2 }))
     .filter(({ office }) => isComplete(office) || isDev);
-  // The embed URL carries its own language (Spanish here); switch it to match the page.
-  const mapUrl =
-    location.mapEmbedUrl && locale === "en"
-      ? location.mapEmbedUrl.replaceAll("!1ses-419!2smx", "!1sen!2sus")
-      : location.mapEmbedUrl;
   const closed = hours ? closedDays(hours) : [];
   const officePhoto = site.officePhoto && (
     <figure>
@@ -48,7 +43,7 @@ export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) 
   );
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className={`scroll-mt-24 bg-brand-soft ${sectionSpace}`}>
+    <section id="contact" aria-labelledby="contact-title" className={`scroll-mt-24 bg-accent-soft ${sectionSpace}`}>
       <div className={container}>
         <h2 id="contact-title" className={h2Class}>
           {dict.contact.title}
@@ -153,29 +148,19 @@ export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) 
             <h3 className="font-display text-2xl font-bold text-brand-deep">{dict.contact.officesTitle}</h3>
             <ul className="mt-5 grid gap-5 md:grid-cols-3">
               {showAddress && (
-                <OfficeCard office={mainOffice} title={dict.contact.mainOffice} dict={dict} />
+                <OfficeCard office={mainOffice} title={dict.contact.mainOffice} locale={locale} dict={dict} />
               )}
               {otherOffices.map(({ office, number }) => (
                 <OfficeCard
                   key={number}
                   office={office}
                   title={office.label ? t(office.label, locale) : fill(dict.contact.office, { number })}
+                  locale={locale}
                   dict={dict}
                 />
               ))}
             </ul>
           </div>
-        )}
-
-        {mapUrl && (
-          <iframe
-            src={mapUrl}
-            title={fill(dict.contact.mapTitle, { ...siteVars, business: site.brandName })}
-            loading="lazy"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-            className="mt-10 h-64 w-full rounded-2xl border-0 shadow-sm ring-1 ring-line sm:h-96"
-          />
         )}
       </div>
     </section>
@@ -186,7 +171,12 @@ function isComplete(office: Office): boolean {
   return Boolean(office.streetAddress && office.city && office.stateCode);
 }
 
-function OfficeCard({ office, title, dict }: { office: Office; title: string; dict: Dictionary }) {
+// The embed URL carries its own language (Spanish here); switch it to match the page.
+function localizedMapUrl(url: string, locale: Locale): string {
+  return locale === "en" ? url.replace(/!1ses-419!2s[a-z]{2}/g, "!1sen!2sus") : url;
+}
+
+function OfficeCard({ office, title, locale, dict }: { office: Office; title: string; locale: Locale; dict: Dictionary }) {
   if (!isComplete(office)) {
     return (
       <li className="rounded-2xl border-2 border-dashed border-amber-500 bg-amber-50 p-6 text-amber-950">
@@ -226,6 +216,16 @@ function OfficeCard({ office, title, dict }: { office: Office; title: string; di
         {dict.contact.directions}
         <Icon name="arrowRight" className="size-4" />
       </a>
+      {office.mapEmbedUrl && (
+        <iframe
+          src={localizedMapUrl(office.mapEmbedUrl, locale)}
+          title={fill(dict.contact.mapTitle, { business: title })}
+          loading="lazy"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+          className="mt-4 h-56 w-full rounded-xl border-0 ring-1 ring-line"
+        />
+      )}
     </li>
   );
 }

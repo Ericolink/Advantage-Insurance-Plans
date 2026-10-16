@@ -9,8 +9,8 @@ const base =
 const variants: Record<Variant, string> = {
   primary: "bg-accent text-white hover:bg-accent-strong",
   brand: "bg-brand text-white hover:bg-brand-deep",
-  secondary: "bg-surface text-brand-deep ring-2 ring-brand hover:bg-brand-soft",
-  ghost: "text-brand underline-offset-4 hover:underline",
+  secondary: "bg-surface text-brand-deep ring-2 ring-accent hover:bg-accent-soft",
+  ghost: "text-accent-strong underline-offset-4 hover:underline",
 };
 
 export function buttonClass(variant: Variant = "primary", className = "") {

@@ -67,6 +67,8 @@ export interface Office {
   postalCode: string | null;
   /** Only if this office has its own number. */
   phone: { e164: string; display: string } | null;
+  /** Google Maps "Share > Embed a map" src URL (only the URL, not the whole iframe). */
+  mapEmbedUrl: string | null;
 }
 
 export interface SiteConfig {

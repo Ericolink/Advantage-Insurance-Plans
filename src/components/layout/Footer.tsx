@@ -22,11 +22,11 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
     { href: site.socials.linkedin, label: "LinkedIn" },
     { href: site.socials.google, label: "Google" },
   ].filter((social): social is { href: string; label: string } => Boolean(social.href));
-  const linkClass = "inline-flex min-h-11 items-center hover:text-white hover:underline";
+  const linkClass = "inline-flex min-h-11 items-center hover:text-sun hover:underline";
 
   return (
     // On phones the bottom padding reserves the call bar's height, so the end of the page is never hidden behind it.
-    <footer className={`border-t border-line bg-brand-deep text-white/90 ${contact.phone ? "pb-[calc(5rem+env(safe-area-inset-bottom))] sm:pb-0" : ""}`}>
+    <footer className={`border-t-4 border-orange bg-brand-deep text-white/90 ${contact.phone ? "pb-[calc(5rem+env(safe-area-inset-bottom))] sm:pb-0" : ""}`}>
       <div className={`${container} grid gap-10 py-14 text-base sm:gap-12 md:grid-cols-2 lg:grid-cols-4`}>
         <div className="space-y-3">
           {site.logo && (
@@ -50,7 +50,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         </div>
 
         <div>
-          <h2 className="text-lg font-bold text-white">{dict.footer.contactTitle}</h2>
+          <h2 className="text-lg font-bold text-sun">{dict.footer.contactTitle}</h2>
           <ul className="mt-3 space-y-2">
             {contact.phone && (
               <li>
@@ -76,6 +76,17 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 </address>
               </li>
             )}
+            {site.otherOffices
+              .filter((office) => office.streetAddress && office.city && office.stateCode)
+              .map((office) => (
+                <li key={office.streetAddress}>
+                  <address className="not-italic">
+                    {office.streetAddress}
+                    <br />
+                    {office.city}, {office.stateCode} {office.postalCode}
+                  </address>
+                </li>
+              ))}
             {!location.showAddress && location.serviceArea && <li>{t(location.serviceArea, locale)}</li>}
             {site.hours?.map((row) => (
               <li key={row.days.join()}>
@@ -86,7 +97,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         </div>
 
         <nav aria-labelledby="footer-programs">
-          <h2 id="footer-programs" className="text-lg font-bold text-white">
+          <h2 id="footer-programs" className="text-lg font-bold text-sun">
             {dict.footer.programsTitle}
           </h2>
           <ul className="mt-2">
@@ -101,7 +112,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         </nav>
 
         <nav aria-labelledby="footer-info">
-          <h2 id="footer-info" className="text-lg font-bold text-white">
+          <h2 id="footer-info" className="text-lg font-bold text-sun">
             {dict.footer.infoTitle}
           </h2>
           <ul className="mt-2">
@@ -135,8 +146,17 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
       <div className="border-t border-white/15">
         <div className={`${container} max-w-6xl space-y-4 py-10 text-base leading-relaxed text-white/90`}>
+          {medicare && (
+            <>
+              <p>{dict.footer.medicareRepresentation}</p>
+              <p>{dict.footer.brandOperator}</p>
+            </>
+          )}
           {medicare && organizations !== null && products !== null && (
-            <p className="font-semibold text-white">{fill(dict.footer.medicareDisclaimer, { organizations, products })}</p>
+            <>
+              <p className="font-semibold text-white">{fill(dict.footer.medicareDisclaimer, { organizations, products })}</p>
+              <p>{dict.footer.countsNote}</p>
+            </>
           )}
           {medicare && <p>{fill(dict.footer.governmentDisclaimer, siteVars)}</p>}
           {aca && <p>{fill(dict.footer.marketplaceDisclaimer, siteVars)}</p>}

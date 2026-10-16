@@ -21,7 +21,7 @@ const text = (value: string) => fill(value, siteVars);
 export function InfoPage({ locale, dict, page }: { locale: Locale; dict: Dictionary; page: PageContent }) {
   return (
     <>
-      <div className="bg-brand-soft">
+      <div className="bg-accent-soft">
         <div className={`${container} pb-10 pt-6 sm:pb-14 sm:pt-10`}>
           <Breadcrumbs home={`/${locale}`} current={page.label} dict={dict} />
           <h1 className={`mt-5 max-w-4xl ${h1Class}`}>{page.title}</h1>
@@ -41,7 +41,7 @@ export function InfoPage({ locale, dict, page }: { locale: Locale; dict: Diction
       <div className={`${container} py-12 sm:py-16`}>
         <div className="max-w-3xl">
           {page.sections.length > 2 && (
-            <nav aria-labelledby="toc-title" className="border-l-4 border-brand pl-5">
+            <nav aria-labelledby="toc-title" className="border-l-4 border-accent pl-5">
               <h2 id="toc-title" className="text-lg font-bold text-brand-deep sm:text-xl">
                 {dict.pages.onThisPage}
               </h2>
@@ -50,7 +50,7 @@ export function InfoPage({ locale, dict, page }: { locale: Locale; dict: Diction
                   <li key={section.id}>
                     <a
                       href={`#${section.id}`}
-                      className="inline-flex min-h-11 items-center py-1 text-base font-semibold text-brand underline underline-offset-4 hover:text-brand-deep sm:text-lg"
+                      className="inline-flex min-h-11 items-center py-1 text-base font-semibold text-accent-strong underline underline-offset-4 hover:text-brand-deep sm:text-lg"
                     >
                       {section.heading}
                     </a>
@@ -100,10 +100,10 @@ function RelatedLink({ id, locale }: { id: PageId; locale: Locale }) {
   return (
     <Link
       href={pagePath(id, locale)}
-      className="flex h-full min-h-14 items-center justify-between gap-3 py-3 text-lg font-semibold text-brand-deep hover:text-brand md:rounded-2xl md:bg-surface md:px-5 md:py-4 md:text-xl md:ring-1 md:ring-line md:hover:ring-brand"
+      className="flex h-full min-h-14 items-center justify-between gap-3 py-3 text-lg font-semibold text-brand-deep hover:text-accent-strong md:rounded-2xl md:bg-surface md:px-5 md:py-4 md:text-xl md:ring-1 md:ring-line md:hover:ring-accent"
     >
       {page.label}
-      <Icon name="arrowRight" className="size-5 shrink-0 text-brand" />
+      <Icon name="arrowRight" className="size-5 shrink-0 text-accent" />
     </Link>
   );
 }
@@ -118,7 +118,7 @@ function BlockView({ block, dict }: { block: Block; dict: Dictionary }) {
         <ul className="space-y-4">
           {block.items.map((item) => (
             <li key={item} className={`flex gap-3 ${bodyClass}`}>
-              <Icon name="check" className="mt-1 size-5 shrink-0 text-brand sm:size-6" />
+              <Icon name="check" className="mt-1 size-5 shrink-0 text-accent sm:size-6" />
               <span>{text(item)}</span>
             </li>
           ))}
@@ -198,7 +198,7 @@ function BlockView({ block, dict }: { block: Block; dict: Dictionary }) {
 
     case "note":
       return (
-        <div className={`flex gap-3 rounded-2xl bg-brand-soft p-5 ${bodyClass}`}>
+        <div className={`flex gap-3 rounded-2xl bg-sun-soft p-5 ${bodyClass}`}>
           <Icon name="info" className="mt-1 size-6 shrink-0 text-brand" />
           <p>{text(block.text)}</p>
         </div>
@@ -214,7 +214,7 @@ function BlockView({ block, dict }: { block: Block; dict: Dictionary }) {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center gap-2 text-lg font-semibold text-brand underline underline-offset-4 hover:text-brand-deep"
+                  className="inline-flex min-h-11 items-center gap-2 text-lg font-semibold text-accent-strong underline underline-offset-4 hover:text-brand-deep"
                 >
                   {link.label}
                   <Icon name="externalLink" className="size-5 shrink-0" />
@@ -241,7 +241,7 @@ function BlockView({ block, dict }: { block: Block; dict: Dictionary }) {
           <ul className="mt-3 space-y-3">
             {confirmed.map((id) => (
               <li key={id} className={`flex gap-3 ${bodyClass}`}>
-                <Icon name="check" className="mt-1 size-5 shrink-0 text-brand sm:size-6" />
+                <Icon name="check" className="mt-1 size-5 shrink-0 text-accent sm:size-6" />
                 {dict.pages.scope[id]}
               </li>
             ))}

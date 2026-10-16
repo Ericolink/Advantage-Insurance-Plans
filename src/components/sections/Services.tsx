@@ -29,7 +29,7 @@ export function Services({ locale, dict }: { locale: Locale; dict: Dictionary })
               // The whole card is one large tap target: the link stretches over it (see after:inset-0).
               <li
                 key={id}
-                className="relative flex min-w-0 flex-col rounded-2xl border border-line bg-canvas p-6 transition-colors focus-within:ring-3 focus-within:ring-brand-deep hover:border-brand motion-reduce:transition-none sm:p-8"
+                className="relative flex min-w-0 flex-col rounded-2xl border border-line bg-canvas p-6 transition-colors focus-within:ring-3 focus-within:ring-brand-deep hover:border-accent motion-reduce:transition-none sm:p-8"
               >
                 <div className="flex items-center gap-4">
                   <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-brand text-white">
@@ -43,7 +43,7 @@ export function Services({ locale, dict }: { locale: Locale; dict: Dictionary })
                 </p>
                 <Link
                   href={pagePath(pages[id], locale)}
-                  className="mt-5 inline-flex min-h-11 items-center gap-2 self-start text-lg font-semibold text-brand underline decoration-2 underline-offset-4 outline-none after:absolute after:inset-0 after:rounded-2xl hover:text-brand-deep"
+                  className="mt-5 inline-flex min-h-11 items-center gap-2 self-start text-lg font-semibold text-accent-strong underline decoration-2 underline-offset-4 outline-none after:absolute after:inset-0 after:rounded-2xl hover:text-brand-deep"
                 >
                   {item.cta}
                   <Icon name="arrowRight" className="size-5" />
@@ -54,7 +54,7 @@ export function Services({ locale, dict }: { locale: Locale; dict: Dictionary })
         </ul>
 
         <div className="mt-10 flex max-w-3xl gap-3 border-t border-line pt-6">
-          <Icon name="info" className="mt-1 size-6 shrink-0 text-brand" />
+          <Icon name="info" className="mt-1 size-6 shrink-0 text-accent" />
           <div className="space-y-2">
             <p className="text-base font-semibold leading-relaxed text-ink sm:text-lg">{dict.services.different}</p>
             <p className="text-base leading-relaxed text-ink-soft">{dict.services.disclaimer}</p>

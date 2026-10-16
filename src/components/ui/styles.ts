@@ -19,4 +19,4 @@ export const bodyClass = "text-base leading-relaxed text-ink sm:text-lg";
 
 /** Secondary action shown as a link instead of another big button. */
 export const textLinkClass =
-  "inline-flex min-h-11 items-center gap-2 text-lg font-semibold text-brand underline decoration-2 underline-offset-4 hover:text-brand-deep";
+  "inline-flex min-h-11 items-center gap-2 text-lg font-semibold text-accent-strong underline decoration-2 underline-offset-4 hover:text-brand-deep";

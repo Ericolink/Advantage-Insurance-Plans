@@ -11,7 +11,7 @@ const tones = {
   // On the dark top bar and footer.
   dark: { current: "text-white", link: "text-white/90 hover:bg-white/10 hover:text-white focus-visible:outline-white", divider: "text-white/50" },
   // Inside the mobile menu (white panel).
-  light: { current: "text-brand-deep", link: "text-brand hover:bg-brand-soft", divider: "text-line" },
+  light: { current: "text-brand-deep", link: "text-brand hover:bg-accent-soft hover:text-accent-strong", divider: "text-line" },
 };
 
 /** "English | Español" with the current language marked, keeping the current page (slugs are translated). */

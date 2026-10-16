@@ -11,7 +11,7 @@ export function About({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const showCarriers = site.carriers.confirmed && site.carriers.names.length > 0;
 
   return (
-    <section id="about" aria-labelledby="about-title" className={`scroll-mt-24 bg-brand-soft ${sectionSpace}`}>
+    <section id="about" aria-labelledby="about-title" className={`scroll-mt-24 bg-sun-soft ${sectionSpace}`}>
       <div className={`${container} grid items-start gap-8 md:grid-cols-[1fr_2fr] md:gap-12`}>
         {portrait && (
           // eslint-disable-next-line @next/next/no-img-element -- plain img keeps the static export option open
@@ -54,7 +54,7 @@ export function About({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               {/* Names only: carrier logos need written permission. */}
               <ul className="mt-3 flex flex-wrap gap-2">
                 {site.carriers.names.map((name) => (
-                  <li key={name} className="rounded-full bg-surface px-4 py-2 text-lg font-semibold text-ink ring-1 ring-line">
+                  <li key={name} className="rounded-full bg-surface px-4 py-2 text-lg font-semibold text-brand-deep ring-2 ring-sun">
                     {name}
                   </li>
                 ))}

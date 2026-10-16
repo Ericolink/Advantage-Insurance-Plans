@@ -25,7 +25,7 @@ export function generateStaticParams() {
 }
 
 // viewportFit "cover" lets the bottom call bar respect the phone's safe area (env(safe-area-inset-bottom)).
-export const viewport: Viewport = { themeColor: "#223c86", viewportFit: "cover" };
+export const viewport: Viewport = { themeColor: "#c84b06", viewportFit: "cover" };
 
 export async function generateMetadata({ params }: Omit<LayoutProps, "children">): Promise<Metadata> {
   const { lang } = await params;

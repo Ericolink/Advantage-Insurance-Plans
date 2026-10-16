@@ -58,7 +58,7 @@ export function MobileMenu({ locale, links, labels, phone }: MobileMenuProps) {
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((value) => !value)}
-        className="inline-flex min-h-12 items-center gap-2 rounded-xl px-3 text-base font-semibold text-brand-deep ring-2 ring-line hover:bg-brand-soft"
+        className="inline-flex min-h-12 items-center gap-2 rounded-xl px-3 text-base font-semibold text-brand-deep ring-2 ring-line hover:bg-accent-soft"
       >
         <Icon name={open ? "close" : "menu"} className="size-6" />
         {open ? labels.close : labels.menu}
@@ -76,10 +76,10 @@ export function MobileMenu({ locale, links, labels, phone }: MobileMenuProps) {
                 <a
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="flex min-h-14 items-center justify-between gap-3 text-lg font-semibold text-brand-deep hover:text-brand"
+                  className="flex min-h-14 items-center justify-between gap-3 text-lg font-semibold text-brand-deep hover:text-accent-strong"
                 >
                   {link.label}
-                  <Icon name="arrowRight" className="size-5 shrink-0 text-brand" />
+                  <Icon name="arrowRight" className="size-5 shrink-0 text-accent" />
                 </a>
               </li>
             ))}

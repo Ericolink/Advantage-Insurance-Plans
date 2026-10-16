@@ -42,7 +42,7 @@ export function LegalPage({ locale, dict, title, document, ready }: LegalPagePro
           <p className="font-semibold text-ink">{dict.legal.pendingTitle}</p>
           <p className="mt-2 text-ink-soft">{dict.legal.pendingBody}</p>
           {(site.contact.phone || site.contact.email) && (
-            <p className="mt-3 space-x-4 font-semibold text-brand">
+            <p className="mt-3 space-x-4 font-semibold text-accent-strong">
               {site.contact.phone && <a href={`tel:${site.contact.phone.e164}`}>{site.contact.phone.display}</a>}
               {site.contact.email && <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>}
             </p>

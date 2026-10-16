@@ -225,6 +225,11 @@ export const en = {
     programsTitle: "Learn more",
     infoTitle: "Information",
     tty: "TTY: 711",
+    medicareRepresentation:
+      "Advantage Insurance Plans represents Medicare Advantage HMO, PPO, PFFS, and Prescription Drug Plan organizations that have a Medicare contract and/or a Medicare-approved Part D sponsor. Enrollment depends on the plan’s contract renewal. Enrollment in a plan may be limited to certain times of the year unless you qualify for a Special Enrollment Period or you are in your Medicare Initial Enrollment Period. Not all plans offer all of these benefits. Benefits may vary by carrier and location. Limitations and exclusions may apply. Every year, Medicare evaluates plans based on a 5-star rating system.",
+    brandOperator:
+      "AIP is a brand operated by Advantage Insurance Plans and is used by its affiliated independent licensed insurance agents and agencies that are certified to sell Medicare products. AIP is a non-government website and is not endorsed by the Centers for Medicare and Medicaid Services (CMS), the Department of Health and Human Services (DHHS) or any other government agency.",
+    countsNote: "The exact carrier and plan counts are determined by your zip code and county.",
     medicareDisclaimer:
       "We do not offer every plan available in your area. Currently we represent {organizations} organizations which offer {products} products in your area. Please contact Medicare.gov, 1-800-MEDICARE, or your local State Health Insurance Program (SHIP) to get information on all of your options.",
     governmentDisclaimer:

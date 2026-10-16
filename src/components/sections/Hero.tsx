@@ -5,7 +5,7 @@ import { formatHoursSummary } from "@/lib/format";
 import { siteVars } from "@/lib/site-vars";
 import { CallButton } from "@/components/ui/CallButton";
 import { Icon } from "@/components/ui/Icon";
-import { container, h1Class, textLinkClass } from "@/components/ui/styles";
+import { container, h1Class } from "@/components/ui/styles";
 
 export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const otherLocale: Locale = locale === "en" ? "es" : "en";
@@ -19,7 +19,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const portrait = site.portrait ?? site.photo;
 
   return (
-    <section aria-labelledby="hero-title" className="bg-brand-soft">
+    <section aria-labelledby="hero-title" className="bg-orange">
       <div className={`${container} grid items-center gap-12 pb-12 pt-8 sm:pb-16 sm:pt-14 lg:grid-cols-[3fr_2fr]`}>
         <div>
           {/* Phones: a small, personal introduction instead of the large photo. */}
@@ -35,38 +35,38 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               />
             )}
             <p className="leading-snug">
-              <span className="block text-lg font-bold text-brand-deep">{site.agentName}</span>
-              {office && <span className="block text-base text-ink">{office}</span>}
+              <span className="block text-lg font-bold text-white">{site.agentName}</span>
+              {office && <span className="block text-base text-white">{office}</span>}
               {servesOtherLanguage && (
-                <span lang={otherLocale} className="block text-base font-semibold text-brand-deep">
+                <span lang={otherLocale} className="block text-base font-semibold text-white">
                   {dict.hero.otherLanguage}
                 </span>
               )}
             </p>
           </div>
 
-          <h1 id="hero-title" className={h1Class}>
+          <h1 id="hero-title" className={h1Class.replace("text-brand-deep", "text-white")}>
             {dict.hero.title}
           </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink text-pretty sm:text-xl">{fill(dict.hero.subtitle, siteVars)}</p>
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white text-pretty sm:text-xl">{fill(dict.hero.subtitle, siteVars)}</p>
 
           {/* One main action (call); the secondary one is a plain link to the services. */}
           <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-6">
-            <CallButton dict={dict} label={dict.hero.ctaCall} variant="primary" className="w-full sm:w-auto sm:shrink-0" primary />
-            <a href="#services" className={textLinkClass}>
+            <CallButton dict={dict} label={dict.hero.ctaCall} variant="brand" className="w-full sm:w-auto sm:shrink-0" primary />
+            <a href="#services" className="inline-flex min-h-11 items-center gap-2 text-lg font-semibold text-white underline decoration-2 underline-offset-4 hover:decoration-4">
               {dict.hero.ctaHelp}
               <Icon name="arrowRight" className="size-5 rotate-90" />
             </a>
           </div>
 
           {site.hours && site.hours.length > 0 && (
-            <p className="mt-6 flex items-start gap-2 text-base text-ink sm:text-lg">
-              <Icon name="clock" className="mt-0.5 size-5 shrink-0 text-brand" />
+            <p className="mt-6 flex items-start gap-2 text-base text-white sm:text-lg">
+              <Icon name="clock" className="mt-0.5 size-5 shrink-0" />
               {fill(dict.hero.open, { hours: formatHoursSummary(site.hours, locale) })}
             </p>
           )}
 
-          <ul className="mt-6 hidden flex-wrap gap-x-6 gap-y-2 text-base font-semibold text-brand-deep lg:flex">
+          <ul className="mt-6 hidden flex-wrap gap-x-6 gap-y-2 text-base font-semibold text-white lg:flex">
             <li className="inline-flex items-center gap-2">
               <Icon name="message" className="size-5" />
               {dict.hero.realPerson}
@@ -100,10 +100,10 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           </picture>
         )}
       </div>
-      {/* Coral swoosh echoing Silvia's flyers and the logo's red wave. */}
+      {/* Yellow and logo-blue swoosh echoing the logo's wave, over the orange hero. */}
       <svg aria-hidden="true" viewBox="0 0 1440 80" preserveAspectRatio="none" className="block h-8 w-full sm:h-16">
         <path d="M0 46 C 360 6, 720 86, 1080 38 S 1440 26 1440 26 V80 H0 Z" fill="var(--color-surface)" />
-        <path d="M0 46 C 360 6, 720 86, 1080 38 S 1440 26 1440 26" fill="none" stroke="var(--color-coral)" strokeWidth="7" />
+        <path d="M0 46 C 360 6, 720 86, 1080 38 S 1440 26 1440 26" fill="none" stroke="var(--color-sun)" strokeWidth="7" />
         <path d="M0 60 C 360 20, 720 100, 1080 52 S 1440 40 1440 40" fill="none" stroke="var(--color-brand)" strokeWidth="3" />
       </svg>
     </section>

@@ -70,7 +70,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="whitespace-nowrap rounded-lg px-2.5 py-2 text-base font-semibold text-ink hover:bg-brand-soft hover:text-brand-deep"
+                    className="whitespace-nowrap rounded-lg px-2.5 py-2 text-base font-semibold text-ink hover:bg-accent-soft hover:text-accent-strong"
                   >
                     {link.label}
                   </a>

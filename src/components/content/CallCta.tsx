@@ -8,7 +8,7 @@ import { CallButton } from "@/components/ui/CallButton";
 /** "Questions? Talk with Silvia" box with the phone and hours, used at the end of inner pages. */
 export function CallCta({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   return (
-    <aside aria-labelledby="call-cta-title" className="rounded-3xl bg-brand-deep px-6 py-8 text-white sm:p-10">
+    <aside aria-labelledby="call-cta-title" className="rounded-3xl border-t-8 border-sun bg-brand-deep px-6 py-8 text-white sm:p-10">
       <h2 id="call-cta-title" className="font-display text-[1.6rem] font-bold leading-tight text-balance sm:text-3xl">
         {fill(dict.pages.ctaTitle, siteVars)}
       </h2>

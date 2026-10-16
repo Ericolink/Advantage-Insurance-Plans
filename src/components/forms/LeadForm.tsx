@@ -24,7 +24,7 @@ export interface LeadFormProps {
 }
 
 const fieldClass =
-  "mt-2 block w-full rounded-xl border-2 border-ink-soft/50 bg-surface px-4 py-3 text-lg text-ink focus:border-brand focus:outline-3 focus:outline-brand/30 aria-[invalid=true]:border-red-700";
+  "mt-2 block w-full rounded-xl border-2 border-ink-soft/50 bg-surface px-4 py-3 text-lg text-ink focus:border-accent focus:outline-3 focus:outline-accent/30 aria-[invalid=true]:border-red-700";
 const labelClass = "text-lg font-semibold text-ink";
 
 export function LeadForm(props: LeadFormProps) {
@@ -192,14 +192,14 @@ export function LeadForm(props: LeadFormProps) {
           {methods.map((option) => (
             <label
               key={option.value}
-              className="flex min-h-13 cursor-pointer items-center gap-3 rounded-xl border-2 border-line px-4 py-2 text-lg text-ink has-[:checked]:border-brand has-[:checked]:bg-brand-soft"
+              className="flex min-h-13 cursor-pointer items-center gap-3 rounded-xl border-2 border-line px-4 py-2 text-lg text-ink has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
             >
               <input
                 type="radio"
                 name="contactMethod"
                 value={option.value}
                 defaultChecked={(values?.contactMethod ?? "phone") === option.value}
-                className="size-6 accent-brand"
+                className="size-6 accent-accent"
               />
               {option.label}
             </label>
@@ -215,14 +215,14 @@ export function LeadForm(props: LeadFormProps) {
               <label
                 key={language.code}
                 lang={language.code}
-                className="flex min-h-13 cursor-pointer items-center gap-3 rounded-xl border-2 border-line px-4 py-2 text-lg text-ink has-[:checked]:border-brand has-[:checked]:bg-brand-soft"
+                className="flex min-h-13 cursor-pointer items-center gap-3 rounded-xl border-2 border-line px-4 py-2 text-lg text-ink has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
               >
                 <input
                   type="radio"
                   name="language"
                   value={language.code}
                   defaultChecked={(values?.language ?? locale) === language.code}
-                  className="size-6 accent-brand"
+                  className="size-6 accent-accent"
                 />
                 {language.label}
               </label>
@@ -231,7 +231,7 @@ export function LeadForm(props: LeadFormProps) {
         </fieldset>
       )}
 
-      <p className="flex gap-2 rounded-xl bg-brand-soft px-4 py-3 text-base text-ink">
+      <p className="flex gap-2 rounded-xl bg-sun-soft px-4 py-3 text-base text-ink">
         <Icon name="info" className="mt-0.5 size-5 shrink-0 text-brand" />
         {text.sensitiveHint}
       </p>
@@ -244,7 +244,7 @@ export function LeadForm(props: LeadFormProps) {
               name="consent"
               required
               defaultChecked={values?.consent}
-              className="mt-1 size-6 shrink-0 accent-brand"
+              className="mt-1 size-6 shrink-0 accent-accent"
               {...invalid("consent")}
             />
             <span>{props.consentText}</span>
@@ -258,7 +258,7 @@ export function LeadForm(props: LeadFormProps) {
                 type="checkbox"
                 name="smsConsent"
                 defaultChecked={values?.smsConsent}
-                className="mt-1 size-6 shrink-0 accent-brand"
+                className="mt-1 size-6 shrink-0 accent-accent"
                 {...invalid("smsConsent")}
               />
               <span>{props.smsConsentText}</span>
@@ -268,7 +268,7 @@ export function LeadForm(props: LeadFormProps) {
         )}
         {privacyHref && (
           <p className="text-base">
-            <a href={privacyHref} className="font-semibold text-brand underline">
+            <a href={privacyHref} className="font-semibold text-accent-strong underline">
               {text.privacyLink}
             </a>
           </p>

@@ -4,21 +4,24 @@
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-heading), ui-serif, Georgia, serif;
 
-  /* Palette: coral and warm cream from Silvia's marketing, navy from the AIP logo.
-     Text/background pairs are tuned to pass WCAG AA; pure coral is decorative only. */
-  --color-coral: #e75b3e; /* decorative waves, never behind text */
-  --color-accent: #c8442a; /* coral buttons: 4.9:1 with white */
-  --color-accent-strong: #a8361f; /* hover, coral text on light backgrounds */
-  --color-brand: #223c86; /* logo navy: icons, links, secondary buttons */
+  /* Palette: orange leads, the AIP logo blue (#223c86, sampled from the logo) keeps the brand,
+     yellow adds light and highlights. Text/background pairs are tuned to pass WCAG AA;
+     the vivid orange and yellows are decorative only, never behind white text. */
+  --color-orange: #f47521; /* Crunchyroll-style orange: hero background, waves and bars; only brand-deep text on it (5.3:1), never white */
+  --color-accent: #c84b06; /* orange buttons and active states: 4.7:1 with white */
+  --color-accent-strong: #a53b0b; /* hover/pressed, orange text and links on light backgrounds */
+  --color-accent-soft: #fff1e6; /* light orange section and card backgrounds */
+  --color-brand: #223c86; /* logo blue: icons, secondary buttons and outlines */
   --color-brand-deep: #14244f; /* headings, top bar, footer */
-  --color-brand-soft: #fbefea; /* blush section backgrounds */
+  --color-sun: #ffc93c; /* yellow highlights and badges, with brand-deep text (9.8:1) */
+  --color-sun-soft: #fff7d6; /* light yellow backgrounds, notes and tags */
 
-  --color-ink: #372c2a; /* warm dark brown body text */
-  --color-ink-soft: #6b5a55;
-  --color-canvas: #fdf8f4; /* cream */
+  --color-ink: #3a2e25; /* warm dark brown body text */
+  --color-ink-soft: #6b5a4c;
+  --color-canvas: #fffaf3; /* warm cream */
   --color-surface: #ffffff;
-  --color-muted: #f6ebe6;
-  --color-line: #ecdcd5;
+  --color-muted: #fbf1e6;
+  --color-line: #f0dfcc;
 }
 
 @layer base {
@@ -38,6 +41,10 @@
   }
   body {
     @apply bg-canvas font-sans text-ink antialiased;
+  }
+  ::selection {
+    background-color: var(--color-sun);
+    color: var(--color-brand-deep);
   }
 }
 
