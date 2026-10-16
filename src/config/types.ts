@@ -71,10 +71,18 @@ export interface GalleryPhoto extends Image {
   alt: Localized;
 }
 
+/**
+ * A state insurance license, exactly as it appears on the state's license lookup
+ * (Texas: TDI, https://www.tdi.texas.gov/agent/agent-lookup.html; New Mexico: OSI).
+ * Not the NPN (National Producer Number, see `site.npn`), not a phone, tax ID or business filing number.
+ */
 export interface License {
-  /** Two-letter state code, e.g. "TX". */
+  /** Two-letter code of the state that issued the license, e.g. "TX". */
   state: string;
+  /** License number issued by that state. */
   number: string;
+  /** Whose license it is: Silvia's individual agent license or the agency's own license. */
+  holder: "agent" | "agency";
 }
 
 /** An extra office location. Leave fields null until confirmed: pending offices are hidden in production. */
@@ -97,7 +105,11 @@ export interface SiteConfig {
   brandName: string;
   /** Full name, e.g. "Silvia Alcazar". */
   agentName: string;
-  /** Production URL without trailing slash, e.g. "https://www.example.com". */
+  /**
+   * Production URL: https, no trailing slash, e.g. "https://www.yourdomain.com".
+   * null = not confirmed yet: no canonical, hreflang, Open Graph URL/image, sitemap or JSON-LD URLs
+   * are generated, and every page stays noindex.
+   */
   url: string | null;
 
   contact: {
@@ -131,10 +143,13 @@ export interface SiteConfig {
   otherOffices: Office[];
 
   hours: HoursRow[] | null;
-  /** Languages Silvia serves clients in. */
+  /**
+   * Languages the office actually serves clients in (by phone and in person). Not the same as the
+   * site's languages: the site is in EN and ES either way. null = not confirmed ("Se habla español" stays hidden).
+   */
   languages: Locale[] | null;
   licenses: License[];
-  /** National Producer Number, shown in the footer when set. */
+  /** National Producer Number (NIPR, digits only), shown in the footer when set. Not a state license number. */
   npn: string | null;
   /** Only if Silvia can reliably meet it, e.g. { en: "one business day", es: "un día hábil" }. */
   responseTime: Localized | null;
@@ -145,8 +160,12 @@ export interface SiteConfig {
   photo: Image | null;
   /** Square close-up of Silvia (cropped from the photo) for the "Meet Silvia" section. */
   portrait: Image | null;
-  /** Photo of the office/storefront. `credit` is shown under it (e.g. "Imagery © Google" for Street View). */
-  officePhoto: (Image & { credit: string | null }) | null;
+  /**
+   * Photo of the office/storefront. `credit` is shown under it (e.g. "Imagery © Google" for Street View).
+   * `source: "own"` = taken by or for the office. Any other source (e.g. a Street View capture) is only a
+   * development placeholder: production builds don't show it, so it is never presented as the office's own photo.
+   */
+  officePhoto: (Image & { credit: string | null; source: "own" | "streetView" }) | null;
 
   /** Videos and event photos for the "In the media" section. Hidden when all are empty. */
   media: {
@@ -163,6 +182,11 @@ export interface SiteConfig {
     intro: Localized | null;
     /** Why she helps clients / how she started. */
     story: Localized | null;
+    /**
+     * ISO date (e.g. "2026-11-02") on which Silvia read and approved `intro` and `story` in EN and ES.
+     * null = draft: the texts only render in development and production shows the neutral fallback.
+     */
+    approvedOn: string | null;
   };
 
   /** Programs explained on the site (home cards, pages and form options). Educational, not a sales claim. */

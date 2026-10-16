@@ -17,7 +17,7 @@ export function DraftBanner({ dict }: { dict: Dictionary }) {
         <ul className="list-disc space-y-1 pl-5">
           {items.map((item) => (
             <li key={item.key} className={item.blocking ? "font-medium" : "opacity-75"}>
-              {item.message}
+              {item.message} <span className="opacity-75">({item.owner})</span>
             </li>
           ))}
         </ul>

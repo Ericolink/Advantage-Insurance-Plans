@@ -9,6 +9,7 @@ import { siteVars } from "@/lib/site-vars";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { ButtonLink } from "@/components/ui/Button";
 import { CallButton } from "@/components/ui/CallButton";
+import { DraftTag } from "@/components/ui/DraftTag";
 import { Icon } from "@/components/ui/Icon";
 import { container, h2Class, leadClass, sectionSpace, textLinkClass } from "@/components/ui/styles";
 
@@ -25,21 +26,94 @@ export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) 
     .map((office, index) => ({ office, number: index + 2 }))
     .filter(({ office }) => isComplete(office) || isDev);
   const closed = hours ? closedDays(hours) : [];
-  const officePhoto = site.officePhoto && (
+  // Only the office's own photo is published. A Street View capture is a development placeholder, so it is
+  // never presented as the agency's own picture of its premises.
+  const photo = site.officePhoto && (site.officePhoto.source === "own" || isDev) ? site.officePhoto : null;
+  const officePhoto = photo && (
     <figure>
+      {photo.source !== "own" && <DraftTag className="mb-2">Street View placeholder · hidden in production</DraftTag>}
       {/* eslint-disable-next-line @next/next/no-img-element -- plain img keeps the static export option open */}
       <img
-        src={site.officePhoto.src}
-        width={site.officePhoto.width}
-        height={site.officePhoto.height}
+        src={photo.src}
+        width={photo.width}
+        height={photo.height}
         alt={fill(dict.contact.officeAlt, { ...siteVars, business: site.brandName })}
         loading="lazy"
         className="aspect-[3/2] w-full rounded-2xl object-cover shadow-sm ring-1 ring-line"
       />
-      {site.officePhoto.credit && (
-        <figcaption className="mt-1 text-right text-sm text-ink-soft">{site.officePhoto.credit}</figcaption>
-      )}
+      {photo.credit && <figcaption className="mt-1 text-right text-sm text-ink-soft">{photo.credit}</figcaption>}
     </figure>
+  );
+
+  // Calling is the easiest option for many visitors, so it comes first. The number itself is the tap target.
+  const callCard = (
+    <div className="rounded-2xl bg-surface p-6 shadow-sm sm:p-8">
+      <p className="text-xl font-bold text-brand-deep sm:text-2xl">{dict.contact.callTitle}</p>
+      {contact.phone && (
+        <a
+          href={`tel:${contact.phone.e164}`}
+          data-primary-call=""
+          className="mt-2 inline-flex min-h-12 items-center gap-3 text-3xl font-bold text-accent-strong underline-offset-4 hover:underline"
+        >
+          <Icon name="phone" className="size-7 shrink-0" />
+          {contact.phone.display}
+        </a>
+      )}
+      {contact.tty && <p className="mt-1 text-lg font-semibold text-ink">{dict.footer.tty}</p>}
+      <div className="mt-5 hidden sm:block">
+        <CallButton dict={dict} showNumber={false} variant="brand" className="w-full" />
+      </div>
+    </div>
+  );
+  const details = (
+    <>
+      <dl className="divide-y divide-line">
+        {contact.email && (
+          <InfoRow icon="mail" label={dict.contact.email}>
+            <a href={`mailto:${contact.email}`} className="break-all font-semibold text-brand hover:underline">
+              {contact.email}
+            </a>
+          </InfoRow>
+        )}
+        {hours && hours.length > 0 && (
+          <InfoRow icon="clock" label={dict.contact.hours}>
+            <ul>
+              {hours.map((row) => (
+                <li key={row.days.join()}>
+                  {formatDays(row.days, locale)}: {formatHours(row, locale)}
+                </li>
+              ))}
+              {closed.length > 0 && (
+                <li>
+                  {formatDays(closed, locale)}: {dict.contact.closed}
+                </li>
+              )}
+            </ul>
+          </InfoRow>
+        )}
+        {site.languages && (
+          <InfoRow icon="globe" label={dict.contact.languages}>
+            {site.languages.map((code) => localeNames[code]).join(" · ")}
+          </InfoRow>
+        )}
+        {!showAddress && location.serviceArea && (
+          <InfoRow icon="mapPin" label={dict.contact.area}>
+            {t(location.serviceArea, locale)}
+          </InfoRow>
+        )}
+      </dl>
+
+      <Link href={pagePath("firstVisit", locale)} className={textLinkClass}>
+        {dict.contact.prepare}
+        <Icon name="arrowRight" className="size-5 shrink-0" />
+      </Link>
+    </>
+  );
+  const booking = site.bookingUrl && (
+    <ButtonLink href={site.bookingUrl} target="_blank" rel="noopener noreferrer" variant="secondary">
+      <Icon name="calendar" className="size-5" />
+      {dict.contact.book}
+    </ButtonLink>
   );
 
   return (
@@ -50,77 +124,25 @@ export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) 
         </h2>
         <p className={`mt-4 ${leadClass}`}>{subtitle}</p>
 
+        {/* Form on: contact details beside it. Form off: the photo beside them, or, without a photo,
+            the call card and the details side by side so no column is left empty. */}
         <div className={`mt-10 grid items-start gap-10 lg:gap-12 ${site.leadForm ? "lg:grid-cols-[2fr_3fr]" : "lg:grid-cols-2"}`}>
-          <div className="space-y-8">
-            {/* Calling is the easiest option for many visitors, so it comes first. The number itself is the tap target. */}
-            <div className="rounded-2xl bg-surface p-6 shadow-sm sm:p-8">
-              <p className="text-xl font-bold text-brand-deep sm:text-2xl">{dict.contact.callTitle}</p>
-              {contact.phone && (
-                <a
-                  href={`tel:${contact.phone.e164}`}
-                  data-primary-call=""
-                  className="mt-2 inline-flex min-h-12 items-center gap-3 text-3xl font-bold text-accent-strong underline-offset-4 hover:underline"
-                >
-                  <Icon name="phone" className="size-7 shrink-0" />
-                  {contact.phone.display}
-                </a>
-              )}
-              {contact.tty && <p className="mt-1 text-lg font-semibold text-ink">{dict.footer.tty}</p>}
-              <div className="mt-5 hidden sm:block">
-                <CallButton dict={dict} showNumber={false} variant="brand" className="w-full" />
-              </div>
+          {site.leadForm || officePhoto ? (
+            <div className="space-y-8">
+              {callCard}
+              {details}
+              {site.leadForm && officePhoto}
+              {booking}
             </div>
-
-            <dl className="divide-y divide-line">
-              {contact.email && (
-                <InfoRow icon="mail" label={dict.contact.email}>
-                  <a href={`mailto:${contact.email}`} className="break-all font-semibold text-brand hover:underline">
-                    {contact.email}
-                  </a>
-                </InfoRow>
-              )}
-              {hours && hours.length > 0 && (
-                <InfoRow icon="clock" label={dict.contact.hours}>
-                  <ul>
-                    {hours.map((row) => (
-                      <li key={row.days.join()}>
-                        {formatDays(row.days, locale)}: {formatHours(row, locale)}
-                      </li>
-                    ))}
-                    {closed.length > 0 && (
-                      <li>
-                        {formatDays(closed, locale)}: {dict.contact.closed}
-                      </li>
-                    )}
-                  </ul>
-                </InfoRow>
-              )}
-              {site.languages && (
-                <InfoRow icon="globe" label={dict.contact.languages}>
-                  {site.languages.map((code) => localeNames[code]).join(" · ")}
-                </InfoRow>
-              )}
-              {!showAddress && location.serviceArea && (
-                <InfoRow icon="mapPin" label={dict.contact.area}>
-                  {t(location.serviceArea, locale)}
-                </InfoRow>
-              )}
-            </dl>
-
-            <Link href={pagePath("firstVisit", locale)} className={textLinkClass}>
-              {dict.contact.prepare}
-              <Icon name="arrowRight" className="size-5 shrink-0" />
-            </Link>
-
-            {site.leadForm && officePhoto}
-
-            {site.bookingUrl && (
-              <ButtonLink href={site.bookingUrl} target="_blank" rel="noopener noreferrer" variant="secondary">
-                <Icon name="calendar" className="size-5" />
-                {dict.contact.book}
-              </ButtonLink>
-            )}
-          </div>
+          ) : (
+            <>
+              {callCard}
+              <div className="space-y-8">
+                {details}
+                {booking}
+              </div>
+            </>
+          )}
 
           {site.leadForm ? (
             <LeadForm

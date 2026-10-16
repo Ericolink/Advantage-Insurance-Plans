@@ -5,7 +5,7 @@ import { Fraunces, Inter } from "next/font/google";
 import { isLaunchReady } from "@/config/readiness";
 import { site } from "@/config/site";
 import { fill, getDictionary, hasLocale, localeTags, locales } from "@/lib/i18n";
-import { alternatesFor, samePath } from "@/lib/seo";
+import { alternatesFor, openGraphUrls, samePath } from "@/lib/seo";
 import { siteVars } from "@/lib/site-vars";
 import { CallBar } from "@/components/layout/CallBar";
 import { DraftBanner } from "@/components/layout/DraftBanner";
@@ -48,8 +48,7 @@ export async function generateMetadata({ params }: Omit<LayoutProps, "children">
       title,
       description,
       locale: localeTags[lang].replace("-", "_"),
-      url: `/${lang}`,
-      ...(site.photo && { images: [{ url: site.photo.src, width: site.photo.width, height: site.photo.height }] }),
+      ...openGraphUrls(`/${lang}`, site.photo),
     },
     // Keep search engines out until the real data is in place.
     robots: indexable ? { index: true, follow: true } : { index: false, follow: false },

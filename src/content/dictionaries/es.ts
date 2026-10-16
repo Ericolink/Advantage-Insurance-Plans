@@ -156,7 +156,7 @@ export const es: typeof en = {
       body: "Alejandro Alcazar, hijo de {agentFirst}, recibió un reconocimiento por el trabajo de todo un año. En esta entrevista agradece a la comunidad de Sunland Park y habla del trabajo en equipo, como una familia.",
     },
     photos: {
-      title: "Evento de Televisa Univision",
+      title: "Evento de TelevisaUnivision",
       body: "{agentFirst} asistió como invitada a este evento de TelevisaUnivision.",
       open: "Ampliar foto {n} de {total}",
       dialog: "Fotos del evento",
@@ -210,7 +210,7 @@ export const es: typeof en = {
       medicaid: "Medicaid",
       dual: "Medicare y Medicaid",
       aca: "Mercado de Seguros (Obamacare)",
-      other: "Otra cosa / No estoy seguro",
+      other: "Otra cosa / No lo sé",
     },
     contactMethod: "¿Cómo prefiere que le contactemos?",
     methodPhone: "Llamada",
@@ -257,7 +257,7 @@ export const es: typeof en = {
     medicareDisclaimer:
       "No ofrecemos todos los planes disponibles en su área. Actualmente representamos a {organizations} organizaciones que ofrecen {products} productos en su área. Comuníquese con Medicare.gov, 1-800-MEDICARE o con el Programa Estatal de Asistencia sobre Seguros de Salud (SHIP) de su localidad para obtener información sobre todas sus opciones.",
     governmentDisclaimer:
-      "{brand} no está vinculado ni respaldado por el gobierno de EE. UU. ni por el programa federal de Medicare.",
+      "{brand} no tiene vínculo con el gobierno de EE. UU. ni con el programa federal de Medicare, ni cuenta con su respaldo.",
     marketplaceDisclaimer:
       "{brand} no es el Mercado de Seguros Médicos® (CuidadoDeSalud.gov). También puede solicitar cobertura directamente en CuidadoDeSalud.gov.",
     educational: "La información de este sitio es general y educativa. No es una decisión sobre su elegibilidad ni una recomendación para su situación.",

@@ -29,7 +29,7 @@ export const esPages: PagesContent = {
               "Personas con ELA (esclerosis lateral amiotrófica) o con enfermedad renal en etapa final (falla permanente de los riñones).",
             ],
           },
-          { type: "note", text: "Cada caso es diferente. Quien decide si usted califica es el Seguro Social y Medicare, no nuestra oficina." },
+          { type: "note", text: "Cada caso es diferente. Quienes deciden si usted califica son el Seguro Social y Medicare, no nuestra oficina." },
         ],
       },
       {
@@ -653,7 +653,7 @@ export const esPages: PagesContent = {
               {
                 id: "how-contact",
                 question: "¿Cómo me comunico con la oficina?",
-                answer: ["Llámenos en horario de oficina o visite nuestra oficina en El Paso. Encontrará el teléfono, el horario y la dirección al final de esta página."],
+                answer: ["Llámenos en horario de oficina o visite una de nuestras oficinas. Encontrará el teléfono, el horario y las direcciones al final de esta página."],
               },
               {
                 id: "can-you-help",

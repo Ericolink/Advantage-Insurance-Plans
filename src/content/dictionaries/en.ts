@@ -158,7 +158,7 @@ export const en = {
       body: "Alejandro Alcazar, {agentFirst}'s son, received an award for a year of work. In this interview he thanks the Sunland Park community and talks about working as a team, like a family.",
     },
     photos: {
-      title: "Televisa Univision event",
+      title: "TelevisaUnivision event",
       body: "{agentFirst} attended this TelevisaUnivision event as a guest.",
       open: "Enlarge photo {n} of {total}",
       dialog: "Event photos",

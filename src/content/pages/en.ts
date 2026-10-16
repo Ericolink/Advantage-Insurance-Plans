@@ -654,7 +654,7 @@ export const enPages: PagesContent = {
               {
                 id: "how-contact",
                 question: "How can I contact the office?",
-                answer: ["Call us during office hours or visit our office in El Paso. You'll find the phone number, hours and address at the bottom of this page."],
+                answer: ["Call us during office hours or visit one of our offices. You'll find the phone number, hours and addresses at the bottom of this page."],
               },
               {
                 id: "can-you-help",

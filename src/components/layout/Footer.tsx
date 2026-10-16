@@ -22,6 +22,9 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
     { href: site.socials.linkedin, label: "LinkedIn" },
     { href: site.socials.google, label: "Google" },
   ].filter((social): social is { href: string; label: string } => Boolean(social.href));
+  // This paragraph names Medicare Advantage and Part D organizations the office represents, so it waits
+  // until Silvia confirms the office offers those products (site.scope); the CMS disclaimer below does not.
+  const representsMedicarePlans = site.scope.medicareAdvantage === true || site.scope.partD === true;
   const linkClass = "inline-flex min-h-11 items-center hover:text-sun hover:underline";
 
   return (
@@ -41,7 +44,8 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <ul className="space-y-1">
               {site.licenses.map((license) => (
                 <li key={`${license.state}-${license.number}`}>
-                  {fill(dict.footer.licensed, { state: license.state })} · {fill(dict.footer.license, { number: license.number })}
+                  {license.holder === "agent" ? site.agentName : site.businessName} · {fill(dict.footer.licensed, { state: license.state })} ·{" "}
+                  {fill(dict.footer.license, { number: license.number })}
                 </li>
               ))}
             </ul>
@@ -146,12 +150,8 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
       <div className="border-t border-white/15">
         <div className={`${container} max-w-6xl space-y-4 py-10 text-base leading-relaxed text-white/90`}>
-          {medicare && (
-            <>
-              <p>{dict.footer.medicareRepresentation}</p>
-              <p>{dict.footer.brandOperator}</p>
-            </>
-          )}
+          {medicare && representsMedicarePlans && <p>{dict.footer.medicareRepresentation}</p>}
+          {medicare && <p>{dict.footer.brandOperator}</p>}
           {medicare && organizations !== null && products !== null && (
             <>
               <p className="font-semibold text-white">{fill(dict.footer.medicareDisclaimer, { organizations, products })}</p>

@@ -4,7 +4,7 @@ import { pageFromSlug, pageSlugs, pagePath, pageIds } from "@/config/pages";
 import { site } from "@/config/site";
 import { getPage } from "@/content/pages";
 import { getDictionary, hasLocale, localeTags, locales } from "@/lib/i18n";
-import { alternatesFor } from "@/lib/seo";
+import { alternatesFor, openGraphUrls } from "@/lib/seo";
 import { InfoPage } from "@/components/content/InfoPage";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
@@ -39,8 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: page.metaTitle,
       description: page.metaDescription,
       locale: localeTags[match.locale].replace("-", "_"),
-      url: paths[match.locale],
-      ...(site.photo && { images: [{ url: site.photo.src, width: site.photo.width, height: site.photo.height }] }),
+      ...openGraphUrls(paths[match.locale], site.photo),
     },
   };
 }

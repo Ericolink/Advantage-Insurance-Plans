@@ -12,6 +12,8 @@ export const site: SiteConfig = {
   // Always shown in full: another El Paso agency has a very similar name.
   brandName: "Advantage Insurance Plans by Silvia Alcazar",
   agentName: "Silvia Alcazar",
+  // Pending: the production domain is not confirmed anywhere in the project (no domain in netlify.toml,
+  // .env or the Google profile). Set it here once bought/confirmed, e.g. "https://www.yourdomain.com".
   url: null,
 
   contact: {
@@ -19,6 +21,7 @@ export const site: SiteConfig = {
     acceptsTexts: false,
     // Pending: confirm the office accepts relay (TTY 711) calls.
     tty: false,
+    // Pending: Silvia's official email (one she reads daily). Never use a personal or example address.
     email: null,
   },
 
@@ -74,15 +77,20 @@ export const site: SiteConfig = {
   // Pending confirmation that Silvia serves clients in both languages.
   // When confirmed set ["en", "es"]: it shows "Se habla español" and a language choice in the form.
   languages: null,
+  // Pending: Silvia's state license(s), from TDI (Texas) and, for the Sunland Park office, NM OSI.
+  // Example shape (not real data): { state: "TX", number: "<from TDI>", holder: "agent" }.
   licenses: [],
+  // Pending: Silvia's NPN (digits only, from NIPR). It is not a state license number.
   npn: null,
   responseTime: null,
 
   logo: { src: "/images/logo.webp", width: 528, height: 228 },
   photo: { src: "/images/SilviaFoto.jpg", width: 854, height: 1280, webp: "/images/silvia-photo-768.webp" },
   portrait: { src: "/images/silvia-portrait.jpg", width: 400, height: 400 },
-  // Google Street View capture: Google requires visible attribution. Replace with an own photo when possible.
-  officePhoto: { src: "/images/office.webp", width: 534, height: 353, credit: "Imagery © Google" },
+  // Google Street View capture: a development placeholder only (hidden in production, see types.ts).
+  // When the office sends its own photo: replace /images/office.webp (or point src to the new file),
+  // update width/height, set credit to null (or the photographer) and source to "own".
+  officePhoto: { src: "/images/office.webp", width: 534, height: 353, credit: "Imagery © Google", source: "streetView" },
 
   media: {
     commercial: {
@@ -161,6 +169,7 @@ export const site: SiteConfig = {
     // Silvia's own introduction (EN and ES). Do not write a biography she hasn't approved.
     intro: null,
     story: null,
+    approvedOn: null,
   },
 
   services: ["medicare", "medicaid", "dual", "aca"],
@@ -178,6 +187,7 @@ export const site: SiteConfig = {
 
   carriers: {
     // Illustrative list from the office; confirm current appointments before setting `confirmed: true`.
+    // Names here are not proof of a current contract: the list stays hidden until confirmed.
     names: ["UnitedHealthcare", "Humana", "Devoted Health", "Alignment Health", "HealthSpring"],
     confirmed: false,
   },
@@ -188,6 +198,8 @@ export const site: SiteConfig = {
     facebook: null,
     instagram: null,
     linkedin: null,
+    // Pending: the official profile link, from Silvia's Google Business Profile ("Share" button).
+    // Never a Google search URL.
     google: null,
   },
 
@@ -210,5 +222,7 @@ export const site: SiteConfig = {
     termsReady: false,
   },
 
+  // Stays false until Silvia approves every page in EN and ES and the Medicare copy passes compliance
+  // review. See docs/launch/content-review.md for the checklist.
   copyApproved: false,
 };

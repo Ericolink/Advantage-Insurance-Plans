@@ -3,12 +3,18 @@ import type { Locale } from "@/config/types";
 import { fill, localeNames, t, type Dictionary } from "@/lib/i18n";
 import { siteVars } from "@/lib/site-vars";
 import { CallButton } from "@/components/ui/CallButton";
+import { DraftTag } from "@/components/ui/DraftTag";
 import { Icon } from "@/components/ui/Icon";
 import { container, h2Class, sectionSpace } from "@/components/ui/styles";
 
 export function About({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const portrait = site.portrait ?? site.photo;
   const showCarriers = site.carriers.confirmed && site.carriers.names.length > 0;
+  // Silvia's own words are published only once her approval date is recorded; drafts show in development only.
+  const approved = Boolean(site.about.approvedOn);
+  const showDraft = !approved && process.env.NODE_ENV === "development";
+  const intro = site.about.intro && (approved || showDraft) ? site.about.intro : null;
+  const story = site.about.story && (approved || showDraft) ? site.about.story : null;
 
   return (
     <section id="about" aria-labelledby="about-title" className={`scroll-mt-24 bg-sun-soft ${sectionSpace}`}>
@@ -31,8 +37,9 @@ export function About({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           </h2>
           <p className="mt-2 text-lg font-semibold text-accent-strong sm:text-xl">{fill(dict.about.role, siteVars)}</p>
           <div className="mt-6 max-w-2xl space-y-5 text-base leading-relaxed text-ink sm:text-lg">
-            <p>{site.about.intro ? t(site.about.intro, locale) : fill(dict.about.fallback, siteVars)}</p>
-            {site.about.story && <p>{t(site.about.story, locale)}</p>}
+            {showDraft && (intro || story) && <DraftTag>introduction not approved by Silvia · hidden in production</DraftTag>}
+            <p>{intro ? t(intro, locale) : fill(dict.about.fallback, siteVars)}</p>
+            {story && <p>{t(story, locale)}</p>}
             <p>{dict.about.howWeHelp}</p>
             {site.languages && (
               <p className="flex items-center gap-2 font-semibold text-brand-deep">

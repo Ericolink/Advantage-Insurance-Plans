@@ -59,8 +59,8 @@ export async function submitLead(_previous: LeadFormState, formData: FormData): 
 
   if (Object.keys(errors).length > 0) return { status: "error", errors, values };
 
-  // Never pretend a request was sent: without a destination, ask the visitor to call.
-  if (!hasLeadDestination()) return { status: "error", errors: { form: "unavailable" }, values };
+  // Never pretend a request was sent: with the form turned off or without a destination, ask the visitor to call.
+  if (!site.leadForm || !hasLeadDestination()) return { status: "error", errors: { form: "unavailable" }, values };
 
   const requestHeaders = await headers();
   const ip = requestHeaders.get("x-forwarded-for")?.split(",")[0]?.trim() || requestHeaders.get("x-real-ip");
