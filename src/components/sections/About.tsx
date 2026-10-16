@@ -31,12 +31,6 @@ export function About({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           </h2>
           <p className="mt-2 text-lg font-semibold text-accent-strong sm:text-xl">{fill(dict.about.role, siteVars)}</p>
           <div className="mt-6 max-w-2xl space-y-5 text-base leading-relaxed text-ink sm:text-lg">
-            {/* Placeholder marker for the team, never shown in production. */}
-            {!site.about.intro && process.env.NODE_ENV === "development" && (
-              <p className="rounded-xl border-2 border-dashed border-amber-500 bg-amber-50 px-4 py-2 text-base font-semibold text-amber-950" lang="en">
-                {dict.about.introPending}
-              </p>
-            )}
             <p>{site.about.intro ? t(site.about.intro, locale) : fill(dict.about.fallback, siteVars)}</p>
             {site.about.story && <p>{t(site.about.story, locale)}</p>}
             <p>{dict.about.howWeHelp}</p>

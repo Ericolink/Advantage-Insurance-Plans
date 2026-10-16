@@ -1,3 +1,4 @@
+import { silviaMessage } from "../content/message.ts";
 import { hasLeadDestination } from "./lead-env.ts";
 import type { SiteConfig } from "./types.ts";
 
@@ -49,6 +50,9 @@ export function getPendingItems(site: SiteConfig): PendingItem[] {
     add("office-photo", "site.officePhoto: uses a Google Street View capture; an own photo of the office is better.", false);
   }
   if (!site.about.intro) add("intro", "site.about.intro: Silvia's introduction is missing.", false);
+  if (!silviaMessage.approved) {
+    add("message", "src/content/message.ts: Silvia's message is a draft; it stays hidden in production until she approves it (approved: true).", false);
+  }
   if (site.services.length === 0) add("services", "site.services: no services listed.");
   const unconfirmedScope = Object.entries(site.scope)
     .filter(([, value]) => value === null)

@@ -137,7 +137,6 @@ export const es: typeof en = {
     howWeHelp:
       "Nos tomamos el tiempo para escucharle y responder sus preguntas con palabras sencillas. Puede hablar con nosotros por teléfono o visitar nuestra oficina en El Paso.",
     languages: "Idiomas: {languages}",
-    introPending: "Pendiente: la presentación de Silvia en sus propias palabras (solo visible en desarrollo).",
     carriersTitle: "Algunas de las compañías con las que trabajamos",
     carriersNote: "Los planes y compañías disponibles dependen de dónde vive.",
     cta: "Comuníquese con la oficina",

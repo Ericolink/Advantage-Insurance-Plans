@@ -136,7 +136,6 @@ export const en = {
     howWeHelp:
       "We take the time to listen and answer your questions in plain words. You can talk with us by phone or visit our office in El Paso.",
     languages: "Languages: {languages}",
-    introPending: "Pending: Silvia's own introduction (only shown in development).",
     carriersTitle: "Some of the companies we work with",
     carriersNote: "Plans and companies available depend on where you live.",
     cta: "Contact Our Office",

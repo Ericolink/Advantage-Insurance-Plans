@@ -7,6 +7,7 @@ import { Hero } from "@/components/sections/Hero";
 import { HowWeHelp } from "@/components/sections/HowWeHelp";
 import { Media } from "@/components/sections/Media";
 import { Services } from "@/components/sections/Services";
+import { SilviaMessage } from "@/components/sections/SilviaMessage";
 import { Terms } from "@/components/sections/Terms";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -23,6 +24,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
       <Services locale={lang} dict={dict} />
       <HowWeHelp locale={lang} dict={dict} />
       <About locale={lang} dict={dict} />
+      <SilviaMessage locale={lang} />
       <Media locale={lang} dict={dict} />
       <FaqTeaser locale={lang} dict={dict} />
       <Terms dict={dict} />
