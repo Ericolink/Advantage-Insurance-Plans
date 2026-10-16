@@ -87,9 +87,9 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 className="hidden min-h-12 items-center gap-2 whitespace-nowrap rounded-xl bg-accent px-4 py-2 text-base font-semibold text-white transition-[background-color,box-shadow,scale] duration-200 hover:bg-accent-strong hover:shadow-[0_8px_18px_-10px_rgb(165_59_11/0.7)] motion-safe:active:scale-[0.98] focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-brand-deep sm:inline-flex"
               >
                 <Icon name="phone" className="size-5" />
-                {/* Short label while the menu shares the row; the number is always in the top bar. */}
-                <span className="2xl:hidden">{dict.nav.callShort}</span>
-                <span className="hidden 2xl:inline">{dict.nav.call}</span>
+                {/* Always the short label: the row is capped at the container width, and with the long one
+                    ("Llame a la oficina") the Spanish menu ran over the business name. The number is in the top bar. */}
+                {dict.nav.callShort}
               </a>
             )}
             <div className="xl:hidden">
