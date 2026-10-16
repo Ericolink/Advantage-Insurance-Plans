@@ -196,6 +196,7 @@ export const es: typeof en = {
     mapTitle: "Mapa con la ubicación de {business}",
     directions: "Cómo llegar",
     officesTitle: "Nuestras oficinas",
+    officesIntro: "Visítenos en la oficina que le quede más cerca. Cada dirección le muestra cómo llegar en Google Maps.",
     mainOffice: "Oficina principal",
     office: "Oficina {number}",
     officePending: "Dirección pendiente",

@@ -72,6 +72,15 @@ export interface GalleryPhoto extends Image {
 }
 
 /**
+ * Framing for an office photo. Its frame follows the photo's own ratio, so it is shown whole; only when the text
+ * beside it runs taller is a sliver trimmed, and `focus` (CSS object-position) keeps the building in view,
+ * e.g. "75% 40%" for a storefront on the right. Each photo has its own: compositions differ. Default: centered.
+ */
+export interface OfficePhotoFraming {
+  focus?: string;
+}
+
+/**
  * A state insurance license, exactly as it appears on the state's license lookup
  * (Texas: TDI, https://www.tdi.texas.gov/agent/agent-lookup.html; New Mexico: OSI).
  * Not the NPN (National Producer Number, see `site.npn`), not a phone, tax ID or business filing number.
@@ -97,8 +106,8 @@ export interface Office {
   phone: { e164: string; display: string } | null;
   /** Google Maps "Share > Embed a map" src URL (only the URL, not the whole iframe). */
   mapEmbedUrl: string | null;
-  /** Photo of this office taken by or for the agency, shown next to its map. */
-  photo?: GalleryPhoto;
+  /** Photo of this office taken by or for the agency. Offices with a photo are featured in the contact section. */
+  photo?: GalleryPhoto & OfficePhotoFraming;
 }
 
 export interface SiteConfig {
@@ -169,7 +178,7 @@ export interface SiteConfig {
    * `source: "own"` = taken by or for the office. Any other source (e.g. a Street View capture) is only a
    * development placeholder: production builds don't show it, so it is never presented as the office's own photo.
    */
-  officePhoto: (Image & { credit: string | null; source: "own" | "streetView" }) | null;
+  officePhoto: (Image & OfficePhotoFraming & { credit: string | null; source: "own" | "streetView"; alt?: Localized }) | null;
 
   /**
    * Photos of Silvia with her sons from the Thrive After 60 magazine session, shown after "Meet Silvia".

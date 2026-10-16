@@ -195,6 +195,7 @@ export const en = {
     mapTitle: "Map showing the location of {business}",
     directions: "Get directions",
     officesTitle: "Our offices",
+    officesIntro: "Visit the office closest to you. Every address opens directions in Google Maps.",
     mainOffice: "Main office",
     office: "Office {number}",
     officePending: "Address pending",

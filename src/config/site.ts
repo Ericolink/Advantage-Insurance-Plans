@@ -48,15 +48,18 @@ export const site: SiteConfig = {
       stateCode: "TX",
       postalCode: "79936",
       phone: null,
-      // Storefront of suite 104, provided by the office (2026-10-16).
+      // Storefront of suite 104, provided by the office (new photo, 2026-10-16).
       photo: {
         src: "/images/office2.jpeg",
-        webp: "/images/office-george-dieter-600.webp",
-        width: 1147,
-        height: 1530,
+        webp: "/images/office-george-dieter-900.webp",
+        width: 1200,
+        height: 1600,
+        // Banner at the top, door and posters below: any trim is taken from the sides, mostly from the stone
+        // wall on the right, so the sidewalk sign at the left edge stays in view.
+        focus: "25% 50%",
         alt: {
-          en: "Front of the office in suite 104, with a Medicare and Medicaid banner above the entrance and Advantage Insurance Plans posters on the windows",
-          es: "Fachada de la oficina en el local 104, con un letrero de Medicare y Medicaid sobre la entrada y carteles de Advantage Insurance Plans en las ventanas",
+          en: "Front of the office in suite 104, with a Medicare and Medicaid banner above the entrance, Advantage Insurance Plans posters on the windows and a sign on the sidewalk",
+          es: "Fachada de la oficina en el local 104, con un letrero de Medicare y Medicaid sobre la entrada, carteles de Advantage Insurance Plans en las ventanas y un anuncio en la banqueta",
         },
       },
       mapEmbedUrl:
@@ -101,7 +104,19 @@ export const site: SiteConfig = {
   photo: { src: "/images/SilviaFoto.jpg", width: 854, height: 1280, webp: "/images/silvia-photo-768.webp" },
   portrait: { src: "/images/silvia-portrait.jpg", width: 400, height: 400 },
   // Photo of the main office taken by the web team (confirmed 2026-10-15), so it is published as the office's own.
-  officePhoto: { src: "/images/office.webp", width: 534, height: 353, credit: null, source: "own" },
+  // The storefront is on the right half, with sky above and parking below: any trim keeps the right side.
+  officePhoto: {
+    src: "/images/office.webp",
+    width: 534,
+    height: 353,
+    credit: null,
+    source: "own",
+    focus: "75% 40%",
+    alt: {
+      en: "Front of the Alameda Avenue office, with a Medicare Health Plans sign above the windows and its parking lot in front",
+      es: "Fachada de la oficina de Alameda Avenue, con un letrero de Medicare Health Plans sobre las ventanas y el estacionamiento al frente",
+    },
+  },
 
   // Thrive After 60 magazine photo session: Silvia with her sons Alejandro and Humberto (provided by the office,
   // 2026-10-16). Which son is which is not marked on the photos, so the alt texts don't name them one by one.

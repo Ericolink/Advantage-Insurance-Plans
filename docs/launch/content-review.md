@@ -34,7 +34,7 @@ La estructura EN/ES de las páginas interiores se comprueba automáticamente al 
 | Videos y eventos | [S] Comercial: "un mensaje breve… para personas nuevas en Medicare". [C] Si el comercial menciona planes o beneficios, confirmar que se presentó/aprobó como material de marketing. [S] Entrevista con Alejandro Alcazar: permiso de Alejandro, descripción del reconocimiento (el video no dice quién lo otorgó; no se añade). [S] Fotos del evento de TelevisaUnivision: derechos de las fotos y permiso de las personas que aparecen; el texto no da a entender respaldo de TelevisaUnivision. |
 | Preguntas frecuentes (extracto) | Ver la página de preguntas. |
 | Glosario "Palabras que puede escuchar" | [C] Definiciones generales de Medicare Original, Medicare Advantage, Parte D, Medicaid, Mercado, prima, deducible, copago, red y periodo de inscripción. |
-| Contacto | [S] "Con gusto le ayudamos". Direcciones de las 4 oficinas y horario lun–vie 9:00–16:00. Foto de Street View oculta en producción. |
+| Contacto | [S] "Con gusto le ayudamos". Direcciones de las 4 oficinas y horario lun–vie 9:00–16:00. Foto de Street View oculta en producción. [S] Añadido el 16/10/2026 bajo "Nuestras oficinas": "Visítenos en la oficina que le quede más cerca. Cada dirección le muestra cómo llegar en Google Maps." (EN/ES). Las oficinas de Alameda y George Dieter aparecen destacadas con su foto. |
 | Pie de página | Ver "Avisos legales del pie". |
 
 ## Avisos legales del pie (todas las páginas) — revisión de cumplimiento obligatoria
