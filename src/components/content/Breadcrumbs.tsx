@@ -7,7 +7,7 @@ export function Breadcrumbs({ home, current, dict }: { home: string; current: st
     <nav aria-label={dict.nav.breadcrumb} className="text-base sm:text-lg">
       <ol className="flex flex-wrap items-center gap-2 text-ink-soft">
         <li>
-          <Link href={home} className="inline-flex min-h-11 items-center font-semibold text-accent-strong underline underline-offset-4 hover:text-brand-deep">
+          <Link href={home} className="inline-flex min-h-11 items-center font-semibold text-accent-strong underline underline-offset-4 transition-colors hover:text-brand-deep">
             {dict.nav.home}
           </Link>
         </li>

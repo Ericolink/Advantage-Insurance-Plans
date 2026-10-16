@@ -25,7 +25,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   // This paragraph names Medicare Advantage and Part D organizations the office represents, so it waits
   // until Silvia confirms the office offers those products (site.scope); the CMS disclaimer below does not.
   const representsMedicarePlans = site.scope.medicareAdvantage === true || site.scope.partD === true;
-  const linkClass = "inline-flex min-h-11 items-center hover:text-sun hover:underline";
+  const linkClass = "inline-flex min-h-11 items-center underline-offset-4 transition-colors duration-200 hover:text-sun hover:underline";
 
   return (
     // On phones the bottom padding reserves the call bar's height, so the end of the page is never hidden behind it.
@@ -58,7 +58,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <ul className="mt-3 space-y-2">
             {contact.phone && (
               <li>
-                <a href={`tel:${contact.phone.e164}`} className="inline-flex min-h-11 items-center text-xl font-bold text-white underline-offset-4 hover:underline">
+                <a href={`tel:${contact.phone.e164}`} className="inline-flex min-h-11 items-center text-xl font-bold text-white underline-offset-4 transition-colors hover:text-sun hover:underline">
                   {contact.phone.display}
                 </a>
                 {contact.tty && <span className="block">{dict.footer.tty}</span>}
@@ -66,7 +66,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             )}
             {contact.email && (
               <li>
-                <a href={`mailto:${contact.email}`} className="break-all hover:text-white hover:underline">
+                <a href={`mailto:${contact.email}`} className="break-all underline-offset-4 transition-colors hover:text-white hover:underline">
                   {contact.email}
                 </a>
               </li>

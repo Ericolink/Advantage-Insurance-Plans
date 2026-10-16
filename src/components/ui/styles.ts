@@ -19,4 +19,8 @@ export const bodyClass = "text-base leading-relaxed text-ink sm:text-lg";
 
 /** Secondary action shown as a link instead of another big button. */
 export const textLinkClass =
-  "inline-flex min-h-11 items-center gap-2 text-lg font-semibold text-accent-strong underline decoration-2 underline-offset-4 hover:text-brand-deep";
+  "inline-flex min-h-11 items-center gap-2 text-lg font-semibold text-accent-strong underline decoration-2 underline-offset-4 transition-colors duration-200 hover:text-brand-deep hover:decoration-accent [&>svg]:transition-transform [&>svg]:duration-200 motion-safe:hover:[&>svg]:translate-x-1";
+
+/** Hover feedback for a card with a stretched link: a small lift and a soft shadow. Touch screens skip it. */
+export const cardHoverClass =
+  "transition-[border-color,box-shadow,translate] duration-300 ease-out hover:shadow-[0_20px_40px_-24px_rgb(20_36_79/0.35)] motion-safe:hover:-translate-y-1 motion-reduce:transition-none";

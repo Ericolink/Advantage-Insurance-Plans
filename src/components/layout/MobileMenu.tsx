@@ -58,16 +58,19 @@ export function MobileMenu({ locale, links, labels, phone }: MobileMenuProps) {
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((value) => !value)}
-        className="inline-flex min-h-12 items-center gap-2 rounded-xl px-3 text-base font-semibold text-brand-deep ring-2 ring-line hover:bg-accent-soft"
+        className="inline-flex min-h-12 items-center gap-2 rounded-xl px-3 text-base font-semibold text-brand-deep ring-2 ring-line transition-[background-color,box-shadow] duration-200 hover:bg-accent-soft hover:ring-accent/40"
       >
         <Icon name={open ? "close" : "menu"} className="size-6" />
         {open ? labels.close : labels.menu}
       </button>
 
+      {/* Closed, the panel is display:none (out of the tab order and the accessibility tree, as `hidden` was).
+          It slides down and fades in on open, and back on close; browsers without transition-behavior just switch. */}
       <div
         id={panelId}
-        hidden={!open}
-        className="absolute inset-x-0 top-full max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-line bg-surface shadow-lg"
+        className={`absolute inset-x-0 top-full max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-line bg-surface shadow-lg transition-[opacity,translate,display] transition-discrete duration-200 ease-out motion-reduce:transition-none ${
+          open ? "block translate-y-0 opacity-100 starting:-translate-y-2 starting:opacity-0" : "hidden -translate-y-2 opacity-0"
+        }`}
       >
         <div className="mx-auto max-w-6xl px-5 pb-6 pt-2 sm:px-8">
           <ul className="divide-y divide-line">
@@ -76,10 +79,10 @@ export function MobileMenu({ locale, links, labels, phone }: MobileMenuProps) {
                 <a
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="flex min-h-14 items-center justify-between gap-3 text-lg font-semibold text-brand-deep hover:text-accent-strong"
+                  className="group flex min-h-14 items-center justify-between gap-3 text-lg font-semibold text-brand-deep transition-colors hover:text-accent-strong"
                 >
                   {link.label}
-                  <Icon name="arrowRight" className="size-5 shrink-0 text-accent" />
+                  <Icon name="arrowRight" className="size-5 shrink-0 text-accent transition-transform duration-200 motion-safe:group-hover:translate-x-1" />
                 </a>
               </li>
             ))}

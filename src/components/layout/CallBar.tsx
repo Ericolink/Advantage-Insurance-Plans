@@ -42,7 +42,7 @@ export function CallBar({ phone, label }: { phone: { e164: string; display: stri
       <a
         href={`tel:${phone.e164}`}
         tabIndex={visible ? undefined : -1}
-        className="flex min-h-13 w-full items-center justify-center gap-2 rounded-xl bg-accent px-5 text-lg font-semibold text-white hover:bg-accent-strong focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-brand-deep"
+        className="flex min-h-13 w-full items-center justify-center gap-2 rounded-xl bg-accent px-5 text-lg font-semibold text-white transition-[background-color,scale] duration-200 hover:bg-accent-strong active:bg-accent-strong motion-safe:active:scale-[0.98] focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-brand-deep"
       >
         <Icon name="phone" className="size-5" />
         {label}: <span className="whitespace-nowrap">{phone.display}</span>

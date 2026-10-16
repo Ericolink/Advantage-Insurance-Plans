@@ -15,11 +15,13 @@ export function FaqTeaser({ locale, dict }: { locale: Locale; dict: Dictionary }
     <section id="questions" aria-labelledby="faq-teaser-title" className={`scroll-mt-24 bg-surface ${sectionSpace}`}>
       <div className={container}>
         <div className="max-w-3xl">
-          <h2 id="faq-teaser-title" className={h2Class}>
-            {dict.faqTeaser.title}
-          </h2>
-          <p className={`mt-4 ${leadClass}`}>{dict.faqTeaser.intro}</p>
-          <div className="mt-8">
+          <div data-reveal>
+            <h2 id="faq-teaser-title" className={h2Class}>
+              {dict.faqTeaser.title}
+            </h2>
+            <p className={`mt-4 ${leadClass}`}>{dict.faqTeaser.intro}</p>
+          </div>
+          <div data-reveal="fade" className="mt-8">
             <FaqList items={getFaqItems(locale, featured)} />
           </div>
           <Link href={pagePath("faq", locale)} className={`mt-6 ${textLinkClass}`}>

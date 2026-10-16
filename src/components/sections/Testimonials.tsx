@@ -9,10 +9,10 @@ export function Testimonials({ locale, dict }: { locale: Locale; dict: Dictionar
   return (
     <section aria-labelledby="testimonials-title" className="bg-sun-soft">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
-        <h2 id="testimonials-title" className="font-display text-3xl font-bold text-brand-deep">
+        <h2 id="testimonials-title" data-reveal className="font-display text-3xl font-bold text-brand-deep">
           {dict.testimonials.title}
         </h2>
-        <ul className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <ul data-reveal-group className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {site.testimonials.map((item) => (
             <li key={item.name} className="rounded-2xl border-t-4 border-accent bg-surface p-6 shadow-sm ring-1 ring-line">
               <figure>

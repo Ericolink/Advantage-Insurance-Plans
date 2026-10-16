@@ -77,9 +77,9 @@ export function Media({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       <div aria-hidden="true" className="absolute -bottom-72 -left-72 -z-10 size-[40rem] rounded-full bg-accent-strong/45" />
 
       <div className={`${container} pt-12 sm:pt-16`}>
-        <header className="max-w-3xl">
+        <header data-reveal className="max-w-3xl">
           <p className="flex items-center gap-3 text-sm font-bold uppercase tracking-[0.16em] sm:text-base">
-            <span aria-hidden="true" className="h-0.5 w-10 bg-white" />
+            <span aria-hidden="true" data-reveal-line className="h-0.5 w-10 bg-white" />
             {dict.media.eyebrow}
           </p>
           <h2 id="media-title" className="mt-4 font-display text-[2rem] font-bold leading-[1.12] text-balance sm:text-5xl">
@@ -90,7 +90,8 @@ export function Media({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
         {(commercial || interview) && (
           // Two equal columns from lg (laptops and landscape tablets); stacked, at full width, below that.
-          <div className="mt-14 grid gap-16 sm:mt-16 lg:grid-cols-2 lg:grid-rows-[auto_auto_1fr] lg:gap-x-12 lg:gap-y-0">
+          // The players enter one after the other; motion never changes their size or alignment.
+          <div data-reveal-group className="mt-14 grid gap-16 sm:mt-16 lg:grid-cols-2 lg:grid-rows-[auto_auto_1fr] lg:gap-x-12 lg:gap-y-0">
             {commercial && (
               <VideoFigure
                 id="media-commercial"
@@ -118,7 +119,7 @@ export function Media({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
         {eventPhotos.length > 0 && (
           <div id="media-photos" className="mt-20 scroll-mt-28 sm:mt-24">
-            <div className="grid gap-5 border-t border-white/40 pt-10 lg:grid-cols-2 lg:items-end lg:gap-16">
+            <div data-reveal="fade" className="grid gap-5 border-t border-white/40 pt-10 lg:grid-cols-2 lg:items-end lg:gap-16">
               <div className="flex items-center gap-4">
                 <Index n={number("media-photos")} />
                 <span aria-hidden="true" className="h-10 w-px shrink-0 bg-white/50" />

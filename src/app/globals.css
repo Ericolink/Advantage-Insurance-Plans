@@ -57,3 +57,153 @@ body:has(:is(input, textarea, select):focus) [data-call-bar] {
 html:has(dialog[data-lightbox][open]) {
   overflow: hidden;
 }
+
+/* ---------------------------------------------------------------------------------------------
+   Motion. Short, soft entrances (transform and opacity only) that never hold content back:
+   - Everything here lives inside `prefers-reduced-motion: no-preference`, so reduced motion shows
+     the site as it is, with no movement.
+   - Scroll reveals hide content only while MotionEffects.tsx marks it `data-reveal-state="pending"`
+     (set by JavaScript, for content below the screen). Without JavaScript nothing is hidden.
+   - The hero sequence is CSS only and ends fully visible, with or without JavaScript.
+   --------------------------------------------------------------------------------------------- */
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --reveal-distance: 16px;
+}
+@media (min-width: 40rem) {
+  :root {
+    --reveal-distance: 24px;
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, var(--reveal-distance), 0);
+  }
+}
+@keyframes reveal-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes reveal-left {
+  from {
+    opacity: 0;
+    transform: translate3d(calc(var(--reveal-distance) * -1), 0, 0);
+  }
+}
+@keyframes reveal-right {
+  from {
+    opacity: 0;
+    transform: translate3d(var(--reveal-distance), 0, 0);
+  }
+}
+@keyframes reveal-line {
+  from {
+    transform: scaleX(0);
+  }
+}
+@keyframes hero-photo {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
+@keyframes header-shade {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Scroll reveals: `data-reveal="up|fade|left|right"` on one element, or `data-reveal-group` on a list
+     whose children enter one after another (MotionEffects sets --reveal-delay). */
+  [data-reveal-state="pending"] {
+    opacity: 0;
+  }
+  [data-reveal-state="in"] {
+    animation: var(--reveal-name, reveal-up) 650ms var(--ease-out) var(--reveal-delay, 0ms) backwards;
+  }
+  [data-reveal="fade"],
+  [data-reveal-group="fade"] > * {
+    --reveal-name: reveal-fade;
+  }
+  /* Sideways only where there is room for it; on phones and tablets it becomes a plain rise. */
+  @media (min-width: 64rem) {
+    [data-reveal="left"] {
+      --reveal-name: reveal-left;
+    }
+    [data-reveal="right"] {
+      --reveal-name: reveal-right;
+    }
+  }
+  /* A short divider that draws itself in as its block enters. */
+  [data-reveal-state="in"] [data-reveal-line] {
+    transform-origin: left;
+    animation: reveal-line 700ms var(--ease-out) calc(var(--reveal-delay, 0ms) + 200ms) backwards;
+  }
+
+  /* Hero and page titles: on load, a quick sequence (title, then text, then actions). The title starts
+     at once, so the main message is readable immediately. */
+  [data-hero] {
+    animation: reveal-up 700ms var(--ease-out) backwards;
+  }
+  [data-hero="2"] {
+    animation-delay: 120ms;
+  }
+  [data-hero="3"] {
+    animation-delay: 240ms;
+  }
+  [data-hero="4"] {
+    animation-delay: 360ms;
+  }
+  [data-hero="photo"] {
+    animation: hero-photo 900ms var(--ease-out) 150ms backwards;
+  }
+
+  /* Header: a soft shadow fades in as the page scrolls. Scroll-driven, so no scroll listener;
+     browsers without support keep the plain border. */
+  @supports (animation-timeline: scroll()) {
+    [data-site-header]::after {
+      content: "";
+      position: absolute;
+      inset-inline: 0;
+      top: 100%;
+      z-index: -1;
+      height: 12px;
+      background: linear-gradient(rgb(20 36 79 / 0.1), transparent);
+      opacity: 0;
+      pointer-events: none;
+      animation: header-shade linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 120px;
+    }
+  }
+
+  /* Photo lightbox: the photo settles in as the dialog opens, and each new photo fades in. */
+  dialog[data-lightbox] figure {
+    transition: scale 250ms var(--ease-out);
+  }
+  @starting-style {
+    dialog[data-lightbox][open] figure {
+      scale: 0.96;
+    }
+  }
+  dialog[data-lightbox] figure img {
+    animation: reveal-fade 220ms ease-out;
+  }
+
+  /* FAQ: the answer fades in when its question opens. */
+  details[open] > summary + * {
+    animation: reveal-fade 300ms ease-out;
+  }
+}
+
+/* Printing never depends on scrolling. */
+@media print {
+  [data-reveal-state] {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+}

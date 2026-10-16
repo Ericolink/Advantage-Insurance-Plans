@@ -4,7 +4,7 @@ import { site } from "@/config/site";
 import type { Locale, ServiceId } from "@/config/types";
 import type { Dictionary } from "@/lib/i18n";
 import { Icon } from "@/components/ui/Icon";
-import { container, h2Class, leadClass, sectionSpace } from "@/components/ui/styles";
+import { cardHoverClass, container, h2Class, leadClass, sectionSpace } from "@/components/ui/styles";
 
 const icons = { medicare: "heartPulse", medicaid: "users", dual: "handshake", aca: "document" } as const satisfies Record<ServiceId, string>;
 
@@ -17,22 +17,24 @@ export function Services({ locale, dict }: { locale: Locale; dict: Dictionary })
   return (
     <section id="services" aria-labelledby="services-title" className={`scroll-mt-24 bg-surface ${sectionSpace}`}>
       <div className={container}>
-        <h2 id="services-title" className={h2Class}>
-          {dict.services.title}
-        </h2>
-        <p className={`mt-4 ${leadClass}`}>{dict.services.intro}</p>
+        <div data-reveal>
+          <h2 id="services-title" className={h2Class}>
+            {dict.services.title}
+          </h2>
+          <p className={`mt-4 ${leadClass}`}>{dict.services.intro}</p>
+        </div>
 
-        <ul className="mt-10 grid gap-5 md:grid-cols-2 md:gap-6">
+        <ul data-reveal-group className="mt-10 grid gap-5 md:grid-cols-2 md:gap-6">
           {site.services.map((id) => {
             const item = dict.services.items[id];
             return (
               // The whole card is one large tap target: the link stretches over it (see after:inset-0).
               <li
                 key={id}
-                className="relative flex min-w-0 flex-col rounded-2xl border border-line bg-canvas p-6 transition-colors focus-within:ring-3 focus-within:ring-brand-deep hover:border-accent motion-reduce:transition-none sm:p-8"
+                className={`group relative flex min-w-0 flex-col rounded-2xl border border-line bg-canvas p-6 focus-within:ring-3 focus-within:ring-brand-deep hover:border-accent sm:p-8 ${cardHoverClass}`}
               >
                 <div className="flex items-center gap-4">
-                  <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-brand text-white">
+                  <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-brand text-white transition-colors duration-300 group-hover:bg-accent">
                     <Icon name={icons[id]} className="size-7" />
                   </span>
                   <h3 className="min-w-0 font-display text-xl font-bold leading-tight text-brand-deep sm:text-2xl">{item.title}</h3>
@@ -43,10 +45,10 @@ export function Services({ locale, dict }: { locale: Locale; dict: Dictionary })
                 </p>
                 <Link
                   href={pagePath(pages[id], locale)}
-                  className="mt-5 inline-flex min-h-11 items-center gap-2 self-start text-lg font-semibold text-accent-strong underline decoration-2 underline-offset-4 outline-none after:absolute after:inset-0 after:rounded-2xl hover:text-brand-deep"
+                  className="mt-5 inline-flex min-h-11 items-center gap-2 self-start text-lg font-semibold text-accent-strong underline decoration-2 underline-offset-4 outline-none transition-colors after:absolute after:inset-0 after:rounded-2xl group-hover:text-brand-deep"
                 >
                   {item.cta}
-                  <Icon name="arrowRight" className="size-5" />
+                  <Icon name="arrowRight" className="size-5 transition-transform duration-200 motion-safe:group-hover:translate-x-1" />
                 </Link>
               </li>
             );

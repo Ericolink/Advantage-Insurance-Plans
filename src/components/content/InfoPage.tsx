@@ -24,9 +24,10 @@ export function InfoPage({ locale, dict, page }: { locale: Locale; dict: Diction
       <div className="bg-accent-soft">
         <div className={`${container} pb-10 pt-6 sm:pb-14 sm:pt-10`}>
           <Breadcrumbs home={`/${locale}`} current={page.label} dict={dict} />
-          <h1 className={`mt-5 max-w-4xl ${h1Class}`}>{page.title}</h1>
-          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-ink text-pretty sm:text-xl">{text(page.intro)}</p>
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
+          {/* Same short entrance as the home page hero (globals.css). */}
+          <h1 data-hero className={`mt-5 max-w-4xl ${h1Class}`}>{page.title}</h1>
+          <p data-hero="2" className="mt-5 max-w-3xl text-lg leading-relaxed text-ink text-pretty sm:text-xl">{text(page.intro)}</p>
+          <div data-hero="3" className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
             <CallButton dict={dict} variant="primary" className="w-full sm:w-auto sm:shrink-0" primary />
             {site.hours && site.hours.length > 0 && (
               <p className="flex items-start gap-2 text-base text-ink sm:text-lg">
@@ -50,7 +51,7 @@ export function InfoPage({ locale, dict, page }: { locale: Locale; dict: Diction
                   <li key={section.id}>
                     <a
                       href={`#${section.id}`}
-                      className="inline-flex min-h-11 items-center py-1 text-base font-semibold text-accent-strong underline underline-offset-4 hover:text-brand-deep sm:text-lg"
+                      className="inline-flex min-h-11 items-center py-1 text-base font-semibold text-accent-strong underline underline-offset-4 transition-colors hover:text-brand-deep sm:text-lg"
                     >
                       {section.heading}
                     </a>
@@ -62,7 +63,7 @@ export function InfoPage({ locale, dict, page }: { locale: Locale; dict: Diction
 
           {page.sections.map((section) => (
             <section key={section.id} id={section.id} aria-labelledby={`${section.id}-title`} className="mt-14 scroll-mt-24 sm:mt-16">
-              <h2 id={`${section.id}-title`} className={h2Class}>
+              <h2 id={`${section.id}-title`} data-reveal className={h2Class}>
                 {section.heading}
               </h2>
               <div className="mt-6 space-y-6">
@@ -75,10 +76,10 @@ export function InfoPage({ locale, dict, page }: { locale: Locale; dict: Diction
         </div>
 
         <section aria-labelledby="related-title" className="mt-16 sm:mt-20">
-          <h2 id="related-title" className={h2Class}>
+          <h2 id="related-title" data-reveal className={h2Class}>
             {dict.pages.related}
           </h2>
-          <ul className="mt-6 divide-y divide-line border-y border-line md:grid md:grid-cols-3 md:gap-4 md:divide-y-0 md:border-0">
+          <ul data-reveal-group className="mt-6 divide-y divide-line border-y border-line md:grid md:grid-cols-3 md:gap-4 md:divide-y-0 md:border-0">
             {page.related.map((id) => (
               <li key={id}>
                 <RelatedLink id={id} locale={locale} />
@@ -87,7 +88,7 @@ export function InfoPage({ locale, dict, page }: { locale: Locale; dict: Diction
           </ul>
         </section>
 
-        <div className="mt-16 sm:mt-20">
+        <div data-reveal className="mt-16 sm:mt-20">
           <CallCta locale={locale} dict={dict} />
         </div>
       </div>
@@ -95,15 +96,19 @@ export function InfoPage({ locale, dict, page }: { locale: Locale; dict: Diction
   );
 }
 
+// From md the related pages are cards: they lift on hover. Below that they are plain list rows.
+const relatedHover =
+  "transition-[color,box-shadow,translate] duration-300 ease-out md:hover:shadow-[0_20px_40px_-24px_rgb(20_36_79/0.35)] motion-safe:md:hover:-translate-y-1 motion-reduce:transition-none";
+
 function RelatedLink({ id, locale }: { id: PageId; locale: Locale }) {
   const page = getPage(id, locale);
   return (
     <Link
       href={pagePath(id, locale)}
-      className="flex h-full min-h-14 items-center justify-between gap-3 py-3 text-lg font-semibold text-brand-deep hover:text-accent-strong md:rounded-2xl md:bg-surface md:px-5 md:py-4 md:text-xl md:ring-1 md:ring-line md:hover:ring-accent"
+      className={`group flex h-full min-h-14 items-center justify-between gap-3 py-3 text-lg font-semibold text-brand-deep hover:text-accent-strong md:rounded-2xl md:bg-surface md:px-5 md:py-4 md:text-xl md:ring-1 md:ring-line md:hover:ring-accent ${relatedHover}`}
     >
       {page.label}
-      <Icon name="arrowRight" className="size-5 shrink-0 text-accent" />
+      <Icon name="arrowRight" className="size-5 shrink-0 text-accent transition-transform duration-200 motion-safe:group-hover:translate-x-1" />
     </Link>
   );
 }
@@ -214,7 +219,7 @@ function BlockView({ block, dict }: { block: Block; dict: Dictionary }) {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center gap-2 text-lg font-semibold text-accent-strong underline underline-offset-4 hover:text-brand-deep"
+                  className="inline-flex min-h-11 items-center gap-2 text-lg font-semibold text-accent-strong underline underline-offset-4 transition-colors hover:text-brand-deep"
                 >
                   {link.label}
                   <Icon name="externalLink" className="size-5 shrink-0" />

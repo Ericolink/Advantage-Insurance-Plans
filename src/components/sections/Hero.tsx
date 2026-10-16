@@ -23,7 +23,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       <div className={`${container} grid items-center gap-12 pb-12 pt-8 sm:pb-16 sm:pt-14 lg:grid-cols-[3fr_2fr]`}>
         <div>
           {/* Phones: a small, personal introduction instead of the large photo. */}
-          <div className="mb-6 flex items-center gap-4 lg:hidden">
+          <div data-hero className="mb-6 flex items-center gap-4 lg:hidden">
             {portrait && (
               // eslint-disable-next-line @next/next/no-img-element -- plain img keeps the static export option open
               <img
@@ -45,28 +45,32 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             </p>
           </div>
 
-          <h1 id="hero-title" className={h1Class.replace("text-brand-deep", "text-white")}>
+          {/* Entrance sequence (globals.css): title at once, then text, actions and details. CSS only. */}
+          <h1 id="hero-title" data-hero className={h1Class.replace("text-brand-deep", "text-white")}>
             {dict.hero.title}
           </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white text-pretty sm:text-xl">{fill(dict.hero.subtitle, siteVars)}</p>
+          <p data-hero="2" className="mt-5 max-w-2xl text-lg leading-relaxed text-white text-pretty sm:text-xl">{fill(dict.hero.subtitle, siteVars)}</p>
 
           {/* One main action (call); the secondary one is a plain link to the services. */}
-          <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-6">
+          <div data-hero="3" className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-6">
             <CallButton dict={dict} label={dict.hero.ctaCall} variant="brand" className="w-full sm:w-auto sm:shrink-0" primary />
-            <a href="#services" className="inline-flex min-h-11 items-center gap-2 text-lg font-semibold text-white underline decoration-2 underline-offset-4 hover:decoration-4">
+            <a
+              href="#services"
+              className="group inline-flex min-h-11 items-center gap-2 text-lg font-semibold text-white underline decoration-2 underline-offset-4 transition-[text-decoration-thickness] hover:decoration-4"
+            >
               {dict.hero.ctaHelp}
-              <Icon name="arrowRight" className="size-5 rotate-90" />
+              <Icon name="arrowRight" className="size-5 rotate-90 transition-transform duration-200 motion-safe:group-hover:translate-y-0.5" />
             </a>
           </div>
 
           {site.hours && site.hours.length > 0 && (
-            <p className="mt-6 flex items-start gap-2 text-base text-white sm:text-lg">
+            <p data-hero="4" className="mt-6 flex items-start gap-2 text-base text-white sm:text-lg">
               <Icon name="clock" className="mt-0.5 size-5 shrink-0" />
               {fill(dict.hero.open, { hours: formatHoursSummary(site.hours, locale) })}
             </p>
           )}
 
-          <ul className="mt-6 hidden flex-wrap gap-x-6 gap-y-2 text-base font-semibold text-white lg:flex">
+          <ul data-hero="4" className="mt-6 hidden flex-wrap gap-x-6 gap-y-2 text-base font-semibold text-white lg:flex">
             <li className="inline-flex items-center gap-2">
               <Icon name="message" className="size-5" />
               {dict.hero.realPerson}
@@ -87,7 +91,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         </div>
 
         {site.photo && (
-          <picture className="mx-auto hidden w-full max-w-sm lg:block">
+          <picture data-hero="photo" className="mx-auto hidden w-full max-w-sm lg:block">
             {site.photo.webp && <source srcSet={site.photo.webp} type="image/webp" />}
             <img
               src={site.photo.src}

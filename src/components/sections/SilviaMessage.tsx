@@ -20,7 +20,7 @@ export function SilviaMessage({ locale }: { locale: Locale }) {
   return (
     <section aria-labelledby="message-title" className="bg-sun-soft pb-16 sm:pb-20 lg:pb-24">
       <div className={container}>
-        <article className="relative mx-auto max-w-3xl overflow-hidden rounded-3xl bg-surface px-6 py-10 shadow-sm ring-1 ring-line sm:px-12 sm:py-14 lg:px-16">
+        <article data-reveal className="relative mx-auto max-w-3xl overflow-hidden rounded-3xl bg-surface px-6 py-10 shadow-sm ring-1 ring-line sm:px-12 sm:py-14 lg:px-16">
           {/* Orange rule along the top, as on the site's other highlighted blocks. */}
           <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1.5 bg-accent" />
           {!publishable && <DraftTag className="relative mb-4">not approved by Silvia · hidden in production</DraftTag>}

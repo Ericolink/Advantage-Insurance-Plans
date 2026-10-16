@@ -53,7 +53,7 @@ export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) 
         <a
           href={`tel:${contact.phone.e164}`}
           data-primary-call=""
-          className="mt-2 inline-flex min-h-12 items-center gap-3 text-3xl font-bold text-accent-strong underline-offset-4 hover:underline"
+          className="mt-2 inline-flex min-h-12 items-center gap-3 text-3xl font-bold text-accent-strong underline-offset-4 transition-colors hover:text-brand-deep hover:underline"
         >
           <Icon name="phone" className="size-7 shrink-0" />
           {contact.phone.display}
@@ -119,10 +119,13 @@ export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) 
   return (
     <section id="contact" aria-labelledby="contact-title" className={`scroll-mt-24 bg-accent-soft ${sectionSpace}`}>
       <div className={container}>
-        <h2 id="contact-title" className={h2Class}>
-          {dict.contact.title}
-        </h2>
-        <p className={`mt-4 ${leadClass}`}>{subtitle}</p>
+        {/* Only the heading moves: the phone, hours and addresses below are there to be read at once. */}
+        <div data-reveal>
+          <h2 id="contact-title" className={h2Class}>
+            {dict.contact.title}
+          </h2>
+          <p className={`mt-4 ${leadClass}`}>{subtitle}</p>
+        </div>
 
         {/* Form on: contact details beside it. Form off: the photo beside them, or, without a photo,
             the call card and the details side by side so no column is left empty. */}

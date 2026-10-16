@@ -11,6 +11,7 @@ import { CallBar } from "@/components/layout/CallBar";
 import { DraftBanner } from "@/components/layout/DraftBanner";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { MotionEffects } from "@/components/layout/MotionEffects";
 import "../globals.css";
 
 const body = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
@@ -71,6 +72,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
         </main>
         <Footer locale={lang} dict={dict} />
         {site.contact.phone && <CallBar phone={site.contact.phone} label={dict.nav.callShort} />}
+        <MotionEffects />
       </body>
     </html>
   );

@@ -22,6 +22,7 @@ export function About({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         {portrait && (
           // eslint-disable-next-line @next/next/no-img-element -- plain img keeps the static export option open
           <img
+            data-reveal="left"
             src={portrait.src}
             width={portrait.width}
             height={portrait.height}
@@ -31,7 +32,7 @@ export function About({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           />
         )}
 
-        <div>
+        <div data-reveal="right">
           <h2 id="about-title" className={h2Class}>
             {fill(dict.about.title, siteVars)}
           </h2>

@@ -38,7 +38,7 @@ export function LanguageSwitcher({ locale, label, tone = "dark" }: { locale: Loc
                 href={translatePath(pathname, code)}
                 hrefLang={code}
                 lang={code}
-                className={`inline-flex min-h-11 items-center rounded-md px-3 font-semibold focus-visible:outline-2 ${colors.link}`}
+                className={`inline-flex min-h-11 items-center rounded-md px-3 font-semibold transition-colors duration-200 focus-visible:outline-2 ${colors.link}`}
               >
                 {names[code]}
               </Link>

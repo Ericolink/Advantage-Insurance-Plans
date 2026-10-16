@@ -14,10 +14,10 @@ export function FaqList({ items, headingLevel = 3 }: { items: FaqItem[]; heading
     <div className="divide-y divide-line border-y border-line">
       {items.map((item) => (
         <details key={item.id} id={item.id} className="group scroll-mt-24">
-          <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-4 py-4 text-brand-deep hover:text-accent-strong [&::-webkit-details-marker]:hidden">
+          <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-4 py-4 text-brand-deep transition-colors duration-200 hover:text-accent-strong [&::-webkit-details-marker]:hidden">
             <Heading className="text-lg font-semibold leading-snug sm:text-xl">{item.question}</Heading>
-            <span className="grid size-10 shrink-0 place-items-center rounded-full bg-accent-soft text-accent-strong group-open:bg-accent group-open:text-white">
-              <Icon name="chevronDown" className="size-5 transition-transform group-open:rotate-180 motion-reduce:transition-none" />
+            <span className="grid size-10 shrink-0 place-items-center rounded-full bg-accent-soft text-accent-strong transition-colors duration-200 group-open:bg-accent group-open:text-white">
+              <Icon name="chevronDown" className="size-5 transition-transform duration-300 ease-out group-open:rotate-180 motion-reduce:transition-none" />
             </span>
           </summary>
           <div className="max-w-2xl space-y-3 pb-6 text-base leading-relaxed text-ink sm:text-lg">

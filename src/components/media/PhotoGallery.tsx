@@ -12,7 +12,7 @@ interface PhotoGalleryProps {
 }
 
 const roundButton =
-  "grid size-12 place-items-center rounded-full bg-white/10 text-white ring-1 ring-white/30 hover:bg-white/20 focus-visible:outline-sun";
+  "grid size-12 place-items-center rounded-full bg-white/10 text-white ring-1 ring-white/30 transition-colors hover:bg-white/20 active:bg-white/25 focus-visible:outline-sun";
 
 /**
  * Justified rows of whole, uncropped photos: each one grows in proportion to its aspect ratio,
@@ -35,7 +35,8 @@ export function PhotoGallery({ locale, photos, labels }: PhotoGalleryProps) {
   return (
     <>
       {/* --row-h is the target row height; it decides how many photos fit per row before they grow to fill it. */}
-      <ul className="flex flex-wrap gap-4 [--row-h:130px] sm:gap-6 sm:[--row-h:260px] lg:[--row-h:230px]">
+      {/* The photos fade in one after another as the row reaches the screen (MotionEffects). */}
+      <ul data-reveal-group="fade" className="flex flex-wrap gap-4 [--row-h:130px] sm:gap-6 sm:[--row-h:260px] lg:[--row-h:230px]">
         {photos.map((photo, i) => (
           <li key={photo.src} style={{ flexGrow: photo.width / photo.height, flexBasis: `calc(${photo.width / photo.height} * var(--row-h))` }}>
             {/* A white ring (not padding) frames each photo like a print without changing its proportions. */}
@@ -43,7 +44,7 @@ export function PhotoGallery({ locale, photos, labels }: PhotoGalleryProps) {
               type="button"
               onClick={() => open(i)}
               aria-label={fill(labels.open, { n: i + 1, total })}
-              className="group relative block w-full overflow-hidden rounded-xl bg-white shadow-[0_18px_36px_-22px_rgb(60_15_0/0.8)] ring-4 ring-white transition-transform duration-300 ease-out hover:-translate-y-1 focus-visible:outline-offset-[7px] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+              className="group relative block w-full overflow-hidden rounded-xl bg-white shadow-[0_18px_36px_-22px_rgb(60_15_0/0.8)] ring-4 ring-white transition-[translate,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_26px_44px_-22px_rgb(60_15_0/0.9)] focus-visible:outline-offset-[7px] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
               {/* eslint-disable-next-line @next/next/no-img-element -- plain img keeps the static export option open */}
               <img
@@ -57,7 +58,7 @@ export function PhotoGallery({ locale, photos, labels }: PhotoGalleryProps) {
               />
               <span
                 aria-hidden="true"
-                className="absolute right-2 bottom-2 grid size-9 place-items-center rounded-full bg-black/60 text-white opacity-90 transition-opacity group-hover:opacity-100"
+                className="absolute right-2 bottom-2 grid size-9 place-items-center rounded-full bg-black/60 text-white opacity-90 transition-[opacity,background-color] group-hover:bg-black/75 group-hover:opacity-100"
               >
                 <Icon name="expand" className="size-4.5" />
               </span>
@@ -78,7 +79,8 @@ export function PhotoGallery({ locale, photos, labels }: PhotoGalleryProps) {
           if (event.key === "ArrowLeft") step(-1);
           if (event.key === "ArrowRight") step(1);
         }}
-        className="m-0 size-full max-h-none max-w-none bg-transparent p-0 opacity-0 transition-[opacity,display,overlay] transition-discrete duration-200 backdrop:bg-brand-deep/90 open:opacity-100 starting:open:opacity-0 motion-reduce:transition-none"
+        // The dialog and its backdrop fade in and out together; the photo settles in (see globals.css).
+        className="m-0 size-full max-h-none max-w-none bg-transparent p-0 opacity-0 transition-[opacity,display,overlay] transition-discrete duration-200 backdrop:bg-brand-deep/90 backdrop:opacity-0 backdrop:transition-[opacity,display,overlay] backdrop:transition-discrete backdrop:duration-200 open:opacity-100 open:backdrop:opacity-100 starting:open:opacity-0 starting:open:backdrop:opacity-0 motion-reduce:transition-none motion-reduce:backdrop:transition-none"
       >
         {/* Only the photo and buttons catch clicks; anything around them reaches the dialog and closes it. */}
         <div className="pointer-events-none flex size-full flex-col items-center justify-center gap-3 p-4 sm:p-8">
@@ -86,7 +88,7 @@ export function PhotoGallery({ locale, photos, labels }: PhotoGalleryProps) {
             <p className="text-base font-semibold" aria-live="polite">
               {fill(labels.counter, { n: index + 1, total })}
             </p>
-            <button type="button" onClick={() => dialogRef.current?.close()} className="inline-flex h-12 items-center gap-2 rounded-full bg-white/10 px-4 text-white ring-1 ring-white/30 hover:bg-white/20 focus-visible:outline-sun"
+            <button type="button" onClick={() => dialogRef.current?.close()} className="inline-flex h-12 items-center gap-2 rounded-full bg-white/10 px-4 text-white ring-1 ring-white/30 transition-colors hover:bg-white/20 active:bg-white/25 focus-visible:outline-sun"
               autoFocus>
               <Icon name="close" className="size-6" />
               <span className="text-base font-semibold">{labels.close}</span>

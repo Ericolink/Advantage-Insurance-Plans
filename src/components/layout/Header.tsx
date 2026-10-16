@@ -36,7 +36,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <Icon name="phone" className="size-5 shrink-0" />
             <span>{dict.hero.realPerson}:</span>
             {phone ? (
-              <a href={`tel:${phone.e164}`} className="whitespace-nowrap font-bold underline-offset-4 hover:underline">
+              <a href={`tel:${phone.e164}`} className="whitespace-nowrap font-bold underline-offset-4 transition-colors hover:text-sun hover:underline">
                 {phone.display}
               </a>
             ) : (
@@ -47,7 +47,8 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         </div>
       </div>
 
-      <header className="sticky top-0 z-40 border-b border-line bg-surface">
+      {/* data-site-header: a soft shadow fades in once the page scrolls (globals.css). */}
+      <header data-site-header className="sticky top-0 z-40 border-b border-line bg-surface">
         <div className={`${container} flex items-center justify-between gap-3 py-2.5 sm:py-3`}>
           <Link href={home} className="flex min-w-0 items-center gap-3 rounded-lg focus-visible:outline-3 focus-visible:outline-brand-deep">
             {site.logo && (
@@ -70,7 +71,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="whitespace-nowrap rounded-lg px-2.5 py-2 text-base font-semibold text-ink hover:bg-accent-soft hover:text-accent-strong"
+                    className="relative whitespace-nowrap rounded-lg px-2.5 py-2 text-base font-semibold text-ink transition-colors duration-200 after:absolute after:inset-x-2.5 after:bottom-1 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-accent after:transition-transform after:duration-300 after:ease-out hover:bg-accent-soft hover:text-accent-strong hover:after:scale-x-100 motion-reduce:after:transition-none"
                   >
                     {link.label}
                   </a>
@@ -83,7 +84,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             {phone && (
               <a
                 href={`tel:${phone.e164}`}
-                className="hidden min-h-12 items-center gap-2 whitespace-nowrap rounded-xl bg-accent px-4 py-2 text-base font-semibold text-white hover:bg-accent-strong focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-brand-deep sm:inline-flex"
+                className="hidden min-h-12 items-center gap-2 whitespace-nowrap rounded-xl bg-accent px-4 py-2 text-base font-semibold text-white transition-[background-color,box-shadow,scale] duration-200 hover:bg-accent-strong hover:shadow-[0_8px_18px_-10px_rgb(165_59_11/0.7)] motion-safe:active:scale-[0.98] focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-brand-deep sm:inline-flex"
               >
                 <Icon name="phone" className="size-5" />
                 {/* Short label while the menu shares the row; the number is always in the top bar. */}
