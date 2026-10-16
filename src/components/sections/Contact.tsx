@@ -146,7 +146,8 @@ export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) 
         {(showAddress || otherOffices.length > 0) && (
           <div className="mt-12">
             <h3 className="font-display text-2xl font-bold text-brand-deep">{dict.contact.officesTitle}</h3>
-            <ul className="mt-5 grid gap-5 md:grid-cols-3">
+            {/* Two by two when the count is even, so no office card sits alone on its row. */}
+            <ul className={`mt-5 grid gap-5 ${((showAddress ? 1 : 0) + otherOffices.length) % 2 === 0 ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
               {showAddress && (
                 <OfficeCard office={mainOffice} title={dict.contact.mainOffice} locale={locale} dict={dict} />
               )}

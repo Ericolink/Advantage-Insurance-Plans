@@ -52,3 +52,8 @@
 body:has(:is(input, textarea, select):focus) [data-call-bar] {
   display: none;
 }
+
+/* Keep the page from scrolling behind the enlarged photo. */
+html:has(dialog[data-lightbox][open]) {
+  overflow: hidden;
+}

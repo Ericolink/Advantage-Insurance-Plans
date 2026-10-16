@@ -5,6 +5,7 @@ import { Contact } from "@/components/sections/Contact";
 import { FaqTeaser } from "@/components/sections/FaqTeaser";
 import { Hero } from "@/components/sections/Hero";
 import { HowWeHelp } from "@/components/sections/HowWeHelp";
+import { Media } from "@/components/sections/Media";
 import { Services } from "@/components/sections/Services";
 import { Terms } from "@/components/sections/Terms";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -22,6 +23,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
       <Services locale={lang} dict={dict} />
       <HowWeHelp locale={lang} dict={dict} />
       <About locale={lang} dict={dict} />
+      <Media locale={lang} dict={dict} />
       <FaqTeaser locale={lang} dict={dict} />
       <Terms dict={dict} />
       <Testimonials locale={lang} dict={dict} />

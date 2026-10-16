@@ -51,6 +51,26 @@ export interface Image {
   webp?: string;
 }
 
+export interface Video {
+  /** Path inside /public, e.g. "/images/video.mp4". */
+  src: string;
+  /** Still frame taken from the video itself, shown until it plays. */
+  poster: string;
+  width: number;
+  height: number;
+  /** Length in seconds, shown before the video loads. */
+  duration: number;
+  /** Spoken language of the video. */
+  language: Locale;
+  /** WebVTT caption tracks, one per language. Visitors pick one (or none) in the player's controls. */
+  captions: { language: Locale; src: string }[];
+}
+
+/** A photo shown in a gallery: `webp` is the light thumbnail, `src` the full photo for the enlarged view. */
+export interface GalleryPhoto extends Image {
+  alt: Localized;
+}
+
 export interface License {
   /** Two-letter state code, e.g. "TX". */
   state: string;
@@ -127,6 +147,16 @@ export interface SiteConfig {
   portrait: Image | null;
   /** Photo of the office/storefront. `credit` is shown under it (e.g. "Imagery © Google" for Street View). */
   officePhoto: (Image & { credit: string | null }) | null;
+
+  /** Videos and event photos for the "In the media" section. Hidden when all are empty. */
+  media: {
+    /** The agency's own TV commercial. */
+    commercial: Video | null;
+    /** Interview recorded at an award ceremony. */
+    interview: Video | null;
+    /** Photos of Silvia at an event she was invited to. Never imply the host endorses the agency. */
+    eventPhotos: GalleryPhoto[];
+  };
 
   about: {
     /** Short introduction in Silvia's own words. */
