@@ -23,6 +23,8 @@ export const site: SiteConfig = {
     tty: false,
     // Pending: Silvia's official email (one she reads daily). Never use a personal or example address.
     email: null,
+    // The main number takes WhatsApp chats (confirmed 2026-10-15): floating button on every page.
+    whatsapp: true,
   },
 
   // From the office's Google Business Profile.

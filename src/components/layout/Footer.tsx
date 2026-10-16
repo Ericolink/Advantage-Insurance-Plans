@@ -25,11 +25,17 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   // This paragraph names Medicare Advantage and Part D organizations the office represents, so it waits
   // until Silvia confirms the office offers those products (site.scope); the CMS disclaimer below does not.
   const representsMedicarePlans = site.scope.medicareAdvantage === true || site.scope.partD === true;
+  const bottomSpace = !contact.phone
+    ? ""
+    : contact.whatsapp
+      ? "pb-[calc(9.5rem+env(safe-area-inset-bottom))] sm:pb-24"
+      : "pb-[calc(5rem+env(safe-area-inset-bottom))] sm:pb-0";
   const linkClass = "inline-flex min-h-11 items-center underline-offset-4 transition-colors duration-200 hover:text-sun hover:underline";
 
   return (
-    // On phones the bottom padding reserves the call bar's height, so the end of the page is never hidden behind it.
-    <footer className={`border-t-4 border-orange bg-brand-deep text-white/90 ${contact.phone ? "pb-[calc(5rem+env(safe-area-inset-bottom))] sm:pb-0" : ""}`}>
+    // The bottom padding reserves room for the phone call bar (phones) and the WhatsApp button (tablets and up),
+    // so the end of the page is never hidden behind them.
+    <footer className={`border-t-4 border-orange bg-brand-deep text-white/90 ${bottomSpace}`}>
       <div className={`${container} grid gap-10 py-14 text-base sm:gap-12 md:grid-cols-2 lg:grid-cols-4`}>
         <div className="space-y-3">
           {site.logo && (

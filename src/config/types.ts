@@ -120,6 +120,8 @@ export interface SiteConfig {
     /** Show "TTY 711" next to the phone. Only once the office confirms it takes relay calls. */
     tty: boolean;
     email: string | null;
+    /** Show the floating WhatsApp button for `phone`. Only if that number is on WhatsApp. */
+    whatsapp: boolean;
   };
 
   location: {

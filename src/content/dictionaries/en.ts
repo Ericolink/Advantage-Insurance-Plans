@@ -17,6 +17,7 @@ export const en = {
     contact: "Contact",
     call: "Call Our Office",
     callShort: "Call",
+    whatsapp: "Chat with us on WhatsApp",
     getHelp: "Get Help",
     language: "Language",
     phonePending: "Office phone: pending",

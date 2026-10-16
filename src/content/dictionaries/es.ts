@@ -17,6 +17,7 @@ export const es: typeof en = {
     contact: "Contacto",
     call: "Llame a la oficina",
     callShort: "Llamar",
+    whatsapp: "Escríbanos por WhatsApp",
     getHelp: "Pedir ayuda",
     language: "Idioma",
     phonePending: "Teléfono de la oficina: pendiente",
