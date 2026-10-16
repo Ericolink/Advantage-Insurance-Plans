@@ -3,6 +3,7 @@ import { pagePath, type PageId } from "@/config/pages";
 import { site } from "@/config/site";
 import type { Locale } from "@/config/types";
 import { getPage } from "@/content/pages";
+import { pageImages } from "@/content/pages/images";
 import type { Block, PageContent } from "@/content/pages/types";
 import { fill, type Dictionary } from "@/lib/i18n";
 import { formatHoursSummary } from "@/lib/format";
@@ -252,6 +253,26 @@ function BlockView({ block, dict }: { block: Block; dict: Dictionary }) {
             ))}
           </ul>
         </div>
+      );
+    }
+
+    case "image": {
+      // The whole illustration on a white panel (its own corners are white), never stretched or cropped.
+      const image = pageImages[block.image];
+      return (
+        <figure data-reveal className="flex flex-col gap-5 rounded-2xl bg-surface p-5 ring-1 ring-line sm:flex-row sm:items-center sm:gap-8 sm:p-6">
+          {/* eslint-disable-next-line @next/next/no-img-element -- plain img keeps the static export option open */}
+          <img
+            src={image.src}
+            width={image.width}
+            height={image.height}
+            alt={block.alt}
+            loading="lazy"
+            decoding="async"
+            className="block h-auto w-full max-w-sm self-center object-contain sm:w-64 sm:shrink-0 lg:w-80"
+          />
+          <figcaption className="border-l-4 border-accent pl-4 text-base leading-relaxed text-ink-soft sm:text-lg">{text(block.caption)}</figcaption>
+        </figure>
       );
     }
 

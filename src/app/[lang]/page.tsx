@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getDictionary, hasLocale } from "@/lib/i18n";
 import { About } from "@/components/sections/About";
 import { Contact } from "@/components/sections/Contact";
+import { FamilyPhotos } from "@/components/sections/FamilyPhotos";
 import { FaqTeaser } from "@/components/sections/FaqTeaser";
 import { Hero } from "@/components/sections/Hero";
 import { HowWeHelp } from "@/components/sections/HowWeHelp";
@@ -25,6 +26,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
       <HowWeHelp locale={lang} dict={dict} />
       <About locale={lang} dict={dict} />
       <SilviaMessage locale={lang} />
+      <FamilyPhotos locale={lang} dict={dict} />
       <Media locale={lang} dict={dict} />
       <FaqTeaser locale={lang} dict={dict} />
       <Terms dict={dict} />

@@ -30,6 +30,7 @@ La estructura EN/ES de las páginas interiores se comprueba automáticamente al 
 | Servicios | [S][C] Descripciones educativas de Medicare, Medicaid, Medicare + Medicaid y el Mercado. "Le ayudamos a averiguarlo" (cuál programa le corresponde). |
 | Cómo le ayudamos | [S][C] "Revisamos su situación… le explicamos las opciones de cobertura que podrían aplicar". "Sin presiones". |
 | Conozca a Silvia | [S] Texto neutro provisional (no hay presentación propia). "Nos tomamos el tiempo para escucharle…" y "visitar nuestra oficina en El Paso". |
+| En familia (Thrive After 60) | [S] Añadido el 16/10/2026. "Silvia Alcazar con sus hijos, Alex y Humberto, en la sesión fotográfica para la revista Thrive After 60" (EN/ES): confirmar nombres (el video de la entrevista lo llama Alejandro) y el nombre de la revista. [S] Derechos de uso de las 4 fotos (fotógrafo/revista) y permiso de Alex y Humberto. El texto no da a entender respaldo de la revista. |
 | Videos y eventos | [S] Comercial: "un mensaje breve… para personas nuevas en Medicare". [C] Si el comercial menciona planes o beneficios, confirmar que se presentó/aprobó como material de marketing. [S] Entrevista con Alejandro Alcazar: permiso de Alejandro, descripción del reconocimiento (el video no dice quién lo otorgó; no se añade). [S] Fotos del evento de TelevisaUnivision: derechos de las fotos y permiso de las personas que aparecen; el texto no da a entender respaldo de TelevisaUnivision. |
 | Preguntas frecuentes (extracto) | Ver la página de preguntas. |
 | Glosario "Palabras que puede escuchar" | [C] Definiciones generales de Medicare Original, Medicare Advantage, Parte D, Medicaid, Mercado, prima, deducible, copago, red y periodo de inscripción. |
@@ -56,10 +57,12 @@ La estructura EN/ES de las páginas interiores se comprueba automáticamente al 
 - [S] "{Silvia} puede explicarle estas opciones… en persona o por teléfono".
 - [S] Bloque de servicios: pendiente de `scope.medicareAdvantage`, `partD`, `medigap`.
 - [Corregido] ES: "Quien decide… es el Seguro Social y Medicare" → "Quienes deciden… son el Seguro Social y Medicare".
+- [S] Añadido el 16/10/2026: ilustración de una tarjeta de Medicare en blanco ("Ilustración de una tarjeta de Medicare. No contiene datos personales.").
 
 ### Medicaid — `/en/medicaid`, `/es/medicaid`
 - [S] Todo el contenido es de Texas (Texas HHS, YourTexasBenefits, 2-1-1 Texas). ¿Atiende la oficina a residentes de Nuevo México?
 - [S] "Podemos explicarle cómo funciona Medicaid… y qué suele pedir la solicitud". Bloque de servicios pendiente de `scope.medicaidApplications`.
+- [S] Añadido el 16/10/2026: ejemplo de tarjeta de Medicaid de Texas (Your Texas Benefits) en blanco, en la sección "¿Qué es Medicaid?". Confirmar que se puede mostrar la imagen con el logotipo de Texas HHSC.
 
 ### Medicare y Medicaid — `/en/medicare-and-medicaid`, `/es/medicare-y-medicaid`
 - [C] Coordinación de pagos, Programas de Ahorros de Medicare, Ayuda Adicional, D-SNP, oportunidades adicionales para cambiar de cobertura.

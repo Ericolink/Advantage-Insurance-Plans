@@ -31,6 +31,12 @@ export const enPages: PagesContent = {
             ],
           },
           { type: "note", text: "Every case is different. Social Security and Medicare decide eligibility, not our office." },
+          {
+            type: "image",
+            image: "medicareCard",
+            alt: "Illustration of a blank Medicare card: a blue band with the word MEDICARE at the top, empty lines in the middle and a red band at the bottom",
+            caption: "Illustration of a Medicare card. It has no personal information.",
+          },
         ],
       },
       {
@@ -199,6 +205,12 @@ export const enPages: PagesContent = {
           {
             type: "p",
             text: "In Texas, Medicaid has programs for children and families, for seniors, and for adults with disabilities. Some programs help with long-term care or care at home.",
+          },
+          {
+            type: "image",
+            image: "texasMedicaidCard",
+            alt: "Blank Texas Medicaid ID card with the Your Texas Benefits and Health and Human Services Commission logo, and empty fields for the member name and Medicaid ID",
+            caption: "Example of a Texas Medicaid ID card (Your Texas Benefits), shown blank, with no personal information.",
           },
         ],
       },

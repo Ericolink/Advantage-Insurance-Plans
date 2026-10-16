@@ -141,6 +141,13 @@ export const es: typeof en = {
     cta: "Comuníquese con la oficina",
     photoAlt: "Retrato de {agent}",
   },
+  family: {
+    eyebrow: "En familia",
+    title: "{agentFirst}, Alex y Humberto",
+    body: "{agent} con sus hijos, Alex y Humberto, en la sesión fotográfica para la revista Thrive After 60.",
+    hint: "Seleccione una foto para verla más grande.",
+    dialog: "Fotos con Alex y Humberto",
+  },
   media: {
     eyebrow: "Videos y eventos",
     title: "Conozca a nuestra agencia en video",

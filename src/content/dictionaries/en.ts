@@ -143,6 +143,13 @@ export const en = {
   testimonials: {
     title: "What our clients say",
   },
+  family: {
+    eyebrow: "Family",
+    title: "{agentFirst}, Alex and Humberto",
+    body: "{agent} with her sons, Alex and Humberto, in the photo session for Thrive After 60 magazine.",
+    hint: "Select a photo to see it larger.",
+    dialog: "Photos with Alex and Humberto",
+  },
   media: {
     eyebrow: "Videos and events",
     title: "Get to know our agency on video",

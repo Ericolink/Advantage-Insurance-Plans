@@ -34,6 +34,7 @@ function shape(content: PagesContent): string {
           if (block.type === "list" || block.type === "steps" || block.type === "links") return [block.type, block.items.length];
           if (block.type === "table") return [block.type, block.rows.length];
           if (block.type === "scope") return [block.type, block.items];
+          if (block.type === "image") return [block.type, block.image];
           return block.type;
         }),
       ]),

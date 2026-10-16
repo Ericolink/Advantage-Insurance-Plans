@@ -1,5 +1,6 @@
 import type { PageId } from "@/config/pages";
 import type { ScopeId } from "@/config/types";
+import type { PageImageId } from "./images";
 
 /**
  * Building blocks for the inner pages. Each page is plain data, so English and Spanish
@@ -20,6 +21,8 @@ export type Block =
   | { type: "faq"; items: FaqItem[] }
   /** What the office itself does: only confirmed items (site.scope) are listed, otherwise a neutral line. */
   | { type: "scope"; items: ScopeId[] }
+  /** An illustration from ./images.ts with its alt text and a short caption. */
+  | { type: "image"; image: PageImageId; alt: string; caption: string }
   /** The shared glossary from the dictionary. */
   | { type: "glossary" };
 

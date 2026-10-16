@@ -169,6 +169,12 @@ export interface SiteConfig {
    */
   officePhoto: (Image & { credit: string | null; source: "own" | "streetView" }) | null;
 
+  /**
+   * Photos of Silvia with her sons from the Thrive After 60 magazine session, shown after "Meet Silvia".
+   * Never imply the magazine endorses or recommends the agency. Hidden when empty.
+   */
+  familyPhotos: GalleryPhoto[];
+
   /** Videos and event photos for the "In the media" section. Hidden when all are empty. */
   media: {
     /** The agency's own TV commercial. */

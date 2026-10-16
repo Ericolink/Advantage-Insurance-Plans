@@ -92,6 +92,51 @@ export const site: SiteConfig = {
   // Photo of the main office taken by the web team (confirmed 2026-10-15), so it is published as the office's own.
   officePhoto: { src: "/images/office.webp", width: 534, height: 353, credit: null, source: "own" },
 
+  // Thrive After 60 magazine photo session: Silvia with her sons Alex and Humberto (provided by the office,
+  // 2026-10-16). Which son is which is not marked on the photos, so the alt texts don't name them one by one.
+  familyPhotos: [
+    {
+      src: "/images/silviaalehumbe1.jpeg",
+      webp: "/images/thrive-after-60-1-720.webp",
+      width: 1071,
+      height: 1600,
+      alt: {
+        en: "Silvia Alcazar and her two sons standing on a walkway beside a brick building, with trees on the left",
+        es: "Silvia Alcazar y sus dos hijos de pie en un camino junto a un edificio de ladrillo, con árboles a la izquierda",
+      },
+    },
+    {
+      src: "/images/silviaalehumbe2.jpeg",
+      webp: "/images/thrive-after-60-2-720.webp",
+      width: 1072,
+      height: 1600,
+      alt: {
+        en: "Silvia Alcazar and her two sons framed by a large stone arch, in front of an arched window",
+        es: "Silvia Alcazar y sus dos hijos enmarcados por un gran arco de piedra, frente a una ventana en arco",
+      },
+    },
+    {
+      src: "/images/silviaalehumbe3.jpeg",
+      webp: "/images/thrive-after-60-3-720.webp",
+      width: 1075,
+      height: 1600,
+      alt: {
+        en: "Silvia Alcazar, in an orange blouse, with a hand on a stone ledge and her two sons standing behind her",
+        es: "Silvia Alcazar, con blusa naranja, con una mano sobre una cornisa de piedra y sus dos hijos de pie detrás de ella",
+      },
+    },
+    {
+      src: "/images/silviaalehumbe4.jpeg",
+      webp: "/images/thrive-after-60-4-720.webp",
+      width: 1072,
+      height: 1600,
+      alt: {
+        en: "Silvia Alcazar standing between her two sons, who sit on wooden chairs on a patio in front of a brick arch",
+        es: "Silvia Alcazar de pie entre sus dos hijos, sentados en sillas de madera en un patio frente a un arco de ladrillo",
+      },
+    },
+  ],
+
   media: {
     commercial: {
       src: "/images/video1.mp4",

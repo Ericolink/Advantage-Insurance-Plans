@@ -30,6 +30,12 @@ export const esPages: PagesContent = {
             ],
           },
           { type: "note", text: "Cada caso es diferente. Quienes deciden si usted califica son el Seguro Social y Medicare, no nuestra oficina." },
+          {
+            type: "image",
+            image: "medicareCard",
+            alt: "Ilustración de una tarjeta de Medicare en blanco: una franja azul con la palabra MEDICARE arriba, líneas vacías en el centro y una franja roja abajo",
+            caption: "Ilustración de una tarjeta de Medicare. No contiene datos personales.",
+          },
         ],
       },
       {
@@ -198,6 +204,12 @@ export const esPages: PagesContent = {
           {
             type: "p",
             text: "En Texas, Medicaid tiene programas para niños y familias, para adultos mayores y para adultos con discapacidades. Algunos programas ayudan con cuidados a largo plazo o cuidados en el hogar.",
+          },
+          {
+            type: "image",
+            image: "texasMedicaidCard",
+            alt: "Tarjeta de identificación de Medicaid de Texas en blanco, con el logotipo de Your Texas Benefits y de la Comisión de Salud y Servicios Humanos, y campos vacíos para el nombre del miembro y el número de Medicaid",
+            caption: "Ejemplo de una tarjeta de identificación de Medicaid de Texas (Your Texas Benefits), en blanco y sin datos personales.",
           },
         ],
       },
