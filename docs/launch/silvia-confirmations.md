@@ -106,20 +106,13 @@ su origen ni su fecha. Silvia o su upline/contacto de cumplimiento deben confirm
 
 ## 11. Mensaje personal de Silvia (`src/content/message.ts`)
 
-- Es una **propuesta editorial** escrita por el equipo web, en inglés y en español. No está publicada.
-- **Qué necesitamos:** que Silvia la lea, la corrija si quiere y la apruebe en los dos idiomas.
-  En particular: ¿le parece bien hablar de "mi equipo"?
-- **Dónde se pone:** `approved: true` **y** `approvedOn: "AAAA-MM-DD"`. Con solo `approved: true` el mensaje sigue
-  oculto y el check bloquea el lanzamiento hasta que se registre la fecha.
+- Aprobado por Silvia en inglés y en español el 2026-10-15 (`approved: true`, `approvedOn: "2026-10-15"`).
+  Se publica después de "Conozca a Silvia".
 
-## 12. Fotografía propia de la oficina
+## 12. Fotografía de la oficina
 
-- La imagen actual (`public/images/office.webp`) es una captura de Google Street View. **Ya no se publica en producción**
-  (solo se ve en desarrollo, marcada como provisional), para no presentarla como foto propia de la agencia.
-- **Qué necesitamos:** una foto propia de la fachada o la entrada de la oficina principal (4900 Alameda Ave, Ste E),
-  horizontal (aprox. 3:2), sin personas identificables o con su permiso.
-- **Dónde se pone:** sustituir `public/images/office.webp` (o añadir otro archivo) y en `site.ts` → `officePhoto`
-  actualizar `width`/`height`, `credit: null` y `source: "own"`.
+- `public/images/office.webp` es una foto propia de la oficina principal, tomada por el equipo web (confirmado el 2026-10-15).
+  Se publica en la sección de contacto. Mide 534 × 353 px: si se consigue una versión más grande, conviene sustituirla.
 
 ## 13. Perfil oficial de Google
 
@@ -134,23 +127,11 @@ su origen ni su fecha. Silvia o su upline/contacto de cumplimiento deben confirm
 Ver `docs/launch/content-review.md`: lista de cada página, en inglés y en español, con los puntos concretos que
 Silvia debe aprobar y los que necesitan revisión de cumplimiento de Medicare. Cuando todo esté aprobado: `site.ts` → `copyApproved: true`.
 
-## 15. Datos para la política de privacidad y los términos de uso
+## 15. Política de privacidad y términos de uso
 
-Los borradores están en `src/content/legal/drafts.ts` (solo se ven en desarrollo, en `/es/privacy` y `/es/terms`).
-Están basados en lo que el sitio hace realmente y marcan con `[PENDIENTE]` / `[PENDING]` lo que falta:
-
-- Nombre legal exacto del negocio que opera el sitio (¿LLC? ¿a nombre de Silvia?).
-- Proveedor de alojamiento definitivo (el proyecto incluye `netlify.toml`, pero no está confirmado) y cuánto tiempo guarda los registros.
-- Confirmar que la oficina no vende ni comparte información del sitio con otras agencias, aseguradoras ni empresas de mercadeo, y qué proveedores la reciben.
-- Si existe un aviso de privacidad aparte para llamadas y citas.
-- Correo o dirección postal para consultas de privacidad.
-- Estados con licencia (para los términos).
-- Derechos para publicar el comercial de TV, la entrevista y las fotos del evento de TelevisaUnivision.
-- **Revisión legal:** derechos aplicables según las leyes de Texas/Nuevo México, limitación de responsabilidad y ley aplicable.
-  El borrador no incluye ninguna cláusula de ese tipo.
-
-Después: mover el texto a `src/content/legal/index.ts` y poner `legal.privacyPolicyReady` / `legal.termsReady: true` en `site.ts`.
-El check bloquea si se publica un documento que todavía tiene marcadores pendientes.
+- Publicados el 2026-10-15 (`src/content/legal/index.ts`), aprobados por Silvia. Los puntos `[PENDIENTE]` del borrador
+  se quitaron a petición de la oficina en lugar de responderse: los textos no indican nombre legal del negocio, correo,
+  estados con licencia ni cláusula de ley aplicable, y no tienen revisión legal. Conviene añadirlos cuando se confirmen.
 
 ## 16. Otros puntos detectados en la auditoría
 

@@ -87,10 +87,8 @@ export const site: SiteConfig = {
   logo: { src: "/images/logo.webp", width: 528, height: 228 },
   photo: { src: "/images/SilviaFoto.jpg", width: 854, height: 1280, webp: "/images/silvia-photo-768.webp" },
   portrait: { src: "/images/silvia-portrait.jpg", width: 400, height: 400 },
-  // Google Street View capture: a development placeholder only (hidden in production, see types.ts).
-  // When the office sends its own photo: replace /images/office.webp (or point src to the new file),
-  // update width/height, set credit to null (or the photographer) and source to "own".
-  officePhoto: { src: "/images/office.webp", width: 534, height: 353, credit: "Imagery © Google", source: "streetView" },
+  // Photo of the main office taken by the web team (confirmed 2026-10-15), so it is published as the office's own.
+  officePhoto: { src: "/images/office.webp", width: 534, height: 353, credit: null, source: "own" },
 
   media: {
     commercial: {
@@ -186,10 +184,10 @@ export const site: SiteConfig = {
   },
 
   carriers: {
-    // Illustrative list from the office; confirm current appointments before setting `confirmed: true`.
-    // Names here are not proof of a current contract: the list stays hidden until confirmed.
+    // Current appointments confirmed by the office on 2026-10-15. Not shown on the site (removed from
+    // the About section at the office's request). Naming a carrier implies a current contract.
     names: ["UnitedHealthcare", "Humana", "Devoted Health", "Alignment Health", "HealthSpring"],
-    confirmed: false,
+    confirmed: true,
   },
 
   testimonials: [],
@@ -217,12 +215,12 @@ export const site: SiteConfig = {
     medicareProducts: 68,
   },
 
+  // Texts in src/content/legal/index.ts, approved by Silvia on 2026-10-15.
   legal: {
-    privacyPolicyReady: false,
-    termsReady: false,
+    privacyPolicyReady: true,
+    termsReady: true,
   },
 
-  // Stays false until Silvia approves every page in EN and ES and the Medicare copy passes compliance
-  // review. See docs/launch/content-review.md for the checklist.
-  copyApproved: false,
+  // Silvia approved every page in EN and ES on 2026-10-15. See docs/launch/content-review.md for the checklist.
+  copyApproved: true,
 };

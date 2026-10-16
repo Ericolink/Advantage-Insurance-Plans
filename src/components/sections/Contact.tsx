@@ -9,7 +9,6 @@ import { siteVars } from "@/lib/site-vars";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { ButtonLink } from "@/components/ui/Button";
 import { CallButton } from "@/components/ui/CallButton";
-import { DraftTag } from "@/components/ui/DraftTag";
 import { Icon } from "@/components/ui/Icon";
 import { container, h2Class, leadClass, sectionSpace, textLinkClass } from "@/components/ui/styles";
 
@@ -20,18 +19,16 @@ export function Contact({ locale, dict }: { locale: Locale; dict: Dictionary }) 
     : fill(dict.contact.subtitle, siteVars);
   const showAddress = location.showAddress && location.streetAddress && location.city && location.stateCode;
   const mainOffice: Office = { label: null, ...location, phone: null };
-  // Pending offices are placeholders for development only; production shows confirmed addresses.
-  const isDev = process.env.NODE_ENV === "development";
+  // Only offices with a complete address are shown.
   const otherOffices = site.otherOffices
     .map((office, index) => ({ office, number: index + 2 }))
-    .filter(({ office }) => isComplete(office) || isDev);
+    .filter(({ office }) => isComplete(office));
   const closed = hours ? closedDays(hours) : [];
-  // Only the office's own photo is published. A Street View capture is a development placeholder, so it is
-  // never presented as the agency's own picture of its premises.
-  const photo = site.officePhoto && (site.officePhoto.source === "own" || isDev) ? site.officePhoto : null;
+  // Only the office's own photo is published: a Street View capture is never presented as the agency's
+  // own picture of its premises.
+  const photo = site.officePhoto?.source === "own" ? site.officePhoto : null;
   const officePhoto = photo && (
     <figure>
-      {photo.source !== "own" && <DraftTag className="mb-2">Street View placeholder · hidden in production</DraftTag>}
       {/* eslint-disable-next-line @next/next/no-img-element -- plain img keeps the static export option open */}
       <img
         src={photo.src}

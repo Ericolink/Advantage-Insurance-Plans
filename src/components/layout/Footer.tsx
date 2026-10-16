@@ -167,9 +167,17 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
       <div className="border-t border-white/15">
         <div className={`${container} flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between`}>
-          <p className="text-base text-white/80">
-            © {new Date().getFullYear()} {site.brandName}. {dict.footer.rights}
-          </p>
+          <div className="space-y-1 text-base text-white/80">
+            <p>
+              © {new Date().getFullYear()} {site.brandName}. {dict.footer.rights}
+            </p>
+            <p>
+              {dict.footer.developedBy}{" "}
+              <a href="https://github.com/Ericolink" rel="noopener noreferrer" target="_blank" className={`font-semibold text-white ${linkClass}`}>
+                Ericolink
+              </a>
+            </p>
+          </div>
           <LanguageSwitcher locale={locale} label={dict.nav.language} />
         </div>
       </div>

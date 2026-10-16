@@ -24,7 +24,5 @@ export default async function PrivacyPage({ params }: Props) {
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
   const dict = getDictionary(lang);
-  // Working draft, development only: the dynamic import is dropped from production builds.
-  const draft = !ready && process.env.NODE_ENV === "development" ? (await import("@/content/legal/drafts")).privacyPolicyDraft : null;
-  return <LegalPage locale={lang} dict={dict} title={dict.legal.privacyTitle} document={privacyPolicy} ready={ready} draft={draft} />;
+  return <LegalPage locale={lang} dict={dict} title={dict.legal.privacyTitle} document={privacyPolicy} ready={ready} />;
 }

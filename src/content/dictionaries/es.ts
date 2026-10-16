@@ -137,8 +137,6 @@ export const es: typeof en = {
     howWeHelp:
       "Nos tomamos el tiempo para escucharle y responder sus preguntas con palabras sencillas. Puede hablar con nosotros por teléfono o visitar nuestra oficina en El Paso.",
     languages: "Idiomas: {languages}",
-    carriersTitle: "Algunas de las compañías con las que trabajamos",
-    carriersNote: "Los planes y compañías disponibles dependen de dónde vive.",
     cta: "Comuníquese con la oficina",
     photoAlt: "Retrato de {agent}",
   },
@@ -240,6 +238,7 @@ export const es: typeof en = {
   },
   footer: {
     rights: "Todos los derechos reservados.",
+    developedBy: "Desarrollado por",
     licensed: "Con licencia en {state}",
     license: "Licencia n.º {number}",
     npn: "NPN {number}",
@@ -294,9 +293,5 @@ export const es: typeof en = {
     title: "Página no encontrada",
     body: "La página que busca no existe o fue movida.",
     home: "Volver al inicio",
-  },
-  draft: {
-    title: "Vista previa — pendiente antes del lanzamiento",
-    hint: "Solo visible en desarrollo. Ejecute npm run check:launch para ver detalles.",
   },
 };

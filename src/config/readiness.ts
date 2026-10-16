@@ -243,7 +243,7 @@ export function getPendingItems(site: SiteConfig): PendingItem[] {
     });
   }
   if (site.officePhoto && site.officePhoto.source !== "own") {
-    add("office-photo", "site.officePhoto: only a Google Street View capture is available, so production shows no office photo.", false, {
+    add("office-photo", "site.officePhoto: only a Google Street View capture is available, so the site shows no office photo.", false, {
       why: "A Street View capture must not be presented as the agency's own photo of its premises.",
       where: `${SITE} → officePhoto (file: public/images/office.webp)`,
       owner: "Silvia",
@@ -258,7 +258,7 @@ export function getPendingItems(site: SiteConfig): PendingItem[] {
       resolve: "Silvia writes or approves a short introduction in EN and ES; then set about.approvedOn to the approval date.",
     });
   } else if (!site.about.approvedOn) {
-    add("intro-draft", "site.about: the introduction is a draft; it stays hidden in production until approved.", false, {
+    add("intro-draft", "site.about: the introduction is not approved yet, so it stays hidden.", false, {
       why: "Text attributed to Silvia can only be published with her approval.",
       where: `${SITE} → about.approvedOn`,
       owner: "Silvia",
@@ -273,6 +273,7 @@ export function getPendingItems(site: SiteConfig): PendingItem[] {
       resolve: "Use the real approval date as YYYY-MM-DD.",
     });
   }
+
   if (silviaMessage.approved && !silviaMessage.approvedOn) {
     add("message-record", "src/content/message.ts: approved is true but approvedOn is empty, so the message stays hidden.", true, {
       why: "approved: true alone is not a record of Silvia's approval.",
@@ -288,7 +289,7 @@ export function getPendingItems(site: SiteConfig): PendingItem[] {
       resolve: "Use the real approval date as YYYY-MM-DD.",
     });
   } else if (!isMessagePublishable()) {
-    add("message", "src/content/message.ts: Silvia's message is a draft; it stays hidden in production until she approves it.", false, {
+    add("message", "src/content/message.ts: Silvia's message is not approved, so it is not shown.", false, {
       why: "It is an editorial proposal written in her voice; publishing it without her approval would put words in her mouth.",
       where: "src/content/message.ts → approved + approvedOn",
       owner: "Silvia",
@@ -377,9 +378,9 @@ export function getPendingItems(site: SiteConfig): PendingItem[] {
     // Required once the site collects personal data through the form; recommended otherwise (cookie, Google maps, hosting logs).
     add("privacy", "Privacy policy: not published yet (a neutral \"being prepared\" notice is shown).", site.leadForm, {
       why: "The site sets a language cookie, embeds Google Maps and is served by a host that logs requests; the form, if enabled, collects personal data.",
-      where: "src/content/legal/index.ts → privacyPolicy (draft: src/content/legal/drafts.ts), then site.ts → legal.privacyPolicyReady",
+      where: "src/content/legal/index.ts → privacyPolicy, then site.ts → legal.privacyPolicyReady",
       owner: "Silvia + legal",
-      resolve: "Fill in every [PENDING] item of the draft, have it reviewed, move it to privacyPolicy and set privacyPolicyReady: true.",
+      resolve: "Write and review the policy, put it in privacyPolicy and set privacyPolicyReady: true.",
     });
   } else if (!privacyPolicy || hasPlaceholders(privacyPolicy)) {
     add("privacy-incomplete", "legal.privacyPolicyReady is true but the policy is missing or still has [PENDING] placeholders.", true, {
@@ -392,9 +393,9 @@ export function getPendingItems(site: SiteConfig): PendingItem[] {
   if (!site.legal.termsReady) {
     add("terms", "Terms of use: not published yet (a neutral \"being prepared\" notice is shown).", false, {
       why: "Sets out that the site is educational and that no insurance is sold or bound through it.",
-      where: "src/content/legal/index.ts → termsOfUse (draft: src/content/legal/drafts.ts), then site.ts → legal.termsReady",
+      where: "src/content/legal/index.ts → termsOfUse, then site.ts → legal.termsReady",
       owner: "Silvia + legal",
-      resolve: "Fill in every [PENDING] item of the draft, have it reviewed, move it to termsOfUse and set termsReady: true.",
+      resolve: "Write and review the terms, put them in termsOfUse and set termsReady: true.",
     });
   } else if (!termsOfUse || hasPlaceholders(termsOfUse)) {
     add("terms-incomplete", "legal.termsReady is true but the terms are missing or still have [PENDING] placeholders.", true, {

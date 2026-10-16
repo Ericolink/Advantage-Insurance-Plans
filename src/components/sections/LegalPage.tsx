@@ -3,7 +3,6 @@ import type { LegalDocument } from "@/content/legal";
 import { site } from "@/config/site";
 import { fill, type Dictionary } from "@/lib/i18n";
 import { formatDate } from "@/lib/format";
-import { DraftTag } from "@/components/ui/DraftTag";
 import { h1Class } from "@/components/ui/styles";
 
 interface LegalPageProps {
@@ -12,19 +11,16 @@ interface LegalPageProps {
   title: string;
   document: Localized<LegalDocument> | null;
   ready: boolean;
-  /** Unapproved working draft, passed only in development so it can be reviewed in context. */
-  draft?: Localized<LegalDocument> | null;
 }
 
-export function LegalPage({ locale, dict, title, document, ready, draft = null }: LegalPageProps) {
-  const content = ready && document ? document[locale] : (draft?.[locale] ?? null);
+export function LegalPage({ locale, dict, title, document, ready }: LegalPageProps) {
+  const content = ready && document ? document[locale] : null;
 
   return (
     <article className="mx-auto max-w-3xl px-5 py-14 sm:px-8 sm:py-20">
       <h1 className={h1Class}>{title}</h1>
       {content ? (
         <>
-          {!ready && <DraftTag className="mt-4">not legally reviewed · [PENDING] items unresolved · hidden in production</DraftTag>}
           <p className="mt-2 text-sm text-ink-soft">
             {fill(dict.legal.lastUpdated, { date: formatDate(content.updated, locale) })}
           </p>

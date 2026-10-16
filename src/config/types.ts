@@ -184,7 +184,7 @@ export interface SiteConfig {
     story: Localized | null;
     /**
      * ISO date (e.g. "2026-11-02") on which Silvia read and approved `intro` and `story` in EN and ES.
-     * null = draft: the texts only render in development and production shows the neutral fallback.
+     * null = not approved: the texts are not shown and the site uses the neutral fallback.
      */
     approvedOn: string | null;
   };

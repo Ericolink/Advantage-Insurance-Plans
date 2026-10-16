@@ -8,7 +8,6 @@ import { fill, getDictionary, hasLocale, localeTags, locales } from "@/lib/i18n"
 import { alternatesFor, openGraphUrls, samePath } from "@/lib/seo";
 import { siteVars } from "@/lib/site-vars";
 import { CallBar } from "@/components/layout/CallBar";
-import { DraftBanner } from "@/components/layout/DraftBanner";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { MotionEffects } from "@/components/layout/MotionEffects";
@@ -65,7 +64,6 @@ export default async function RootLayout({ children, params }: LayoutProps) {
   return (
     <html lang={localeTags[lang]} className={`${body.variable} ${heading.variable}`}>
       <body className="flex min-h-dvh flex-col">
-        <DraftBanner dict={dict} />
         <Header locale={lang} dict={dict} />
         <main id="main" className="flex-1">
           {children}

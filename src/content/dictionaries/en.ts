@@ -136,8 +136,6 @@ export const en = {
     howWeHelp:
       "We take the time to listen and answer your questions in plain words. You can talk with us by phone or visit our office in El Paso.",
     languages: "Languages: {languages}",
-    carriersTitle: "Some of the companies we work with",
-    carriersNote: "Plans and companies available depend on where you live.",
     cta: "Contact Our Office",
     photoAlt: "Portrait of {agent}",
   },
@@ -239,6 +237,7 @@ export const en = {
   },
   footer: {
     rights: "All rights reserved.",
+    developedBy: "Developed by",
     licensed: "Licensed in {state}",
     license: "License #{number}",
     npn: "NPN {number}",
@@ -293,9 +292,5 @@ export const en = {
     title: "Page not found",
     body: "The page you're looking for doesn't exist or was moved.",
     home: "Back to home",
-  },
-  draft: {
-    title: "Preview — pending before launch",
-    hint: "Only visible in development. Run npm run check:launch for details.",
   },
 };

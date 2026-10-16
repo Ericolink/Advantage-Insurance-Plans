@@ -30,7 +30,6 @@ La estructura EN/ES de las páginas interiores se comprueba automáticamente al 
 | Servicios | [S][C] Descripciones educativas de Medicare, Medicaid, Medicare + Medicaid y el Mercado. "Le ayudamos a averiguarlo" (cuál programa le corresponde). |
 | Cómo le ayudamos | [S][C] "Revisamos su situación… le explicamos las opciones de cobertura que podrían aplicar". "Sin presiones". |
 | Conozca a Silvia | [S] Texto neutro provisional (no hay presentación propia). "Nos tomamos el tiempo para escucharle…" y "visitar nuestra oficina en El Paso". |
-| Mensaje de Silvia | [S] Borrador oculto en producción (`src/content/message.ts`). Requiere `approved: true` + `approvedOn`. |
 | Videos y eventos | [S] Comercial: "un mensaje breve… para personas nuevas en Medicare". [C] Si el comercial menciona planes o beneficios, confirmar que se presentó/aprobó como material de marketing. [S] Entrevista con Alejandro Alcazar: permiso de Alejandro, descripción del reconocimiento (el video no dice quién lo otorgó; no se añade). [S] Fotos del evento de TelevisaUnivision: derechos de las fotos y permiso de las personas que aparecen; el texto no da a entender respaldo de TelevisaUnivision. |
 | Preguntas frecuentes (extracto) | Ver la página de preguntas. |
 | Glosario "Palabras que puede escuchar" | [C] Definiciones generales de Medicare Original, Medicare Advantage, Parte D, Medicaid, Mercado, prima, deducible, copago, red y periodo de inscripción. |
@@ -84,7 +83,7 @@ La estructura EN/ES de las páginas interiores se comprueba automáticamente al 
 - [S] Teléfonos y sitios oficiales (Medicare, Seguro Social, Texas HICAP, Texas HHS, 2-1-1, HealthCare.gov). Solo Texas.
 
 ### Política de privacidad y términos — `/privacy`, `/terms`
-- Publican un aviso neutro "Esta página está en preparación". Borradores en `src/content/legal/drafts.ts` (ver `silvia-confirmations.md`, punto 15).
+- Publicadas el 2026-10-15 (`src/content/legal/index.ts`). Ver `silvia-confirmations.md`, punto 15.
 
 ## Otras correcciones lingüísticas hechas
 

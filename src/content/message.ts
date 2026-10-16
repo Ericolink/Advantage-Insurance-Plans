@@ -1,16 +1,11 @@
 import type { Localized } from "../config/types.ts";
 
 /**
- * Silvia's personal message, shown after "Meet Silvia".
+ * Silvia's personal message, shown after "Meet Silvia". Approved by Silvia in EN and ES on 2026-10-15.
  *
- * DRAFT: this is an editorial proposal written by the web team, not Silvia's own words yet.
  * It is published only when BOTH are set: `approved: true` and `approvedOn` (ISO date of Silvia's
- * approval of both languages). Otherwise the section only renders in development (`next dev`,
- * marked as a draft) and production builds leave it out of the HTML entirely. Set them only after
- * Silvia has read, edited if needed, and approved the EN and ES text; `npm run check:launch`
+ * approval of both languages); otherwise the section is left out of the page. `npm run check:launch`
  * blocks the launch if `approved` is true without a date.
- *
- * Only import this file from server components, so the draft never ships in the public JavaScript.
  */
 export const silviaMessage: {
   approved: boolean;
@@ -19,8 +14,8 @@ export const silviaMessage: {
   title: Localized;
   paragraphs: Localized<string[]>;
 } = {
-  approved: false,
-  approvedOn: null,
+  approved: true,
+  approvedOn: "2026-10-15",
   // {agent} is filled with site.agentName, so the name is written the same way as in the rest of the site.
   title: {
     es: "Un mensaje de {agent}",
