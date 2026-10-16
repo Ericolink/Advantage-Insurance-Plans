@@ -153,7 +153,7 @@ export const en = {
   media: {
     eyebrow: "Videos and events",
     title: "Get to know our agency on video",
-    intro: "Watch the {business} TV commercial, the interview with Alejandro Alcazar, {agentFirst}'s son, after he received an award, and photos of {agentFirst} as a guest at a TelevisaUnivision event.",
+    intro: "Watch the {business} TV commercial, the interview with Alejandro Alcazar, {agentFirst}'s son, after he received an award, and photos of {agentFirst} as a guest at a Televisa Univision event.",
     play: "Play video: {title}",
     commercial: {
       title: "Our TV commercial",
@@ -164,8 +164,8 @@ export const en = {
       body: "Alejandro Alcazar, {agentFirst}'s son, received an award for a year of work. In this interview he thanks the Sunland Park community and talks about working as a team, like a family.",
     },
     photos: {
-      title: "TelevisaUnivision event",
-      body: "{agentFirst} attended this TelevisaUnivision event as a guest.",
+      title: "Televisa Univision event",
+      body: "{agentFirst} attended this Televisa Univision event as a guest.",
       open: "Enlarge photo {n} of {total}",
       dialog: "Event photos",
       counter: "Photo {n} of {total}",

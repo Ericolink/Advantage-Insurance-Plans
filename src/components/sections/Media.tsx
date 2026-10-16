@@ -85,7 +85,13 @@ export function Media({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <h2 id="media-title" className="mt-4 font-display text-[2rem] font-bold leading-[1.12] text-balance sm:text-5xl">
             {dict.media.title}
           </h2>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-pretty sm:text-xl">{fill(dict.media.intro, siteVars)}</p>
+          {fill(dict.media.intro, siteVars)
+            .split("\n\n")
+            .map((paragraph) => (
+              <p key={paragraph} className="mt-5 max-w-2xl text-lg leading-relaxed text-pretty sm:text-xl">
+                {paragraph}
+              </p>
+            ))}
         </header>
 
         {(commercial || interview) && (

@@ -191,7 +191,7 @@ export const site: SiteConfig = {
         { language: "en", src: "/captions/video2.en.vtt" },
       ],
     },
-    // TelevisaUnivision event Silvia was invited to. The other guests are not identified, so they are not named.
+    // Televisa Univision event Silvia was invited to. The other guests are not identified, so they are not named.
     eventPhotos: [
       {
         src: "/images/pasarela1.jpg",
@@ -199,8 +199,8 @@ export const site: SiteConfig = {
         width: 1153,
         height: 1138,
         alt: {
-          en: "Silvia Alcazar in front of the backdrop at a TelevisaUnivision event",
-          es: "Silvia Alcazar frente al fondo del evento de TelevisaUnivision",
+          en: "Silvia Alcazar in front of the backdrop at a Televisa Univision event",
+          es: "Silvia Alcazar frente al fondo del evento de Televisa Univision",
         },
       },
       {

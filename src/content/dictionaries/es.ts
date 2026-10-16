@@ -29,7 +29,7 @@ export const es: typeof en = {
   hero: {
     title: "Ayuda clara con Medicare, Medicaid y su cobertura médica en El Paso",
     subtitle:
-      "Una oficina local que ayuda a personas de 65 años o más, a personas con discapacidades y a sus familias a entender su cobertura médica. Hable con {agentFirst} por teléfono o en persona.",
+      "Somos una agencia local que orienta a los adultos mayores de 65 años o más, personas con discapacidades y sus familias para que comprendan mejor sus opciones de cobertura médica. Comuníquese con {agentFirst} por teléfono o visítela en persona para recibir atención personalizada.",
     ctaHelp: "Vea cómo le podemos ayudar",
     ctaCall: "Llame a la oficina",
     open: "Abierto {hours}",
@@ -142,16 +142,17 @@ export const es: typeof en = {
     photoAlt: "Retrato de {agent}",
   },
   family: {
-    eyebrow: "En familia",
+    eyebrow: "Una familia que ayuda a su familia",
     title: "{agentFirst}, Alejandro y Humberto",
-    body: "{agent} con sus hijos, Alejandro y Humberto, en la sesión fotográfica para la revista Thrive After 60.",
+    body: "{agent} comparte un momento especial junto a sus hijos, Alejandro y Humberto, durante una sesión fotográfica para la revista Thrive After 60. Como familia, comparten un mismo compromiso: “Somos una familia que ayuda a su familia”. Esta filosofía refleja la cercanía, la confianza y la atención personalizada que buscan brindar a cada persona que acude a {business} en busca de orientación sobre su cobertura médica.",
     hint: "Seleccione una foto para verla más grande.",
     dialog: "Fotos con Alejandro y Humberto",
   },
   media: {
     eyebrow: "Videos y eventos",
-    title: "Conozca a nuestra agencia en video",
-    intro: "Vea el comercial de televisión de {business}, la entrevista con Alejandro Alcazar, hijo de {agentFirst}, después de recibir un reconocimiento, y las fotos de {agentFirst} como invitada en un evento de TelevisaUnivision.",
+    title: "Conozca nuestra historia a través de videos y fotografías",
+    // A blank line starts a new paragraph.
+    intro: "Conozca más sobre {business}, nuestra participación en los medios de comunicación y algunos momentos especiales de nuestra historia. Vea nuestro comercial de televisión, descubra la entrevista con Alejandro Alcazar tras recibir un reconocimiento y acompañe a {agent} a través de las fotografías de su participación como invitada en un evento de Televisa Univision.\n\nNuestra intención es compartir quiénes somos, lo que hacemos y los momentos que forman parte de nuestra trayectoria.",
     play: "Reproducir video: {title}",
     commercial: {
       title: "Nuestro comercial de televisión",
@@ -162,8 +163,8 @@ export const es: typeof en = {
       body: "Alejandro Alcazar, hijo de {agentFirst}, recibió un reconocimiento por el trabajo de todo un año. En esta entrevista agradece a la comunidad de Sunland Park y habla del trabajo en equipo, como una familia.",
     },
     photos: {
-      title: "Evento de TelevisaUnivision",
-      body: "{agentFirst} asistió como invitada a este evento de TelevisaUnivision.",
+      title: "Evento de Televisa Univision",
+      body: "{agentFirst} asistió como invitada a este evento de Televisa Univision.",
       open: "Ampliar foto {n} de {total}",
       dialog: "Fotos del evento",
       counter: "Foto {n} de {total}",

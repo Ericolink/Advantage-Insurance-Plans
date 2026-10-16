@@ -26,12 +26,12 @@ La estructura EN/ES de las páginas interiores se comprueba automáticamente al 
 | Sección | Puntos a aprobar |
 |---|---|
 | Metadatos (título y descripción) | [S] "ayuda a personas de 65 años o más, personas con discapacidades y sus familias en El Paso…" |
-| Hero | [S] "Hable con {Silvia} por teléfono o en persona": ¿atiende Silvia personalmente o también su equipo? [S] "Hable con una persona real". |
+| Hero | [S] Texto en ES cambiado el 16/10/2026: "Somos una agencia local que orienta… Comuníquese con {Silvia} por teléfono o visítela en persona para recibir atención personalizada": ¿atiende Silvia personalmente o también su equipo? [S] "Hable con una persona real". |
 | Servicios | [S][C] Descripciones educativas de Medicare, Medicaid, Medicare + Medicaid y el Mercado. "Le ayudamos a averiguarlo" (cuál programa le corresponde). |
 | Cómo le ayudamos | [S][C] "Revisamos su situación… le explicamos las opciones de cobertura que podrían aplicar". "Sin presiones". |
 | Conozca a Silvia | [S] Texto neutro provisional (no hay presentación propia). "Nos tomamos el tiempo para escucharle…" y "visitar nuestra oficina en El Paso". |
-| En familia (Thrive After 60) | [S] Añadido el 16/10/2026. "Silvia Alcazar con sus hijos, Alejandro y Humberto, en la sesión fotográfica para la revista Thrive After 60" (EN/ES): confirmar el nombre de la revista. [S] Derechos de uso de las 4 fotos (fotógrafo/revista) y permiso de Alejandro y Humberto. El texto no da a entender respaldo de la revista. |
-| Videos y eventos | [S] Comercial: "un mensaje breve… para personas nuevas en Medicare". [C] Si el comercial menciona planes o beneficios, confirmar que se presentó/aprobó como material de marketing. [S] Entrevista con Alejandro Alcazar: permiso de Alejandro, descripción del reconocimiento (el video no dice quién lo otorgó; no se añade). [S] Fotos del evento de TelevisaUnivision: derechos de las fotos y permiso de las personas que aparecen; el texto no da a entender respaldo de TelevisaUnivision. |
+| En familia (Thrive After 60) | [S] Texto en ES cambiado el 16/10/2026: título superior "Una familia que ayuda a su familia" y la frase entre comillas “Somos una familia que ayuda a su familia” atribuida a la familia (confirmar que Silvia la aprueba como cita). [S] Añadido el 16/10/2026. "Silvia Alcazar con sus hijos, Alejandro y Humberto, en la sesión fotográfica para la revista Thrive After 60" (EN/ES): confirmar el nombre de la revista. [S] Derechos de uso de las 4 fotos (fotógrafo/revista) y permiso de Alejandro y Humberto. El texto no da a entender respaldo de la revista. |
+| Videos y eventos | [S] Título e introducción en ES cambiados el 16/10/2026 ("Conozca nuestra historia a través de videos y fotografías"). [S] Comercial: "un mensaje breve… para personas nuevas en Medicare". [C] Si el comercial menciona planes o beneficios, confirmar que se presentó/aprobó como material de marketing. [S] Entrevista con Alejandro Alcazar: permiso de Alejandro, descripción del reconocimiento (el video no dice quién lo otorgó; no se añade). [S] Fotos del evento de Televisa Univision: derechos de las fotos y permiso de las personas que aparecen; el texto no da a entender respaldo de Televisa Univision. |
 | Preguntas frecuentes (extracto) | Ver la página de preguntas. |
 | Glosario "Palabras que puede escuchar" | [C] Definiciones generales de Medicare Original, Medicare Advantage, Parte D, Medicaid, Mercado, prima, deducible, copago, red y periodo de inscripción. |
 | Contacto | [S] "Con gusto le ayudamos". Direcciones de las 4 oficinas y horario lun–vie 9:00–16:00. Foto de Street View oculta en producción. [S] Añadido el 16/10/2026 bajo "Nuestras oficinas": "Visítenos en la oficina que le quede más cerca. Cada dirección le muestra cómo llegar en Google Maps." (EN/ES). Las oficinas de Alameda y George Dieter aparecen destacadas con su foto. |
@@ -90,7 +90,7 @@ La estructura EN/ES de las páginas interiores se comprueba automáticamente al 
 
 ## Otras correcciones lingüísticas hechas
 
-- EN/ES: título "Televisa Univision" → "TelevisaUnivision" (igual que en el resto del sitio).
+- EN/ES: título "Televisa Univision" → "TelevisaUnivision" (igual que en el resto del sitio). [16/10/2026] Revertido a petición del equipo: ahora "Televisa Univision", separado, en todo el sitio (textos EN/ES y textos alternativos de las fotos).
 - ES (formulario, hoy desactivado): "Otra cosa / No estoy seguro" → "Otra cosa / No lo sé" (neutral en género).
 
 ## Cómo se registra la aprobación
