@@ -155,9 +155,13 @@ export const en = {
     title: "Get to know our agency on video",
     intro: "Watch the {business} TV commercial, the interview with Alejandro Alcazar, {agentFirst}'s son, after he received an award, and photos of {agentFirst} as a guest at a Televisa Univision event.",
     play: "Play video: {title}",
-    // Shown over the player when the video cannot load or play.
-    videoError: "We couldn't load this video. Please check your connection and try again.",
-    retry: "Try again",
+    // Shown over the player when the video cannot load or play: `network` only for connection errors.
+    videoError: {
+      network: "We couldn't load this video. Please check your connection and try again.",
+      playback: "This video couldn't be played on this device. Please try again later.",
+      code: "Code: {code}",
+      retry: "Try again",
+    },
     commercial: {
       title: "Our TV commercial",
       body: "A short message from {business} for people who are new to Medicare.",

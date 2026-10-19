@@ -154,8 +154,12 @@ export const es: typeof en = {
     // A blank line starts a new paragraph.
     intro: "Conozca más sobre {business}, nuestra participación en los medios de comunicación y algunos momentos especiales de nuestra historia. Vea nuestro comercial de televisión, descubra la entrevista con Alejandro Alcazar tras recibir un reconocimiento y acompañe a {agent} a través de las fotografías de su participación como invitada en un evento de Televisa Univision.\n\nNuestra intención es compartir quiénes somos, lo que hacemos y los momentos que forman parte de nuestra trayectoria.",
     play: "Reproducir video: {title}",
-    videoError: "No pudimos cargar este video. Revise su conexión e inténtelo de nuevo.",
-    retry: "Intentar de nuevo",
+    videoError: {
+      network: "No pudimos cargar este video. Revise su conexión e inténtelo de nuevo.",
+      playback: "No se pudo reproducir este video en este dispositivo. Inténtelo de nuevo más tarde.",
+      code: "Código: {code}",
+      retry: "Intentar de nuevo",
+    },
     commercial: {
       title: "Nuestro comercial de televisión",
       body: "Un mensaje breve de {business} para las personas que son nuevas en Medicare.",

@@ -35,8 +35,7 @@ function VideoFigure({ id, n, video, title, body, locale, dict }: { id: string; 
         <VideoPlayer
           video={video}
           playLabel={fill(dict.media.play, { title })}
-          errorLabel={dict.media.videoError}
-          retryLabel={dict.media.retry}
+          errorLabels={dict.media.videoError}
           durationLabel={formatDuration(video.duration)}
           defaultCaptions={defaultCaptions}
         />
