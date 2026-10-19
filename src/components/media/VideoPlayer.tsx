@@ -37,15 +37,21 @@ export function VideoPlayer({ video, playLabel, errorLabels, durationLabel, defa
   const fail = (reason: string) => {
     const el = ref.current;
     const code = el?.error?.code;
-    console.error(`[VideoPlayer] ${video.src}: ${reason}`, {
-      // 1 aborted, 2 network, 3 decode, 4 source not supported (Safari often leaves `message` empty).
-      mediaError: el?.error ? { code, message: el.error.message } : null,
-      currentSrc: el?.currentSrc,
-      stage: stage.current,
-      bufferedSeconds: buffered.current,
-      networkState: el?.networkState,
-      readyState: el?.readyState,
-    });
+    // One JSON line, readable in any inspector (e.g. Safari's, with the iPhone connected to a Mac).
+    console.error(
+      `[VideoPlayer] ${reason} ` +
+        JSON.stringify({
+          src: el?.currentSrc || video.src,
+          // 1 aborted, 2 network, 3 decode, 4 not supported. Before metadata (stage 0) browsers report any
+          // failure, even a 404 or a dropped connection, as 4; Safari often leaves `message` empty.
+          code: code ?? null,
+          message: el?.error?.message || null,
+          stage: stage.current,
+          bufferedSeconds: buffered.current,
+          networkState: el?.networkState,
+          readyState: el?.readyState,
+        }),
+    );
     // Short reference the visitor can pass on: MediaError code (P when only play() failed) and stage.
     setFailure({ network: code === MediaError.MEDIA_ERR_NETWORK, code: `${code ?? "P"}-${stage.current}` });
   };

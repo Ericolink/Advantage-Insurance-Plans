@@ -158,7 +158,7 @@ export const en = {
     // Shown over the player when the video cannot load or play: `network` only for connection errors.
     videoError: {
       network: "We couldn't load this video. Please check your connection and try again.",
-      playback: "This video couldn't be played on this device. Please try again later.",
+      playback: "We couldn't play this video. Please try again in a few minutes.",
       code: "Code: {code}",
       retry: "Try again",
     },

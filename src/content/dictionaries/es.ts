@@ -156,7 +156,7 @@ export const es: typeof en = {
     play: "Reproducir video: {title}",
     videoError: {
       network: "No pudimos cargar este video. Revise su conexión e inténtelo de nuevo.",
-      playback: "No se pudo reproducir este video en este dispositivo. Inténtelo de nuevo más tarde.",
+      playback: "No pudimos reproducir este video. Inténtelo de nuevo en unos minutos.",
       code: "Código: {code}",
       retry: "Intentar de nuevo",
     },
