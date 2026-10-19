@@ -52,12 +52,13 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         <div className={`${container} flex items-center justify-between gap-3 py-2.5 sm:py-3`}>
           <Link href={home} className="flex min-w-0 items-center gap-3 rounded-lg focus-visible:outline-3 focus-visible:outline-brand-deep">
             {site.logo && (
-              // Hidden on the narrowest phones, where the name needs the room more than the logo does.
+              // On phones the full logo (which includes the name) stands alone, a little larger so its text reads.
               // eslint-disable-next-line @next/next/no-img-element -- small static asset, no optimization needed
-              <img src={site.logo.src} width={site.logo.width} height={site.logo.height} alt="" className="h-7 w-auto max-[400px]:hidden sm:h-10" />
+              <img src={site.logo.src} width={site.logo.width} height={site.logo.height} alt="" className="h-12 w-auto sm:h-10" />
             )}
-            {/* The full name ("… by Silvia Alcazar") sets the office apart from agencies with similar names. */}
-            <span className="leading-tight">
+            {/* The full name ("… by Silvia Alcazar") sets the office apart from agencies with similar names.
+                On phones it is visually hidden next to the logo but stays the link's accessible name. */}
+            <span className={`leading-tight ${site.logo ? "sr-only sm:not-sr-only" : ""}`}>
               <span className="block font-display text-[1.05rem] font-bold text-brand-deep sm:text-lg lg:whitespace-nowrap">{site.businessName}</span>
               <span className="block text-sm font-semibold text-accent-strong sm:text-base">
                 {site.brandName.replace(site.businessName, "").trim()}
