@@ -18,6 +18,8 @@ export const en = {
     call: "Call Our Office",
     callShort: "Call",
     whatsapp: "Chat with us on WhatsApp",
+    // Pre-filled in the chat when the WhatsApp button opens it; the visitor can edit it before sending.
+    whatsappMessage: "Hi {agentFirst}, I'd like to learn more about my Medicare.",
     getHelp: "Get Help",
     language: "Language",
     phonePending: "Office phone: pending",

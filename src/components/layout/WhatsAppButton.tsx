@@ -1,15 +1,16 @@
 /**
  * Floating WhatsApp button, bottom right on every page. A plain link to wa.me (works without JavaScript):
- * it opens the WhatsApp app on phones and WhatsApp Web on computers, in a chat with the office's number.
+ * it opens the WhatsApp app on phones and WhatsApp Web on computers, in a chat with the office's number,
+ * with `message` already typed in so the visitor only has to send it (or edit it first).
  * On phones it sits above the call bar. From tablets up, a speech bubble with the label shows on hover
  * or keyboard focus, and briefly after the page loads (globals.css, skipped with reduced motion).
  */
-export function WhatsAppButton({ phone, label }: { phone: { e164: string }; label: string }) {
+export function WhatsAppButton({ phone, label, message }: { phone: { e164: string }; label: string; message: string }) {
   const number = phone.e164.replace(/\D/g, "");
 
   return (
     <a
-      href={`https://wa.me/${number}`}
+      href={`https://wa.me/${number}?text=${encodeURIComponent(message)}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}

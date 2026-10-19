@@ -71,7 +71,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
         </main>
         <Footer locale={lang} dict={dict} />
         {site.contact.phone && <CallBar phone={site.contact.phone} label={dict.nav.callShort} />}
-        {site.contact.phone && site.contact.whatsapp && <WhatsAppButton phone={site.contact.phone} label={dict.nav.whatsapp} />}
+        {site.contact.phone && site.contact.whatsapp && <WhatsAppButton phone={site.contact.phone} label={dict.nav.whatsapp} message={fill(dict.nav.whatsappMessage, siteVars)} />}
         <MotionEffects />
       </body>
     </html>
