@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import type { Locale, Video } from "@/config/types";
 import { fill, localeNames } from "@/lib/i18n";
 import { Icon } from "@/components/ui/Icon";
@@ -26,6 +27,11 @@ export function VideoPlayer({ video, playLabel, errorLabels, durationLabel, defa
   const ref = useRef<HTMLVideoElement>(null);
   const [started, setStarted] = useState(false);
   const [failure, setFailure] = useState<{ network: boolean; code: string } | null>(null);
+  // Caption <track>s are added only once the video's metadata has loaded. Safari (iPhone, iPad, Mac) hands
+  // every <track> present when loading starts to AVFoundation as an out-of-band alternate track of the
+  // asset; with them, iPhone refused these MP4s before reading any metadata (code 4-0) even though the same
+  // files play when opened directly. Added later, WebKit renders the captions itself, like other browsers.
+  const [tracksOn, setTracksOn] = useState(false);
   const failed = failure !== null;
   // How far loading got before an error, so a failure can be told apart: 0 nothing yet,
   // 1 metadata read (the file was fetched and parsed), 2 a frame can play, 3 playback started.
@@ -80,7 +86,11 @@ export function VideoPlayer({ video, playLabel, errorLabels, durationLabel, defa
   };
 
   const retry = () => {
-    setFailure(null);
+    // Take the caption tracks out before reloading, so the new attempt also starts without them.
+    flushSync(() => {
+      setFailure(null);
+      setTracksOn(false);
+    });
     setStarted(true);
     stage.current = 0;
     buffered.current = 0;
@@ -106,7 +116,10 @@ export function VideoPlayer({ video, playLabel, errorLabels, durationLabel, defa
           // One video at a time: starting this one pauses any other on the page.
           document.querySelectorAll("video").forEach((other) => other !== event.currentTarget && other.pause());
         }}
-        onLoadedMetadata={() => reach(1)}
+        onLoadedMetadata={() => {
+          reach(1);
+          setTracksOn(true);
+        }}
         onCanPlay={() => reach(2)}
         onPlaying={() => reach(3)}
         onProgress={(event) => {
@@ -117,7 +130,7 @@ export function VideoPlayer({ video, playLabel, errorLabels, durationLabel, defa
         lang={video.language}
         className="size-full object-contain"
       >
-        {video.captions.map((track) => (
+        {tracksOn && video.captions.map((track) => (
           <track
             key={track.language}
             kind="captions"

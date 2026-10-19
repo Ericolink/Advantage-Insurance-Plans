@@ -100,7 +100,8 @@ export const site: SiteConfig = {
   npn: null,
   responseTime: null,
 
-  logo: { src: "/images/logo.webp", width: 528, height: 228 },
+  // Full logo with the name and star (source: LogoCompleto.jpeg, cropped to the artwork and saved as WebP).
+  logo: { src: "/images/logo-completo.webp", width: 600, height: 302 },
   photo: { src: "/images/SilviaFoto.jpg", width: 854, height: 1280, webp: "/images/silvia-photo-768.webp" },
   portrait: { src: "/images/silvia-portrait.jpg", width: 400, height: 400 },
   // Photo of the main office taken by the web team (confirmed 2026-10-15), so it is published as the office's own.
