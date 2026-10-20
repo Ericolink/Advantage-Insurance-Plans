@@ -20,7 +20,7 @@ export function About({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           // eslint-disable-next-line @next/next/no-img-element -- plain img keeps the static export option open
           <img
             data-reveal="left"
-            src={portrait.src}
+            src={portrait.webp ?? portrait.src}
             width={portrait.width}
             height={portrait.height}
             alt={fill(dict.about.photoAlt, siteVars)}

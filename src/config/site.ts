@@ -101,9 +101,10 @@ export const site: SiteConfig = {
   responseTime: null,
 
   // Full logo with the name and star (source: LogoCompleto.jpeg, cropped to the artwork and saved as WebP).
-  logo: { src: "/images/logo-completo.webp", width: 600, height: 302 },
+  // The page shows it about 54px tall, so it uses a 320px-wide copy; the 600px file stays for structured data.
+  logo: { src: "/images/logo-completo.webp", width: 600, height: 302, webp: "/images/logo-completo-320.webp" },
   photo: { src: "/images/SilviaFoto.jpg", width: 854, height: 1280, webp: "/images/silvia-photo-768.webp" },
-  portrait: { src: "/images/silvia-portrait.jpg", width: 400, height: 400 },
+  portrait: { src: "/images/silvia-portrait.jpg", width: 400, height: 400, webp: "/images/silvia-portrait.webp" },
   // Photo of the main office taken by the web team (confirmed 2026-10-15), so it is published as the office's own.
   // The storefront is on the right half, with sky above and parking below: any trim keeps the right side.
   officePhoto: {

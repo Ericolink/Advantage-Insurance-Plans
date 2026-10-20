@@ -7,6 +7,9 @@ import { CallButton } from "@/components/ui/CallButton";
 import { Icon } from "@/components/ui/Icon";
 import { container, h1Class } from "@/components/ui/styles";
 
+/** Transparent 1×1 GIF: an image source that costs no request. */
+const BLANK_PIXEL = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+
 export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const otherLocale: Locale = locale === "en" ? "es" : "en";
   const servesOtherLanguage = site.languages?.includes(otherLocale) ?? false;
@@ -27,7 +30,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             {portrait && (
               // eslint-disable-next-line @next/next/no-img-element -- plain img keeps the static export option open
               <img
-                src={portrait.src}
+                src={portrait.webp ?? portrait.src}
                 width={portrait.width}
                 height={portrait.height}
                 alt=""
@@ -91,7 +94,10 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         </div>
 
         {site.photo && (
+          // From lg this photo is the largest thing on the first screen, so it loads right away with high priority
+          // (lazy loading delayed it). Below lg it is hidden: the first <source> hands phones a 1px blank instead.
           <picture data-hero="photo" className="mx-auto hidden w-full max-w-sm lg:block">
+            <source media="(width < 64rem)" srcSet={BLANK_PIXEL} />
             {site.photo.webp && <source srcSet={site.photo.webp} type="image/webp" />}
             <img
               src={site.photo.src}
@@ -99,7 +105,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               height={site.photo.height}
               alt={fill(dict.hero.photoAlt, siteVars)}
               className="aspect-[4/5] w-full rounded-3xl object-cover object-[50%_30%] shadow-xl"
-              loading="lazy"
+              fetchPriority="high"
             />
           </picture>
         )}

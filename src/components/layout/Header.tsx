@@ -54,7 +54,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             {site.logo && (
               // On phones the full logo (which includes the name) stands alone, a little larger so its text reads.
               // eslint-disable-next-line @next/next/no-img-element -- small static asset, no optimization needed
-              <img src={site.logo.src} width={site.logo.width} height={site.logo.height} alt="" className="h-12 w-auto sm:h-10" />
+              <img src={site.logo.webp ?? site.logo.src} width={site.logo.width} height={site.logo.height} alt="" className="h-12 w-auto sm:h-10" />
             )}
             {/* The full name ("… by Silvia Alcazar") sets the office apart from agencies with similar names.
                 On phones it is visually hidden next to the logo but stays the link's accessible name. */}

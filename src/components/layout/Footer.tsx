@@ -42,7 +42,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             // The logo has a white background, so it sits on a white card over the dark footer.
             <span className="inline-block rounded-xl bg-white p-3">
               {/* eslint-disable-next-line @next/next/no-img-element -- small static asset, no optimization needed */}
-              <img src={site.logo.src} width={site.logo.width} height={site.logo.height} alt="" className="h-12 w-auto" />
+              <img src={site.logo.webp ?? site.logo.src} width={site.logo.width} height={site.logo.height} alt="" className="h-12 w-auto" />
             </span>
           )}
           <p className="font-display text-xl font-bold text-white">{site.brandName}</p>

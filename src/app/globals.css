@@ -104,9 +104,15 @@ html:has(dialog[data-lightbox][open]) {
     transform: scaleX(0);
   }
 }
+/* The first screen moves without fading: browsers count text and photos that start transparent as painted only
+   once the fade ends, which held the Largest Contentful Paint back by about 0.8s (measured with Lighthouse). */
+@keyframes hero-rise {
+  from {
+    transform: translate3d(0, var(--reveal-distance), 0);
+  }
+}
 @keyframes hero-photo {
   from {
-    opacity: 0;
     transform: scale(0.97);
   }
 }
@@ -154,7 +160,7 @@ html:has(dialog[data-lightbox][open]) {
   /* Hero and page titles: on load, a quick sequence (title, then text, then actions). The title starts
      at once, so the main message is readable immediately. */
   [data-hero] {
-    animation: reveal-up 700ms var(--ease-out) backwards;
+    animation: hero-rise 700ms var(--ease-out) backwards;
   }
   [data-hero="2"] {
     animation-delay: 120ms;

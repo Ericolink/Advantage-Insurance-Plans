@@ -376,14 +376,16 @@ function OfficeMap({ url, title, locale, dict, className }: { url: string; title
   );
 }
 
+// <dt> and <dd> must be direct children of the row (the only wrapper a <dl> allows), so the icon goes inside
+// the <dt> and the value is indented by the icon's width plus the gap (1.5rem + 1rem) to stay aligned.
 function InfoRow({ icon, label, children }: { icon: "mail" | "clock" | "mapPin" | "globe"; label: string; children: ReactNode }) {
   return (
-    <div className="flex gap-4 py-4 first:pt-0">
-      <Icon name={icon} className="mt-1 size-6 shrink-0 text-white" />
-      <div className="text-base sm:text-lg">
-        <dt className="font-semibold text-white">{label}</dt>
-        <dd className="mt-0.5 text-white">{children}</dd>
-      </div>
+    <div className="py-4 text-base first:pt-0 sm:text-lg">
+      <dt className="flex items-start gap-4 font-semibold text-white">
+        <Icon name={icon} className="mt-1 size-6 shrink-0" />
+        {label}
+      </dt>
+      <dd className="mt-0.5 pl-10 text-white">{children}</dd>
     </div>
   );
 }

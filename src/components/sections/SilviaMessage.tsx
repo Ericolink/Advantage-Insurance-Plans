@@ -40,7 +40,7 @@ export function SilviaMessage({ locale }: { locale: Locale }) {
               // Decorative: the name is written right next to it.
               // eslint-disable-next-line @next/next/no-img-element -- plain img keeps the static export option open
               <img
-                src={portrait.src}
+                src={portrait.webp ?? portrait.src}
                 width={portrait.width}
                 height={portrait.height}
                 alt=""
