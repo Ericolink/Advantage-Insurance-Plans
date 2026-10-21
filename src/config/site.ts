@@ -71,6 +71,20 @@ export const site: SiteConfig = {
       stateCode: "NM",
       postalCode: "88063",
       phone: null,
+      // Provided by the office (2026-10-21). Assigned to McNutt Rd because it is the only office without a photo
+      // that it could be: it isn't Alameda, George Dieter or Myrtle. Pending the office's confirmation.
+      // Parking in front, the main sign on the right: any trim keeps the door and the right side.
+      photo: {
+        src: "/images/office3.jpeg",
+        webp: "/images/office-mcnutt-900.webp",
+        width: 1024,
+        height: 576,
+        focus: "70% 50%",
+        alt: {
+          en: "Front of the office, with a large Medicare Plans and Obamacare sign above the door, a Medicare sign with an arrow on the side wall and a Medicare Health Plans table by the entrance",
+          es: "Fachada de la oficina, con un gran letrero de Medicare Plans y Obamacare sobre la puerta, un letrero de Medicare con una flecha en la pared lateral y una mesa de Medicare Health Plans junto a la entrada",
+        },
+      },
       mapEmbedUrl:
         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3390.8741276488613!2d-106.58461942384375!3d31.801180233213678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86ddf9d52b3b0873%3A0xb71b0618098caa5f!2s2603%20McNutt%20Rd%2C%20Sunland%20Park%2C%20NM%2088063!5e0!3m2!1ses-419!2sus!4v1792010440213!5m2!1ses-419!2sus",
     },
@@ -82,6 +96,18 @@ export const site: SiteConfig = {
       stateCode: "TX",
       postalCode: "79901",
       phone: null,
+      // Storefront of suite B, provided by the office (2026-10-21). The building fills the frame: centered.
+      photo: {
+        src: "/images/office4.jpeg",
+        webp: "/images/office-myrtle-900.webp",
+        width: 1600,
+        height: 900,
+        focus: "50% 60%",
+        alt: {
+          en: "Front of the office at 609 Myrtle Avenue, suite B, with an enrollment center sign for Medicare Advantage and Obamacare in the window and an Enroll here sign on the sidewalk",
+          es: "Fachada de la oficina en 609 Myrtle Avenue, local B, con un letrero de centro de inscripción de Medicare Advantage y Obamacare en la ventana y un anuncio de Enroll here en la banqueta",
+        },
+      },
       mapEmbedUrl:
         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3392.3505272466386!2d-106.4827002!3d31.7609242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86e75903edd04857%3A0x580ea9ef5c897179!2s609%20Myrtle%20Ave%20Ste%20B%2C%20El%20Paso%2C%20TX%2079901%2C%20EE.%20UU.!5e0!3m2!1ses-419!2smx!4v1792120410565!5m2!1ses-419!2smx",
     },

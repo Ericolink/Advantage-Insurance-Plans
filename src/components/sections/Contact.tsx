@@ -253,7 +253,8 @@ function FeaturedOffice({ entry, photoFirst, locale, dict }: { entry: ShownOffic
       : "md:grid-cols-2 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:[&>figure]:order-last"
     : photoFirst
       ? "md:grid-cols-2 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]"
-      : "md:grid-cols-2 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:[&>figure]:order-last";
+      // Pinned to the first row: `order-last` would also put the photo after the map band, alone on a third row.
+      : "md:grid-cols-2 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:[&>figure]:col-start-2 lg:[&>figure]:row-start-1";
 
   const details = (
     <div>
