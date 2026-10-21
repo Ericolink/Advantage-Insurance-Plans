@@ -20,6 +20,17 @@ function fromAcceptLanguage(header: string | null): string | null {
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  // One host for search engines: www.advantageinsuranceplans.com -> advantageinsuranceplans.com (any path).
+  const host = request.headers.get("host") ?? "";
+  if (host.startsWith("www.")) {
+    return NextResponse.redirect(`https://${host.slice(4)}${pathname}${request.nextUrl.search}`, 301);
+  }
+  // Metadata routes and static files only needed the host check.
+  if (/^\/(api\/|robots\.txt$|sitemap\.xml$)/.test(pathname) || /\.[\w]+$/.test(pathname)) {
+    return NextResponse.next();
+  }
+
   const current = locales.find((locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`));
 
   if (current) {
@@ -43,6 +54,6 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Skip Next internals, metadata routes and any file with an extension (images, icons…).
-  matcher: ["/((?!_next/|api/|robots\\.txt|sitemap\\.xml|.*\\.[\\w]+$).*)"],
+  // Everything except Next internals, so the www redirect also covers robots.txt, the sitemap and images.
+  matcher: ["/((?!_next/).*)"],
 };

@@ -12,9 +12,8 @@ export const site: SiteConfig = {
   // Always shown in full: another El Paso agency has a very similar name.
   brandName: "Advantage Insurance Plans by Silvia Alcazar",
   agentName: "Silvia Alcazar",
-  // Pending: the production domain is not confirmed anywhere in the project (no domain in netlify.toml,
-  // .env or the Google profile). Set it here once bought/confirmed, e.g. "https://www.yourdomain.com".
-  url: null,
+  // Production domain (GoDaddy, behind Cloudflare). The bare domain is the main version: www redirects to it in src/proxy.ts.
+  url: "https://advantageinsuranceplans.com",
 
   contact: {
     phone: { e164: "+19152569708", display: "(915) 256-9708" },

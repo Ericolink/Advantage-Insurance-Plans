@@ -2,7 +2,7 @@
 // a refactor can't quietly relax them. They change a copy of the config, never site.ts itself.
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { getPendingItems, isLaunchReady } from "../src/config/readiness.ts";
+import { getPendingItems, isIndexable, isLaunchReady } from "../src/config/readiness.ts";
 import { site } from "../src/config/site.ts";
 import type { Office, SiteConfig } from "../src/config/types.ts";
 
@@ -26,6 +26,12 @@ describe("launch check: domain", () => {
     const value = config({ url: null });
     assert.ok(blockingKeys(value).includes("url"));
     assert.equal(isLaunchReady(value), false);
+    assert.equal(isIndexable(value), false);
+  });
+
+  it("is indexable with a valid domain even while other launch items are pending", () => {
+    assert.equal(isIndexable(config({ url: "https://www.agency-domain.com", licenses: [] })), true);
+    assert.equal(isIndexable(config({ url: "https://agency.netlify.app" })), false);
   });
 
   for (const url of ["http://www.agency-domain.com", "https://agency.netlify.app", "https://www.example.com", "https://www.agency-domain.com/", "https://www.agency-domain.com/es", "not a url"]) {

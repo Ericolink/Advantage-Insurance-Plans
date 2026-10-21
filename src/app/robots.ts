@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
-import { isLaunchReady } from "@/config/readiness";
+import { isIndexable } from "@/config/readiness";
 import { site } from "@/config/site";
 
 export default function robots(): MetadataRoute.Robots {
-  // Block crawlers until the domain is set and every blocking item is resolved.
-  if (!site.url || !isLaunchReady(site)) {
+  // Block crawlers only until the production domain is set (absolute URLs depend on it).
+  if (!site.url || !isIndexable(site)) {
     return { rules: { userAgent: "*", disallow: "/" } };
   }
   return {

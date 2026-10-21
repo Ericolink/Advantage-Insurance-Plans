@@ -1,13 +1,13 @@
 import type { MetadataRoute } from "next";
 import { pageIds, pagePath } from "@/config/pages";
-import { isLaunchReady } from "@/config/readiness";
+import { isIndexable } from "@/config/readiness";
 import { site } from "@/config/site";
 import type { Locale } from "@/config/types";
 import { localeTags, locales } from "@/lib/i18n";
 import { samePath } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  if (!site.url || !isLaunchReady(site)) return [];
+  if (!site.url || !isIndexable(site)) return [];
   const base = site.url;
 
   // Each entry lists its URL in every language (inner pages have translated slugs).

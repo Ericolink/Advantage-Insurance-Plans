@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { Fraunces, Inter } from "next/font/google";
-import { isLaunchReady } from "@/config/readiness";
+import { isIndexable } from "@/config/readiness";
 import { site } from "@/config/site";
 import { fill, getDictionary, hasLocale, localeTags, locales } from "@/lib/i18n";
 import { alternatesFor, openGraphUrls, samePath } from "@/lib/seo";
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Omit<LayoutProps, "children">
   const dict = getDictionary(lang);
   const title = fill(dict.meta.title, siteVars);
   const description = fill(dict.meta.description, siteVars);
-  const indexable = Boolean(site.url) && isLaunchReady(site);
+  const indexable = Boolean(site.url) && isIndexable(site);
 
   return {
     ...(site.url && { metadataBase: new URL(site.url) }),
@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: Omit<LayoutProps, "children">
       locale: localeTags[lang].replace("-", "_"),
       ...openGraphUrls(`/${lang}`, site.photo),
     },
-    // Keep search engines out until the real data is in place.
+    // Keep search engines out until the production domain is set.
     robots: indexable ? { index: true, follow: true } : { index: false, follow: false },
     formatDetection: { telephone: false },
   };

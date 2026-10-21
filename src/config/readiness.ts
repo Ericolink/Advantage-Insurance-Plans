@@ -45,7 +45,7 @@ export function getPendingItems(site: SiteConfig): PendingItem[] {
   // ── Domain ────────────────────────────────────────────────────────────────
   if (!site.url) {
     add("url", "site.url: production domain is not set (needed for SEO, sitemap and canonical links).", true, {
-      why: "Canonical, hreflang, Open Graph, sitemap and JSON-LD need absolute URLs. Until then the site stays noindex and none of them are generated.",
+      why: "Canonical, hreflang, Open Graph, sitemap and JSON-LD need absolute URLs. Until then the site stays noindex (robots.txt Disallow) and none of them are generated.",
       where: `${SITE} → url`,
       owner: "Silvia",
       resolve: 'Buy or confirm the domain, point it to the hosting, then set url to "https://<domain>" (no trailing slash).',
@@ -426,4 +426,12 @@ export function getPendingItems(site: SiteConfig): PendingItem[] {
 
 export function isLaunchReady(site: SiteConfig): boolean {
   return getPendingItems(site).every((item) => !item.blocking);
+}
+
+/**
+ * Search engines may index the site once the production domain is set and valid: canonical, hreflang,
+ * sitemap and JSON-LD only need that. The rest of the launch checklist stays in `npm run check:launch`.
+ */
+export function isIndexable(site: SiteConfig): boolean {
+  return getPendingItems(site).every((item) => item.key !== "url" && item.key !== "url-invalid");
 }
